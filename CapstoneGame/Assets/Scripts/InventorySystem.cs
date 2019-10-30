@@ -5,33 +5,46 @@ using UnityEngine;
 public class InventorySystem : MonoBehaviour
 {
     public GameObject Items;
-    public List<GameObject> Inventory = new List<GameObject>();
+    public List<Item> Inventory = new List<Item>();
+    public Item ItemScr;
 
     //Item functions on pick up
+    
     private void OnCollisionEnter(Collision collision)
     {
-        Items = collision.gameObject;
-        if(Items.tag == "item1")
+        if(Items.tag == "Item")
         {
-            Inventory.Insert(0,Items) ;
-            Debug.Log("item1 picked up");
-        }
-        if (Items.tag == "item2")
-        {
-            Inventory.Insert(1,Items);
-            Debug.Log("item2 picked up");
-        }
-        if (Items.tag == "item3")
-        {
-            Inventory.Insert(2,Items);
-            Debug.Log("item3 picked up");
+            pickUp(collision.gameObject);
         }
     }
+    public void pickUp(GameObject I)
+    {
+        ItemScr = I.GetComponent<Item>();
+        Inventory.Add(ItemScr);
+        I.SetActive(false);
+        Debug.Log("Item picked up");
+    }
+    public void drop(Item I)
+    {
+        Inventory.Remove(I);
+    }
+
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-
+            Inventory.RemoveAt(0);
+            Debug.Log("item 1 used");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Inventory.RemoveAt(1);
+            Debug.Log("item 2 used");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Inventory.RemoveAt(3);
+            Debug.Log("item 3 used");
         }
     }
 }
