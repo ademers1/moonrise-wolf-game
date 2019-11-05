@@ -36,12 +36,14 @@ public class InventorySystem : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "item")
+        if(other.tag == "Item")
         {
             GameObject itemPickedUp = other.gameObject;
             Item item = itemPickedUp.GetComponent<Item>();
 
             addItem(itemPickedUp, item.ID, item.type, item.description, item.icon);
+            //Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
     public void pickUp(GameObject I)
@@ -53,7 +55,7 @@ public class InventorySystem : MonoBehaviour
     }
     void addItem(GameObject itemObject, int itemID, string itemType, string itemDescription, Sprite itemIcon)
     {
-        for (int i=0;i<allSlots;i++)
+        for (int i=0; i<allSlots; i++)
         {
             if(Slot[i].GetComponent<Slot>().empty)
             {
