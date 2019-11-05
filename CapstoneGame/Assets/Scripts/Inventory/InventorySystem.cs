@@ -11,6 +11,7 @@ public class InventorySystem : MonoBehaviour
     public GameObject InvGraph;
     int allSlots;
     int enabledSlots;
+    bool itemAdded;
     GameObject[] Slot;
     public GameObject slotHolder;
     //Item functions on pick up
@@ -55,9 +56,10 @@ public class InventorySystem : MonoBehaviour
     }
     void addItem(GameObject itemObject, int itemID, string itemType, string itemDescription, Sprite itemIcon)
     {
+        bool itemAdded = false;
         for (int i=0; i<allSlots; i++)
         {
-            if(Slot[i].GetComponent<Slot>().empty)
+            if(Slot[i].GetComponent<Slot>().empty && !itemAdded)
             {
                 //add item to slot
                 itemObject.GetComponent<Item>().pickedUp = true;
@@ -72,8 +74,8 @@ public class InventorySystem : MonoBehaviour
 
                 Slot[i].GetComponent<Slot>().UpdateSlot();
                 Slot[i].GetComponent<Slot>().empty = false;
+                itemAdded = true;
             }
-            return;
         }
     }
     public void drop(Item I)
