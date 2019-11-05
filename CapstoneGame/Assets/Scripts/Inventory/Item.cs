@@ -5,5 +5,9 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     public int Damage;
-    public string Name;
+    public int ID;
+    public string type;
+    public string description;
+    public Sprite icon;
+    public bool pickedUp;
 }
