@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
+
     public float speed = 5.0f;
+
     public float jumpForce = 5.0f;
     public float rotationSpeed = 60.0f;
 
@@ -32,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
+
         if (Input.GetKey(KeyCode.LeftShift))
             speed = 15.0f;
         else
@@ -51,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
         //jump
         #region
+
         float jump = Input.GetAxis("Jump");
         if (thirdCam)
         {

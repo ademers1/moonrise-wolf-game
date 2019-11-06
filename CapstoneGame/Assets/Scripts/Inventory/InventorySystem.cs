@@ -128,7 +128,8 @@ public class InventorySystem : MonoBehaviour
             //Cursor.visible = false;
             //Cursor.lockState = CursorLockMode.Locked;
 
-           // camera.cam = true;
+            // camera.cam = true;
+
             InvGraph.SetActive(false);
         }
     }
