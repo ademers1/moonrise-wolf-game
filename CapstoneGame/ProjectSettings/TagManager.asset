@@ -7,6 +7,8 @@ TagManager:
   - Death
   - Item
   - weaponManager
+  - Wall
+  - Ground
   layers:
   - Default
   - TransparentFX
