@@ -28,6 +28,7 @@ public class InventorySystem : MonoBehaviour
                 Slot[i].GetComponent<Slot>().empty = true;
         }
     }
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Item")
@@ -35,6 +36,7 @@ public class InventorySystem : MonoBehaviour
             pickUp(collision.gameObject);
         }
     }
+    */
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Item")
@@ -47,6 +49,7 @@ public class InventorySystem : MonoBehaviour
             other.gameObject.SetActive(false);
         }
     }
+    /*
     public void pickUp(GameObject I)
     {
         ItemScr = I.GetComponent<Item>();
@@ -54,37 +57,41 @@ public class InventorySystem : MonoBehaviour
         I.SetActive(false);
         Debug.Log("Item picked up");
     }
+    */
     void addItem(GameObject itemObject, int itemID, string itemType, string itemDescription, Sprite itemIcon)
     {
-        bool itemAdded = false;
         for (int i=0; i<allSlots; i++)
         {
-            if(Slot[i].GetComponent<Slot>().empty && !itemAdded)
+            if (Slot[i].GetComponent<Slot>().empty)
             {
                 //add item to slot
-                itemObject.GetComponent<Item>().pickedUp = true;
-                Slot[i].GetComponent<Slot>().item = itemObject;
-                Slot[i].GetComponent<Slot>().icon = itemIcon;
-                Slot[i].GetComponent<Slot>().type = itemType;
-                Slot[i].GetComponent<Slot>().ID = itemID;
-                Slot[i].GetComponent<Slot>().description = itemDescription;
+                if (!itemObject.GetComponent<Item>().pickedUp)
+                {
+                    itemObject.GetComponent<Item>().pickedUp = true;
+                    Slot[i].GetComponent<Slot>().item = itemObject;
+                    Slot[i].GetComponent<Slot>().icon = itemIcon;
+                    Slot[i].GetComponent<Slot>().type = itemType;
+                    Slot[i].GetComponent<Slot>().ID = itemID;
+                    Slot[i].GetComponent<Slot>().description = itemDescription;
 
-                itemObject.transform.parent = Slot[i].transform;
-                itemObject.SetActive(false);
+                    itemObject.transform.parent = Slot[i].transform;
+                    itemObject.SetActive(false);
 
-                Slot[i].GetComponent<Slot>().UpdateSlot();
-                Slot[i].GetComponent<Slot>().empty = false;
-                itemAdded = true;
+                    Slot[i].GetComponent<Slot>().UpdateSlot();
+                    Slot[i].GetComponent<Slot>().empty = false;
+                }
             }
         }
     }
+    /*
     public void drop(Item I)
     {
         Inventory.Remove(I);
     }
-
+    */
     private void Update()
     {
+        /*
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             Inventory.RemoveAt(0);
@@ -100,6 +107,7 @@ public class InventorySystem : MonoBehaviour
             Inventory.RemoveAt(3);
             Debug.Log("item 3 used");
         }
+        */
         if(Input.GetKeyDown(KeyCode.I))
         {
             inventoryEnabled = !inventoryEnabled;
