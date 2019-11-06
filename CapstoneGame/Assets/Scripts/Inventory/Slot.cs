@@ -17,7 +17,10 @@ public class Slot : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData pointerEventData)
     {
-        UseItem();
+        if(slotIconGO.GetComponent<Image>().sprite != null)
+        {
+            UseItem();
+        }
     }
     private void Start()
     {
