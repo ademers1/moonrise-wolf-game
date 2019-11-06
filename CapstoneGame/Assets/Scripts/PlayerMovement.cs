@@ -5,11 +5,15 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
-    public float speed = 20.0f;
+    public float speed = 0.0f;
     public float jumpForce = 5.0f;
+    public float rotationSpeed = 60.0f;
 
     private float radius;
     private playerState state;
+    public bool isoCam = false;
+    public bool thirdCam = false;
+    public bool firstCam = false;
 
     [SerializeField] private LayerMask groundLayer;
 
@@ -27,11 +31,41 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
         float jump = Input.GetAxis("Jump");
-        rb.AddForce(new Vector3(moveHorizontal, 0.0f, moveVertical) * speed);
-
+        if (thirdCam)
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                //rb.velocity = Vector3.forward * speed * Time.deltaTime);
+                transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            }
+            //float moveHorizontal = Input.GetAxis("Horizontal");
+            //float moveVertical = Input.GetAxis("Vertical");
+            
+            //rb.AddForce(new Vector3(moveHorizontal, 0.0f, moveVertical) * speed);
+        }
+        if (isoCam)
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                transform.Translate(Vector3.back * speed * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.Rotate(new Vector3(0, rotationSpeed * Time.deltaTime, 0));
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Rotate(new Vector3(0, -rotationSpeed * Time.deltaTime, 0));
+            }
+            //float moveHorizontal = Input.GetAxis("Horizontal");
+            //float moveVertical = Input.GetAxis("Vertical");
+            //rb.AddForce(new Vector3(moveHorizontal, 0.0f, moveVertical) * speed);
+        }
         Ray ray = new Ray(transform.position, -transform.up);
         RaycastHit info;
 

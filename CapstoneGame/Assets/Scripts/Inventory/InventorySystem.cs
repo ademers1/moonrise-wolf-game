@@ -14,10 +14,12 @@ public class InventorySystem : MonoBehaviour
     bool itemAdded;
     GameObject[] Slot;
     public GameObject slotHolder;
+    public CameraController camera;
     //Item functions on pick up
 
     private void Start()
     {
+        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
         allSlots = 40;
         Slot = new GameObject[allSlots];
         for(int i=0;i<allSlots;i++)
@@ -116,9 +118,17 @@ public class InventorySystem : MonoBehaviour
         if(inventoryEnabled == true)
         {
             InvGraph.SetActive(true);
+            //camera.cam = false;
+            //Cursor.visible = true;
+            //Cursor.lockState = CursorLockMode.None;
         }
         else
         {
+            //camera.cam = false;
+            //Cursor.visible = false;
+            //Cursor.lockState = CursorLockMode.Locked;
+
+            camera.cam = true;
             InvGraph.SetActive(false);
         }
     }
