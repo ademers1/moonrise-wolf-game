@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
     public Transform Target, Player;
     float mouseX, mouseY;
     public bool cam;
-    public Transform Obstruction;
+    Transform Obstruction;
     float zoomSpeed = 2f;
 
     // Start is called before the first frame update
@@ -38,7 +38,7 @@ public class CameraController : MonoBehaviour
 
             Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
             Player.rotation = Quaternion.Euler(0, mouseX, 0);
-        }   
+        }
     }
 
     void ViewObstructed()

@@ -11,6 +11,8 @@ public class Item : MonoBehaviour
     public Sprite icon;
     public bool pickedUp;
 
+    InventorySystem Inventory;
+
     [HideInInspector]
     public bool equipped;
     [HideInInspector]
@@ -22,6 +24,7 @@ public class Item : MonoBehaviour
 
     private void Start()
     {
+        Inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventorySystem>();
         weaponManager = GameObject.FindWithTag("weaponManager");
         if(!playersWeapon)
         {
@@ -52,13 +55,30 @@ public class Item : MonoBehaviour
 
         }
     }
-    public void ItemUsage()
+
+    public void DropItem(int id)
     {
-        //weapon
-        if(type == "weapon")
+        /*GameObject item;
+        if (Inventory.ObjectPool.TryGetValue(id, out item))
         {
-            weapon.SetActive(true);
-            weapon.GetComponent<Item>().equipped = true;
+
+            item.transform.position = Inventory.Player.position + new Vector3(5, 0, 0);
+            item.SetActive(true);
         }
+        */
+        int position = 0;
+        for (int i = 0; i < Inventory.Slot.Length; i++) {
+            if(Inventory.Slot[i].GetComponent<Slot>().ID == id)
+            {
+                position = i;
+            }
+        }
+        Inventory.Slot[position].GetComponent<Slot>().empty = true;
+        GameObject item = Inventory.Slot[position].GetComponent<Slot>().item;
+        item.transform.position = Inventory.Player.position + new Vector3(5, 0, 0);
+        item.GetComponent<Item>().pickedUp = false;
+        item.SetActive(true);
+        
+        
     }
 }

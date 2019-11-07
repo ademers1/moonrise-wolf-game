@@ -9,6 +9,8 @@ TagManager:
   - weaponManager
   - Wall
   - Ground
+  - ThirdPersonCamera
+  - FirstPersonCamera
   layers:
   - Default
   - TransparentFX

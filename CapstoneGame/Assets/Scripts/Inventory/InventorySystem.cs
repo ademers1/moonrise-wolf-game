@@ -12,14 +12,18 @@ public class InventorySystem : MonoBehaviour
     int allSlots;
     int enabledSlots;
     bool itemAdded;
-    GameObject[] Slot;
+    public Transform Player;
+    public Dictionary<int, GameObject> ObjectPool = new Dictionary<int, GameObject>();
+    public GameObject[] Slot;
     public GameObject slotHolder;
-    public CameraController camera;
+    public Camera FirstPersonCamera;
+    public Camera ThirdPersonCamera;
+    public bool running = true;
     //Item functions on pick up
 
     private void Start()
     {
-        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
+        running = true;
         allSlots = 40;
         Slot = new GameObject[allSlots];
         for(int i=0;i<allSlots;i++)
@@ -47,7 +51,6 @@ public class InventorySystem : MonoBehaviour
             Item item = itemPickedUp.GetComponent<Item>();
 
             addItem(itemPickedUp, item.ID, item.type, item.description, item.icon);
-            //Destroy(other.gameObject);
             other.gameObject.SetActive(false);
         }
     }
@@ -76,9 +79,7 @@ public class InventorySystem : MonoBehaviour
                     Slot[i].GetComponent<Slot>().ID = itemID;
                     Slot[i].GetComponent<Slot>().description = itemDescription;
 
-                    itemObject.transform.parent = Slot[i].transform;
                     itemObject.SetActive(false);
-
                     Slot[i].GetComponent<Slot>().UpdateSlot();
                     Slot[i].GetComponent<Slot>().empty = false;
                 }
@@ -115,21 +116,43 @@ public class InventorySystem : MonoBehaviour
             inventoryEnabled = !inventoryEnabled;
         }
 
-        if(inventoryEnabled == true)
+        if (inventoryEnabled == true)
         {
             InvGraph.SetActive(true);
-            //camera.cam = false;
-            //Cursor.visible = true;
-            //Cursor.lockState = CursorLockMode.None;
+            if (FirstPersonCamera.isActiveAndEnabled)
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                FirstPersonCamera cam = GameObject.FindGameObjectWithTag("FirstPersonCamera").GetComponent<FirstPersonCamera>();
+                cam.cam = false;
+            }
+            if (ThirdPersonCamera.isActiveAndEnabled)
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                CameraController cam = GameObject.FindGameObjectWithTag("ThirdPersonCamera").GetComponent<CameraController>();
+                cam.cam = false;
+            }
+
         }
         else
         {
-            //camera.cam = false;
-            //Cursor.visible = false;
-            //Cursor.lockState = CursorLockMode.Locked;
-
-            // camera.cam = true;
-
+            if (running) {  
+                if (FirstPersonCamera.isActiveAndEnabled)
+                {
+                    Cursor.visible = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                    FirstPersonCamera cam = GameObject.FindGameObjectWithTag("FirstPersonCamera").GetComponent<FirstPersonCamera>();
+                    cam.cam = true;
+                }
+                if (ThirdPersonCamera.isActiveAndEnabled)
+                {
+                    Cursor.visible = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                    CameraController cam = GameObject.FindGameObjectWithTag("ThirdPersonCamera").GetComponent<CameraController>();
+                    cam.cam = true;
+                }
+            }
             InvGraph.SetActive(false);
         }
     }

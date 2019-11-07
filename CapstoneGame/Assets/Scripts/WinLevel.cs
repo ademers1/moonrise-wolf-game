@@ -4,8 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class WinLevel : MonoBehaviour
 {
-
+    public Camera FirstPersonCamera;
+    public Camera ThirdPersonCamera;
+    InventorySystem Inventory;
    
+    void Start()
+    {
+        Inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventorySystem>();
+    }
+
   
     void Update()
     {
@@ -22,7 +29,22 @@ public class WinLevel : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            Inventory.running = false;
+            SceneManager.LoadScene("Win");
+            if (FirstPersonCamera.isActiveAndEnabled)
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                FirstPersonCamera cam = GameObject.FindGameObjectWithTag("FirstPersonCamera").GetComponent<FirstPersonCamera>();
+                cam.cam = false;
+            }
+            if (ThirdPersonCamera.isActiveAndEnabled)
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                CameraController cam = GameObject.FindGameObjectWithTag("ThirdPersonCamera").GetComponent<CameraController>();
+                cam.cam = false;
+            }
         }
     }
 }
