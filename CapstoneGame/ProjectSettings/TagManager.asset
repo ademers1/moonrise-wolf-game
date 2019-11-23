@@ -11,6 +11,7 @@ TagManager:
   - Ground
   - ThirdPersonCamera
   - FirstPersonCamera
+  - Enemy
   layers:
   - Default
   - TransparentFX
