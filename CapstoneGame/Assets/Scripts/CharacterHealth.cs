@@ -27,10 +27,11 @@ public class CharacterHealth : MonoBehaviour
     {
         health -= amount;
         healthBar.fillAmount -= health/startHealth;
+        Debug.Log("Current Health: " + health);
     }
     public void Die()
     {
         Destroy(gameObject);
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Loss");
     }
 }

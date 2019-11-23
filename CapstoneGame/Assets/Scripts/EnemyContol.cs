@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyContol : MonoBehaviour
 {
-   public Transform target;
+    private Transform target;
     public float range = 15f;
     public string enemyTag = "Player";
     private float speed = 10;
@@ -12,6 +12,8 @@ public class EnemyContol : MonoBehaviour
     public float fireRate = 1f;
     private float fireCountDown = 0f;
 
+    public GameObject bulletPrefab;
+    public Transform firePoint;
 
     void Start()
     {
@@ -71,6 +73,12 @@ public class EnemyContol : MonoBehaviour
 
     void Shoot()
     {
-        Debug.Log("Shoot");
+        GameObject BulletGo = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Bullet bullet = BulletGo.GetComponent<Bullet>();
+
+        if(bullet !=null)
+        {
+            bullet.Seek(target);
+        }
     }
 }
