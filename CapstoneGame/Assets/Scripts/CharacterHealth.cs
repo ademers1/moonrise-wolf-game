@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class CharacterHealth : MonoBehaviour
 {
-    private float health;
+    public float health;
     public float startHealth;
     public Image healthBar;
 
@@ -21,12 +21,24 @@ public class CharacterHealth : MonoBehaviour
         {
             Die();
         }
+     //no over heal;
+     else if(health > startHealth)
+        {
+            health = startHealth;
+        }
     }
 
     public void TakeDamage(float amount)
     {
         health -= amount;
-        healthBar.fillAmount -= health/startHealth;
+        healthBar.fillAmount = health/startHealth;
+        Debug.Log("Current Health: " + health);
+    }
+    //added a healing function
+    public void Heal(float amount)
+    {
+        health += amount;
+        healthBar.fillAmount = health / startHealth;
         Debug.Log("Current Health: " + health);
     }
     public void Die()

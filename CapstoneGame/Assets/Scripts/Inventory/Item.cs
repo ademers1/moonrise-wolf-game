@@ -10,6 +10,7 @@ public class Item : MonoBehaviour
     public string description;
     public Sprite icon;
     public bool pickedUp;
+    public float healAmount;
 
     InventorySystem Inventory;
 
@@ -78,7 +79,21 @@ public class Item : MonoBehaviour
         item.transform.position = Inventory.Player.position + new Vector3(5, 0, 0);
         item.GetComponent<Item>().pickedUp = false;
         item.SetActive(true);
-        
-        
+    }
+    //when item is used, destory item
+    public void destroyItem(int id)
+    {
+        int position = 0;
+        for (int i = 0; i < Inventory.Slot.Length; i++)
+        {
+            if (Inventory.Slot[i].GetComponent<Slot>().ID == id)
+            {
+                position = i;
+            }
+        }
+        Inventory.Slot[position].GetComponent<Slot>().empty = true;
+        GameObject item = Inventory.Slot[position].GetComponent<Slot>().item;
+        item.GetComponent<Item>().pickedUp = false;
+        Destroy(item);
     }
 }

@@ -14,6 +14,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     public string description;
     public GameObject item;
     public Transform slotIconGO;
+    GameObject player;
+    CharacterHealth charScr;
 
     public void OnPointerClick(PointerEventData pointerEventData)
     {
@@ -25,6 +27,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     private void Start()
     {
         slotIconGO = transform.GetChild(0);
+        player = GameObject.Find("Player");
+        charScr = player.GetComponent<CharacterHealth>();
     }
     public void UpdateSlot()
     {
@@ -32,7 +36,23 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     }
     public void UseItem()
     {
-        item.GetComponent<Item>().DropItem(ID);
-        slotIconGO.GetComponent<Image>().sprite = null;
+        //heal player if HP is not full; right now item1 heals for 20 HP;
+        if(item.GetComponent<Item>().type=="healing")
+        {
+            if(charScr.health != charScr.startHealth)
+            {
+                charScr.Heal(item.GetComponent<Item>().healAmount);
+                item.GetComponent<Item>().destroyItem(ID);
+                slotIconGO.GetComponent<Image>().sprite = null;
+                Debug.Log("Current Health: " + charScr.health);
+            }
+        }
+        //drop item if player HP is full
+        else
+        {
+            item.GetComponent<Item>().DropItem(ID);
+            slotIconGO.GetComponent<Image>().sprite = null;
+            Debug.Log("Current Health: " + charScr.health);
+        }
     }
 }
