@@ -13,12 +13,14 @@ public class betaWolf : MonoBehaviour
     private NavMeshAgent nav;
 
     PlayerMovement player;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
         player = FindObjectOfType<PlayerMovement>();
+        layout = GetComponent<GridLayout>();
     }
 
     // Update is called once per frame
@@ -27,6 +29,7 @@ public class betaWolf : MonoBehaviour
         nav.SetDestination(target.position);
 
         
+
         //if player is standing still
         if (player.currentSpeed == 0)
         {
@@ -43,6 +46,19 @@ public class betaWolf : MonoBehaviour
             else // else the beta wolves must move towards the alpha but at a slower speed cause why not
                 nav.speed = player.currentSpeed / 1.2f;
         }
+
+        
         
     }
+
+    /*
+    int wolfEvenOdd()
+    {
+        GameObject betaWolf;
+        string betaWolfNum;
+
+        betaWolf = FindObjectOfType<GameObject>();
+
+        betaWolfNum = betaWolf.name;
+    }*/
 }

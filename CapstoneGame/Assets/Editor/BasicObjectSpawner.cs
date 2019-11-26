@@ -488,7 +488,7 @@ public class BasicObjectSpawner : EditorWindow
             #endregion Add Components
 
             #region Update Window
-            if (CustomEditorWindow.focusedWindow || CustomEditorWindow.mouseOverWindow)
+           if (BasicObjectSpawner.focusedWindow || BasicObjectSpawner.mouseOverWindow)
             {
                 Repaint();
             }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427194, b: 0.5645252, a: 1}
+  m_IndirectSpecularColor: {r: 0.43667555, g: 0.48427182, b: 0.56452405, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8607,8 +8607,8 @@ MonoBehaviour:
   jumpForce: 5
   rotationSpeed: 60
   isoCam: 0
-  thirdCam: 0
-  firstCam: 1
+  thirdCam: 1
+  firstCam: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -13409,7 +13409,7 @@ PrefabInstance:
     - target: {fileID: 9191018838327189989, guid: d4ef9fdb9207d224db0024018b1072b1,
         type: 3}
       propertyPath: m_Name
-      value: betaWolf (1)
+      value: betaWolf2
       objectReference: {fileID: 0}
     - target: {fileID: 9191018838327189995, guid: d4ef9fdb9207d224db0024018b1072b1,
         type: 3}
@@ -16995,7 +16995,7 @@ PrefabInstance:
     - target: {fileID: 9191018838327189989, guid: d4ef9fdb9207d224db0024018b1072b1,
         type: 3}
       propertyPath: m_Name
-      value: betaWolf
+      value: betaWolf1
       objectReference: {fileID: 0}
     - target: {fileID: 9191018838327189995, guid: d4ef9fdb9207d224db0024018b1072b1,
         type: 3}

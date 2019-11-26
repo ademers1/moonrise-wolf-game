@@ -44,6 +44,7 @@ public class EnemyContol : MonoBehaviour
             target = null;
         }
     }
+
     void Update()
     {
         if (target == null)
