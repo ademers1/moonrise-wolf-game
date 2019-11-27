@@ -20,7 +20,7 @@ public class betaWolf : MonoBehaviour
     {
         nav = GetComponent<NavMeshAgent>();
         player = FindObjectOfType<PlayerMovement>();
-        layout = GetComponent<GridLayout>();
+        //layout = GetComponent<GridLayout>();
     }
 
     // Update is called once per frame
