@@ -1593,7 +1593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51f2901c0d890d54f8415f27b35f031d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 10
+  range: 12
   enemyTag: Player
   fireRate: 1
   bulletPrefab: {fileID: 6286390033362783541, guid: a0a3a86f04adc524ca13254428809d85,
@@ -8689,7 +8689,7 @@ MonoBehaviour:
   jumpForce: 5
   rotationSpeed: 60
   isoCam: 0
-  thirdCam: 0
+  thirdCam: 1
   firstCam: 0
   groundLayer:
     serializedVersion: 2
@@ -16209,7 +16209,6 @@ GameObject:
   - component: {fileID: 1927478146}
   - component: {fileID: 1927478145}
   - component: {fileID: 1927478144}
-  - component: {fileID: 1927478147}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -16282,22 +16281,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1927478147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1927478143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbc9d7e47bb4f9a45880254d5c0ff03b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RotationSpeed: 1
-  Target: {fileID: 2121529683}
-  Player: {fileID: 535051337}
-  cam: 0
 --- !u!4 &1952280607 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3766682319473989291, guid: 1157df62ea9af8e44b684e92e5b16545,
@@ -17094,7 +17077,6 @@ MonoBehaviour:
   description: 
   item: {fileID: 0}
   slotIconGO: {fileID: 0}
-<<<<<<< HEAD
 --- !u!1001 &2129709631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17164,38 +17146,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11ec2315578fa6b40ad5518170a779fe, type: 3}
-=======
---- !u!1 &2121529682
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2121529683}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2121529683
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2121529682}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.6, y: -20.89389, z: -11.664282}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> 7fdf99006ecfb834e857ab850eefd495330a82d4
 --- !u!1 &2130298722
 GameObject:
   m_ObjectHideFlags: 0
