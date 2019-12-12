@@ -9,9 +9,11 @@ public class CharacterHealth : MonoBehaviour
     public float health;
     public float startHealth;
     public Image healthBar;
+   
 
     void Start()
     {
+        
         health = startHealth;
     }
 
@@ -44,6 +46,7 @@ public class CharacterHealth : MonoBehaviour
     public void Die()
     {
         Destroy(gameObject);
+       
         SceneManager.LoadScene("Loss");
     }
 }

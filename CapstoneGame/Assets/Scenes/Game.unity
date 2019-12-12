@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43667546, g: 0.48427135, b: 0.5645225, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1519,8 +1519,8 @@ GameObject:
   - component: {fileID: 252642729}
   - component: {fileID: 252642728}
   - component: {fileID: 252642727}
-  - component: {fileID: 252642726}
   - component: {fileID: 252642731}
+  - component: {fileID: 252642726}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -1537,11 +1537,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 252642725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce70f53e10509ba4e85d992e8599da64, type: 3}
+  m_Script: {fileID: 11500000, guid: c669d5bb78f0daf4387318a1e6e34cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  startHealth: 5
+  startHealth: 10
   healthBar: {fileID: 757044178}
 --- !u!65 &252642727
 BoxCollider:
@@ -8588,6 +8588,7 @@ GameObject:
   - component: {fileID: 535051338}
   - component: {fileID: 535051339}
   - component: {fileID: 535051340}
+  - component: {fileID: 535051341}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -8746,6 +8747,21 @@ MonoBehaviour:
   health: 0
   startHealth: 100
   healthBar: {fileID: 1377299832}
+--- !u!114 &535051341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535051332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7039285d695f3a64f90b18a8058236b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextDash: 1
+  dashCooldown: 2
+  dashSpeed: 1
 --- !u!1 &541646655
 GameObject:
   m_ObjectHideFlags: 0
