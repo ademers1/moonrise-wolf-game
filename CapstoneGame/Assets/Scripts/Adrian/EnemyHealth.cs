@@ -28,7 +28,7 @@ public class EnemyHealth : MonoBehaviour
     {
         health -= amount;
         healthBar.fillAmount = health / startHealth;
-        Debug.Log("Enemy Current Health: " + health);
+
     }
 
     public void Die()

@@ -59,7 +59,7 @@ public class Bullet : MonoBehaviour
             target.GetComponent<CharacterHealth>().TakeDamage(25);
         }
 
-        Debug.Log("hit");
+        Debug.Log("Player Hit!");
         Destroy(gameObject);
     }
 

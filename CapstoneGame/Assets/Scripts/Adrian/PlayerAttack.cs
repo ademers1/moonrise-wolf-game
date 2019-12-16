@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     GameObject enemy;
-    public float nextDash = 1;
-    public float dashCooldown = 2;
-    public float dashSpeed = 5f;
-    private bool isDashing = false;
-    Rigidbody rb;
+    public Transform attackPoint;
+    public float attackDamage = 2f;
+    public float attackRange = 0.5f;
+    public float attackRate = 2f;
+    float nextAttackTime = 0f;
+    public LayerMask enemyLayers;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,33 +22,36 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-
-        if(Input.GetButtonDown("Fire1") && Time.time > nextDash)
+        if (Time.time >= nextAttackTime)
         {
-            nextDash = Time.time + dashCooldown;
-            isDashing = true;
-        }
-        if(isDashing)
-        {
-            Attack();
-        }
-        else
-        {
-            isDashing = false; 
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Attack();
+                nextAttackTime = Time.time + 1f / attackRate;
+                Debug.Log("Player Attacked!");
+            }
         }
     }
 
     public void Attack()
     {
-        Vector3 move = transform.right + transform.forward;
+        // Play animation for attack
+        // Dectect Range of Enemy
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
+        // Damage the Enemy
+        foreach(Collider enemy in hitEnemies)
+        {
+             enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
+            Debug.Log("Enemy Hit!");
+        }
     }
 
-    public void OnCollisionEnter(Collision collision)
+    private void OnDrawGizmosSelected()
     {
-        if(collision.gameObject.tag == "Enemy")
+        if(attackPoint == null)
         {
-            enemy.GetComponent<EnemyHealth>().TakeDamage(2);
+            return;
         }
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
