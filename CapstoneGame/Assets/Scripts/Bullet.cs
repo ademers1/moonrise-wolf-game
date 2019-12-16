@@ -57,9 +57,9 @@ public class Bullet : MonoBehaviour
         if (other.tag.Equals("Player"))
         {
             target.GetComponent<CharacterHealth>().TakeDamage(25);
+            Debug.Log("Player Hit!");
         }
 
-        Debug.Log("Player Hit!");
         Destroy(gameObject);
     }
 
