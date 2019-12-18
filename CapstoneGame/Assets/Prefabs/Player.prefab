@@ -17,6 +17,9 @@ GameObject:
   - component: {fileID: 1012449253132882540}
   - component: {fileID: 1012449253132882539}
   - component: {fileID: 1012449253132882538}
+  - component: {fileID: 535051333}
+  - component: {fileID: 535051334}
+  - component: {fileID: 535051335}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -31,7 +34,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012449253132882531}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 50.7, y: 1.1, z: 2.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -122,6 +125,7 @@ MonoBehaviour:
   FirstPersonCamera: {fileID: 1012449253780108373}
   ThirdPersonCamera: {fileID: 1012449253538503574}
   running: 1
+  screenOpen: 0
 --- !u!54 &1012449253132882541
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -137,7 +141,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &1012449253132882540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSpeed: 0
   walkSpeed: 5
-  sprintSpeed: 15
+  sprintSpeed: 12
   jumpForce: 5
   rotationSpeed: 60
   isoCam: 0
@@ -195,6 +199,53 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &535051333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012449253132882531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f578a899fd8cb443b2ace163f301f82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExperienceBar: {fileID: 0}
+  LevelText: {fileID: 0}
+--- !u!114 &535051334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012449253132882531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8fb39b345a78045a6050e56a04ec2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackUp: {fileID: 0}
+  HealthUp: {fileID: 0}
+  playerAttack: {fileID: 1012449253132882538}
+  playerHealth: {fileID: 1012449253132882539}
+  IS: {fileID: 1012449253132882530}
+--- !u!114 &535051335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012449253132882531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e023106573688c041915f73af6a1c581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Raycastpoint: {fileID: 1012449253758229632}
+  mask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &1012449253240784910
 GameObject:
   m_ObjectHideFlags: 0
