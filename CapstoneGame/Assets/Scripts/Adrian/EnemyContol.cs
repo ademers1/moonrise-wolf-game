@@ -14,6 +14,9 @@ public class EnemyContol : MonoBehaviour
 
     public GameObject bulletPrefab;
     public Transform firePoint;
+    public WolfLevel PlayerLevel;
+
+    int xpValue = 50;
 
     void Start()
     {
@@ -81,5 +84,12 @@ public class EnemyContol : MonoBehaviour
         {
             bullet.Seek(target);
         }
+    }
+
+    //placeholder death function that isn't called
+    void Die()
+    {
+        PlayerLevel.AddExperience(xpValue);
+        Destroy(gameObject);
     }
 }

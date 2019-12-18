@@ -6,6 +6,8 @@ public class WallBlockage : MonoBehaviour
 {
     GameObject wall;
     float wallMoveDistance = 15.0f;
+    public WolfLevel PlayerLevel;
+    int xpValue = 50;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,7 @@ public class WallBlockage : MonoBehaviour
         { 
             wall.transform.position += wall.transform.forward * wallMoveDistance;
             Destroy(gameObject);
+            PlayerLevel.AddExperience(xpValue);
         }
     }
 }

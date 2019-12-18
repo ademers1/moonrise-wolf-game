@@ -21,6 +21,9 @@ public class MeleeEnemy : MonoBehaviour
     bool isPatrol;
     int randomSpot;
     bool alerted;
+
+    public WolfLevel PlayerLevel;
+    int xpValue = 50;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +65,7 @@ public class MeleeEnemy : MonoBehaviour
     }
     public void EnemyDie()
     {
+        PlayerLevel.AddExperience(xpValue);
         Destroy(this.gameObject);
     }
     public void dropItem(GameObject I)

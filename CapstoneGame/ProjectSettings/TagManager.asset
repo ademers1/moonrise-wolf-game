@@ -12,6 +12,7 @@ TagManager:
   - ThirdPersonCamera
   - FirstPersonCamera
   - Enemy
+  - Den
   layers:
   - Default
   - TransparentFX

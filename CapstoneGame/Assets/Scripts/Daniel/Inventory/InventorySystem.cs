@@ -19,6 +19,7 @@ public class InventorySystem : MonoBehaviour
     public Camera FirstPersonCamera;
     public Camera ThirdPersonCamera;
     public bool running = true;
+    public bool screenOpen;
     //Item functions on pick up
 
     private void Start()
@@ -137,7 +138,7 @@ public class InventorySystem : MonoBehaviour
         }
         else
         {
-            if (running) {  
+            if (running && !screenOpen) {  
                 if (FirstPersonCamera.isActiveAndEnabled)
                 {
                     Cursor.visible = false;
