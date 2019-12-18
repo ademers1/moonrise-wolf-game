@@ -15,9 +15,11 @@ GameObject:
   - component: {fileID: 8742441327225471669}
   - component: {fileID: 8742441327225471668}
   - component: {fileID: 8742441327225471670}
-  m_Layer: 0
+  - component: {fileID: 5057104296278239330}
+  - component: {fileID: 4469344398446079387}
+  m_Layer: 9
   m_Name: MeleeEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,6 +139,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  PlayerLevel: {fileID: 0}
 --- !u!195 &8742441327225471670
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -159,3 +162,31 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5057104296278239330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2636519866061896417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c669d5bb78f0daf4387318a1e6e34cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  startHealth: 10
+  healthBar: {fileID: 0}
+--- !u!114 &4469344398446079387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2636519866061896417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3576ae79418ddc0478526594ce5786d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerLevel: {fileID: 0}

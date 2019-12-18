@@ -21,7 +21,6 @@ public class MeleeEnemy : MonoBehaviour
     bool isPatrol;
     int randomSpot;
     bool alerted;
-
     public WolfLevel PlayerLevel;
     int xpValue = 50;
     // Start is called before the first frame update
@@ -58,9 +57,9 @@ public class MeleeEnemy : MonoBehaviour
     {
         if(collision.gameObject.tag=="Player")
         {
-            
-            Destroy(collision.gameObject);
-            SceneManager.LoadScene(1);
+            collision.gameObject.GetComponent<CharacterHealth>().TakeDamage(25);
+            //Destroy(collision.gameObject);
+            //SceneManager.LoadScene(1);
         }
     }
     public void EnemyDie()

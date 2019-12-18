@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43667546, g: 0.48427135, b: 0.5645225, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -18333,6 +18333,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleeEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2636519866061896417, guid: e42ddf674150e20478d5f65a1821da87,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1244660610395186421, guid: e42ddf674150e20478d5f65a1821da87,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18418,7 +18423,23 @@ PrefabInstance:
       propertyPath: PlayerLevel
       value: 
       objectReference: {fileID: 535051334}
-    m_RemovedComponents: []
+    - target: {fileID: 8742441327225471668, guid: e42ddf674150e20478d5f65a1821da87,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742441327225471669, guid: e42ddf674150e20478d5f65a1821da87,
+        type: 3}
+      propertyPath: m_Mass
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742441327225471670, guid: e42ddf674150e20478d5f65a1821da87,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4469344398446079387, guid: e42ddf674150e20478d5f65a1821da87, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e42ddf674150e20478d5f65a1821da87, type: 3}
 --- !u!1001 &9191018837496565537
 PrefabInstance:
