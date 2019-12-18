@@ -117,4 +117,17 @@ public class PlayerMovement : MonoBehaviour
         #endregion
 
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Wall"))
+        {
+            pushBack();
+        }
+    }
+
+    private void pushBack()
+    {
+        transform.position -= transform.forward * currentSpeed * 0.3f;
+    }
 }
