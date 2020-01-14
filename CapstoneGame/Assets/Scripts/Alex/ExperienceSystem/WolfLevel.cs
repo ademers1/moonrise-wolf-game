@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class WolfLevel : MonoBehaviour
 {
@@ -36,6 +37,13 @@ public class WolfLevel : MonoBehaviour
             Cursor.visible = false;
             CameraController cam = GameObject.FindGameObjectWithTag("ThirdPersonCamera").GetComponent<CameraController>();
             cam.cam = true;
+        }
+        if(level.GetLevelsHeld() > 0)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene("SkillTree");
+            }
         }
     }
 
