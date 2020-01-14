@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StatusEffect : MonoBehaviour
 {
-    int playerStatus;
+    [SerializeField] int playerStatus;
     //list of status effects
     public enum statusEffects
     {
@@ -39,6 +39,13 @@ public class StatusEffect : MonoBehaviour
             case 5:
                 Debug.Log(statusEffects.Engulfed);
                 break;
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag=="stun")
+        {
+            Effect(0);
         }
     }
 }
