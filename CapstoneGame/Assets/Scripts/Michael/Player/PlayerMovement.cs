@@ -123,12 +123,6 @@ public class PlayerMovement : MonoBehaviour
             #endregion
         }
 
-        if (jump > 0 && state == playerState.isGrounded)
-        {
-            rb.velocity = transform.up * jumpForce;
-        }
-        #endregion
-
 
         if(Input.GetKey(KeyCode.K))
         {
