@@ -11,24 +11,28 @@ public class PlayerAttack : MonoBehaviour
     public float attackRate = 2f;
     float nextAttackTime = 0f;
     public LayerMask enemyLayers;
+    public bool canAttack;
 
     // Start is called before the first frame update
     void Start()
     {
         enemy = GameObject.Find("Enemy");
-        
+        canAttack = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= nextAttackTime)
+        if (canAttack)
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Time.time >= nextAttackTime)
             {
-                Attack();
-                nextAttackTime = Time.time + 1f / attackRate;
-                Debug.Log("Player Attacked!");
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    Attack();
+                    nextAttackTime = Time.time + 1f / attackRate;
+                    Debug.Log("Player Attacked!");
+                }
             }
         }
     }
