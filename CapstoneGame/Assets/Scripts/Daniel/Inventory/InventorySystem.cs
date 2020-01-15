@@ -112,49 +112,19 @@ public class InventorySystem : MonoBehaviour
             Debug.Log("item 3 used");
         }
         */
-        if(Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             inventoryEnabled = !inventoryEnabled;
-        }
-
-        if (inventoryEnabled == true)
-        {
-            InvGraph.SetActive(true);
-            if (FirstPersonCamera.isActiveAndEnabled)
+            if (inventoryEnabled)
             {
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-                FirstPersonCamera cam = GameObject.FindGameObjectWithTag("FirstPersonCamera").GetComponent<FirstPersonCamera>();
-                cam.cam = false;
+                GameManager.Instance.Camera.ShowMouse();
+                InvGraph.SetActive(true);
             }
-            if (ThirdPersonCamera.isActiveAndEnabled)
+            else
             {
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-                CameraController cam = GameObject.FindGameObjectWithTag("ThirdPersonCamera").GetComponent<CameraController>();
-                cam.cam = false;
+                GameManager.Instance.Camera.HideMouse();
+                InvGraph.SetActive(false);
             }
-
-        }
-        else
-        {
-            if (running && !screenOpen) {  
-                if (FirstPersonCamera.isActiveAndEnabled)
-                {
-                    Cursor.visible = false;
-                    Cursor.lockState = CursorLockMode.Locked;
-                    FirstPersonCamera cam = GameObject.FindGameObjectWithTag("FirstPersonCamera").GetComponent<FirstPersonCamera>();
-                    cam.cam = true;
-                }
-                if (ThirdPersonCamera.isActiveAndEnabled)
-                {
-                    Cursor.visible = false;
-                    Cursor.lockState = CursorLockMode.Locked;
-                    CameraController cam = GameObject.FindGameObjectWithTag("ThirdPersonCamera").GetComponent<CameraController>();
-                    cam.cam = true;
-                }
-            }
-            InvGraph.SetActive(false);
-        }
+        }             
     }
 }

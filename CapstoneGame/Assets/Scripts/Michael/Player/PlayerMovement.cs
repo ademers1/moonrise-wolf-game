@@ -116,6 +116,11 @@ public class PlayerMovement : MonoBehaviour
         }
         #endregion
 
+
+        if(Input.GetKey(KeyCode.K))
+        {
+
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

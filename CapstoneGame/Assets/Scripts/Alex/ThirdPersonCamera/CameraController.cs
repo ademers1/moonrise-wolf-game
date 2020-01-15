@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     public float RotationSpeed = 1;
     public Transform Target, Player;
     float mouseX, mouseY;
-    public bool cam;
+    public bool showMouse = false;
     Transform Obstruction;
     float zoomSpeed = 2f;
 
@@ -28,17 +28,26 @@ public class CameraController : MonoBehaviour
 
     void CameraControl()
     {
-        if (cam)
-        {
-            mouseX += Input.GetAxis("Mouse X") * RotationSpeed;
-            mouseY -= Input.GetAxis("Mouse Y") * RotationSpeed;
-            mouseY = Mathf.Clamp(mouseY, -35, 60);
+        mouseX += Input.GetAxis("Mouse X") * RotationSpeed;
+        mouseY -= Input.GetAxis("Mouse Y") * RotationSpeed;
+        mouseY = Mathf.Clamp(mouseY, -35, 60);
 
-            transform.LookAt(Target);
+        transform.LookAt(Target);
 
-            Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
-            Player.rotation = Quaternion.Euler(0, mouseX, 0);
-        }
+        Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
+        Player.rotation = Quaternion.Euler(0, mouseX, 0);
+    }
+
+    public void ShowMouse()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void HideMouse()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void ViewObstructed()

@@ -20,7 +20,6 @@ GameObject:
   - component: {fileID: 535051333}
   - component: {fileID: 535051334}
   - component: {fileID: 535051335}
-  - component: {fileID: 6541200178653593275}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -247,19 +246,6 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 2048
---- !u!114 &6541200178653593275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1012449253132882531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01e420bd77dd9a84d97414215c7004b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tree: {fileID: 0}
 --- !u!1 &1012449253240784910
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,7 +375,7 @@ MonoBehaviour:
   RotationSpeed: 1
   Target: {fileID: 1012449253596067333}
   Player: {fileID: 1012449253132882542}
-  cam: 0
+  showMouse: 0
 --- !u!1 &1012449253596067334
 GameObject:
   m_ObjectHideFlags: 0

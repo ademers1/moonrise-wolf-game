@@ -21,23 +21,7 @@ public class WolfLevel : MonoBehaviour
     }
 
     private void Update()
-    {
-        if (isLeveling)
-        {
-            IS.screenOpen = true;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            CameraController cam = GameObject.FindGameObjectWithTag("ThirdPersonCamera").GetComponent<CameraController>();
-            cam.cam = false;
-        }
-        else
-        {
-            IS.screenOpen = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            CameraController cam = GameObject.FindGameObjectWithTag("ThirdPersonCamera").GetComponent<CameraController>();
-            cam.cam = true;
-        }
+    {       
         if(level.GetLevelsHeld() > 0)
         {
             if (Input.GetKeyDown(KeyCode.Space))
