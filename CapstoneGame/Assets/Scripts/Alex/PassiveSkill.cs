@@ -8,6 +8,11 @@ public class PassiveSkill : Skill
     private int _percentModifier;
     private float _cooldown;
     private float _length;
+   
+    public Stat Stat
+    {
+        get { return _stat; }       
+    }
 
     public PassiveSkill(Stat stat, int mod, float cd, float length, string name) : base(name) {
         _stat = stat;
