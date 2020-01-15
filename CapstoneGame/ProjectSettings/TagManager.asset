@@ -13,6 +13,11 @@ TagManager:
   - FirstPersonCamera
   - Enemy
   - Den
+  - stun
+  - slow
+  - root
+  - tranquilized
+  - zapped
   layers:
   - Default
   - TransparentFX
