@@ -14,6 +14,21 @@ public class PassiveSkill : Skill
         get { return _stat; }       
     }
 
+    public int PercentModifier
+    {
+        get { return _percentModifier; }
+    }
+
+    public float Cooldown
+    {
+        get { return _cooldown;  }
+    }
+
+    public float Length
+    {
+        get { return _length;  }
+    }
+
     public PassiveSkill(Stat stat, int mod, float cd, float length, string name) : base(name) {
         _stat = stat;
         _percentModifier = mod;

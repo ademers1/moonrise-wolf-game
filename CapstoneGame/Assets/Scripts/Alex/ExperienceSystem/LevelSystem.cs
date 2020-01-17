@@ -17,6 +17,7 @@ public class LevelSystem
     public int healthlvl = 0;
     List<int> levelCurve = new List<int>();
     int currentLevel = 0;
+    
 
     public LevelSystem()
     {

@@ -7,14 +7,21 @@ public enum Stat { Hitpoints = 0, Attack = 1, Defense = 2, AttackSpeed = 3, Heal
 public abstract class Skill
 {
     private readonly string _name;
+    private readonly bool _active;
+
+    public string Name
+    {
+        get { return _name; }
+    }
+
+    public bool Active
+    {
+        get { return _active;  }
+    }
 
     public Skill(string name)
     {
         _name = name;
-    }
-
-    public string GetName()
-    {
-        return _name;
+        _active = false;
     }
 }
