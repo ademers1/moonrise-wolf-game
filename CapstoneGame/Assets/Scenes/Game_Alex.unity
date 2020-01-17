@@ -8082,6 +8082,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 412669992}
   m_CullTransparentMesh: 0
+--- !u!114 &428058899 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3930071943939598744, guid: a71595b00c22d684d8ad08454456df6c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1200014112}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &429087979
 GameObject:
   m_ObjectHideFlags: 0
@@ -9215,6 +9227,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce8fb39b345a78045a6050e56a04ec2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &535051335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535051332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3bfc8203960ae8409194459b1a21acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualTree: {fileID: 1200014113}
+  skillButtons:
+  - {fileID: 1343940168}
+  - {fileID: 1016772563}
+  - {fileID: 720820719}
+  - {fileID: 428058899}
+  - {fileID: 638955663}
+  skillPoints: 0
 --- !u!4 &535051337 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1012449253132882542, guid: cd4acde5eac7e9a44861b145d2630396,
@@ -10348,6 +10380,18 @@ PrefabInstance:
       objectReference: {fileID: 535051334}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11ec2315578fa6b40ad5518170a779fe, type: 3}
+--- !u!114 &638955663 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3930071943169201343, guid: a71595b00c22d684d8ad08454456df6c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1200014112}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &648638358
 GameObject:
   m_ObjectHideFlags: 0
@@ -10802,6 +10846,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 718724162}
   m_CullTransparentMesh: 0
+--- !u!114 &720820719 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3930071943361234430, guid: a71595b00c22d684d8ad08454456df6c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1200014112}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &728823280
 GameObject:
   m_ObjectHideFlags: 0
@@ -12160,6 +12216,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 991975102}
   m_CullTransparentMesh: 0
+--- !u!114 &1016772563 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3930071944102922471, guid: a71595b00c22d684d8ad08454456df6c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1200014112}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1047034274
 GameObject:
   m_ObjectHideFlags: 0
@@ -13741,8 +13809,46 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3930071943169201342, guid: a71595b00c22d684d8ad08454456df6c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -92
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930071943169201342, guid: a71595b00c22d684d8ad08454456df6c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930071943935243938, guid: a71595b00c22d684d8ad08454456df6c,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930071944100669858, guid: a71595b00c22d684d8ad08454456df6c,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Button
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930071944102922470, guid: a71595b00c22d684d8ad08454456df6c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -137
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930071944102922470, guid: a71595b00c22d684d8ad08454456df6c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a71595b00c22d684d8ad08454456df6c, type: 3}
+--- !u!223 &1200014113 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 3930071943025938668, guid: a71595b00c22d684d8ad08454456df6c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1200014112}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1201630809
 GameObject:
   m_ObjectHideFlags: 0
@@ -14193,6 +14299,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313807593}
   m_CullTransparentMesh: 0
+--- !u!114 &1343940168 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3930071943935243938, guid: a71595b00c22d684d8ad08454456df6c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1200014112}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1351597665
 GameObject:
   m_ObjectHideFlags: 0
@@ -18577,6 +18695,10 @@ PrefabInstance:
       propertyPath: HealthUp
       value: 
       objectReference: {fileID: 1077732191}
+    - target: {fileID: 535051334, guid: cd4acde5eac7e9a44861b145d2630396, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 535051335}
     - target: {fileID: 1012449253132882530, guid: cd4acde5eac7e9a44861b145d2630396,
         type: 3}
       propertyPath: InvGraph

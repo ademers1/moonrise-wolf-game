@@ -14,6 +14,7 @@ public class WolfLevel : MonoBehaviour
     public CharacterHealth playerHealth;
     bool isLeveling;
     public InventorySystem IS;
+    public Player player;
 
     private void Start()
     {
@@ -24,9 +25,9 @@ public class WolfLevel : MonoBehaviour
     {       
         if(level.GetLevelsHeld() > 0)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.K))
             {
-                SceneManager.LoadScene("SkillTree");
+                player.skillPoints = level.GetLevelsHeld();
             }
         }
     }

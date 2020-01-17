@@ -12,10 +12,12 @@ public class Skilltree
     PassiveSkill ironHide = new PassiveSkill(Stat.Defense, 25, "Ironhide");
     PassiveSkill bloodlust = new PassiveSkill(Stat.Attack, 100, 60, 5, "Bloodlust");
 
-
-
     DirectedGraph<Skill> skillTree;
 
+    public DirectedGraph<Skill> SkillTree
+    {
+        get { return skillTree; }
+    }
 
     public void CreateTree()
     {
@@ -30,7 +32,7 @@ public class Skilltree
         skillTree.AddEdge(swiftStride, ironHide);
         skillTree.AddEdge(ironHide, bloodlust);
         skillTree.AddEdge(naturalHealing, augmentedLegs);
-
     }
+    
     
 }
