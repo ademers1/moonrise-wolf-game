@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float currentSpeed;
     public float walkSpeed = 5.0f;
     public float sprintSpeed = 15.0f;
-
+    public float stalkSpeed = 2.5f;
     public float jumpForce = 5.0f;
     public float rotationSpeed = 60.0f;
 
@@ -47,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftShift))
                 currentSpeed = sprintSpeed;
+            else if (Input.GetKey(KeyCode.LeftControl))
+                currentSpeed = stalkSpeed;
             else
                 currentSpeed = walkSpeed;
 
