@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    public float ButtonCooler = 0.5f ; // Half a second before reset
+    public int ButtonCount = 0;
     void Start()
     {
         
@@ -13,38 +16,63 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //abilities
         if (Input.GetKeyDown("1"))
         {
-            Debug.Log("ability 1 was pressed");
-            ability1();
+           ability1();
         }
 
         if (Input.GetKeyDown("2"))
         {
-            Debug.Log("ability 2 was pressed");
             ability2();
         }
 
         if (Input.GetKeyDown("3"))
         {
-            Debug.Log("ability 3 was pressed");
             ability3();
+        }
+
+        //combat roll
+        if (Input.anyKeyDown)
+        {
+
+            if (ButtonCooler > 0 && ButtonCount == 1/*Number of Taps you want Minus One*/)
+            {
+                //Has double tapped
+            }
+            else
+            {
+                ButtonCooler = 0.5f;
+                ButtonCount += 1;
+            }
+        }
+
+        if (ButtonCooler > 0)
+        {
+
+            ButtonCooler -= 1 * Time.deltaTime;
+
+        }
+        else
+        {
+            ButtonCount = 0;
         }
     }
 
+
     private void ability1()
     {
-
+        Debug.Log("ability 1 was pressed");
     }
 
     private void ability2()
     {
-
+        Debug.Log("ability 2 was pressed");
     }
 
     private void ability3()
     {
-
+        Debug.Log("ability 3 was pressed");
     }
 }
 
