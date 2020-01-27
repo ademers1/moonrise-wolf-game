@@ -7,8 +7,10 @@ public class PlayerAttack : MonoBehaviour
     GameObject enemy;
     public Transform attackPoint;
     public float attackDamage = 2f;
+    public float heavyAttackDamge = 10f;
     public float attackRange = 0.5f;
     public float attackRate = 2f;
+    public float heavyAttackRate = 10f;
     float nextAttackTime = 0f;
     public LayerMask enemyLayers;
     public bool canAttack;
@@ -33,20 +35,37 @@ public class PlayerAttack : MonoBehaviour
                     nextAttackTime = Time.time + 1f / attackRate;
                     Debug.Log("Player Attacked!");
                 }
+                if (Input.GetMouseButtonDown(1))
+                {
+                    HeavyAttack();
+                    nextAttackTime = Time.time + heavyAttackRate;
+                    Debug.Log("Player Heavy Attack");
+                }
             }
         }
     }
 
     public void Attack()
     {
-        // Play animation for attack
+
         // Dectect Range of Enemy
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
         // Damage the Enemy
         foreach(Collider enemy in hitEnemies)
         {
              enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
-            Debug.Log("Enemy Hit!");
+            //Debug.Log("Enemy Hit!");
+        }
+    }
+
+    public void HeavyAttack()
+    {
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
+        // Damage the Enemy
+        foreach (Collider enemy in hitEnemies)
+        {
+            enemy.GetComponent<EnemyHealth>().TakeDamage(heavyAttackDamge);
+            //Debug.Log("Super Hit!");
         }
     }
 
