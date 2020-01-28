@@ -7,6 +7,8 @@ public class EnemyHealth : MonoBehaviour
     public float health;
     public float startHealth;
     public Image healthBar;
+    public GameObject Wall;
+    
 
 
     void Start()
@@ -33,6 +35,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void Die()
     {
+        Wall.GetComponent<WallBlockage>().EnemiesToDefeat.Remove(gameObject);
         Destroy(gameObject);
     }
 }
