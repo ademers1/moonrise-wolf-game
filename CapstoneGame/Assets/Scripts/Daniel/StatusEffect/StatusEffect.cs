@@ -7,11 +7,13 @@ public class StatusEffect : MonoBehaviour
     [SerializeField] int playerStatus;
     PlayerMovement playerMovementScript;
     PlayerAttack playerAttackScript;
+    StunParticals stunParticalsScript;
     bool tranquilized;
     private void Start()
     {
         playerMovementScript = GetComponent<PlayerMovement>();
         playerAttackScript = GetComponent<PlayerAttack>();
+        stunParticalsScript = GetComponent<StunParticals>();
     }
     //list of status effects
     public enum statusEffects
@@ -51,6 +53,7 @@ public class StatusEffect : MonoBehaviour
                 Debug.Log(statusEffects.Tranquilized);
                 tranquilized = true;
                 playerMovementScript.currentSpeedMultiplier = 0.01f;
+                StartCoroutine(Tranquilized());
                 break;
             case 4:
                 Debug.Log(statusEffects.Zapped);
@@ -102,22 +105,28 @@ public class StatusEffect : MonoBehaviour
         float effectTime = 2f;
         playerMovementScript.canMove = false;
         playerAttackScript.canAttack = false;
+        stunParticalsScript.startEmit(stunParticalsScript.stunParticalLauncher);
         yield return new WaitForSeconds(effectTime);
         playerMovementScript.canMove = true;
         playerAttackScript.canAttack = true;
+        stunParticalsScript.endEmit(stunParticalsScript.stunParticalLauncher);
     }
     IEnumerator Slow()
     {
         float effectTime = 2f;
         playerMovementScript.currentSpeedMultiplier = 0.3f;
+        stunParticalsScript.startEmit(stunParticalsScript.slowParticalLauncher);
         yield return new WaitForSeconds(effectTime);
+        stunParticalsScript.endEmit(stunParticalsScript.slowParticalLauncher);
         playerMovementScript.currentSpeedMultiplier = 1f;
     }
     IEnumerator Root()
     {
         float effectTime = 2f;
         playerMovementScript.canMove = false;
+        stunParticalsScript.startEmit(stunParticalsScript.rootParticalLauncher);
         yield return new WaitForSeconds(effectTime);
+        stunParticalsScript.endEmit(stunParticalsScript.rootParticalLauncher);
         playerMovementScript.canMove = true;
     }
     //zap 3 times
@@ -126,20 +135,31 @@ public class StatusEffect : MonoBehaviour
         float zapCooldown = 0.3f;
         playerMovementScript.canMove = false;
         playerAttackScript.canAttack = false;
+        stunParticalsScript.startEmit(stunParticalsScript.zapParticalLauncher);
         yield return new WaitForSeconds(zapCooldown);
         playerMovementScript.canMove = true;
         playerAttackScript.canAttack = true;
         yield return new WaitForSeconds(zapCooldown);
         playerMovementScript.canMove = false;
         playerAttackScript.canAttack = false;
+        stunParticalsScript.startEmit(stunParticalsScript.zapParticalLauncher);
         yield return new WaitForSeconds(zapCooldown);
         playerMovementScript.canMove = true;
         playerAttackScript.canAttack = true;
         yield return new WaitForSeconds(zapCooldown);
         playerMovementScript.canMove = false;
         playerAttackScript.canAttack = false;
+        stunParticalsScript.startEmit(stunParticalsScript.zapParticalLauncher);
         yield return new WaitForSeconds(zapCooldown);
+        stunParticalsScript.endEmit(stunParticalsScript.zapParticalLauncher);
         playerMovementScript.canMove = true;
         playerAttackScript.canAttack = true;
+    }
+    IEnumerator Tranquilized()
+    {
+        float effectTime = 3f;
+        stunParticalsScript.startEmit(stunParticalsScript.slowParticalLauncher);
+        yield return new WaitForSeconds(effectTime);
+        stunParticalsScript.endEmit(stunParticalsScript.slowParticalLauncher);
     }
 }
