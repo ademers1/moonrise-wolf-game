@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43667546, g: 0.48427135, b: 0.5645225, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1898,7 +1898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  startHealth: 10
+  startHealth: 40
   healthBar: {fileID: 757044178}
   Wall: {fileID: 912851871}
 --- !u!65 &252642727
@@ -7999,7 +7999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  startHealth: 10
+  startHealth: 40
   healthBar: {fileID: 48026521}
   Wall: {fileID: 871496697}
 --- !u!114 &441088986
@@ -11708,7 +11708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  startHealth: 10
+  startHealth: 40
   healthBar: {fileID: 1448416836}
   Wall: {fileID: 725303465}
 --- !u!114 &765437952
@@ -13114,7 +13114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  startHealth: 10
+  startHealth: 40
   healthBar: {fileID: 383176321}
   Wall: {fileID: 871496697}
 --- !u!114 &1022758911
@@ -13245,7 +13245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  startHealth: 10
+  startHealth: 40
   healthBar: {fileID: 1357416207}
   Wall: {fileID: 912851871}
 --- !u!114 &1031037498
@@ -15888,7 +15888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  startHealth: 10
+  startHealth: 40
   healthBar: {fileID: 634315821}
   Wall: {fileID: 871496697}
 --- !u!114 &1383353225
@@ -16019,7 +16019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  startHealth: 10
+  startHealth: 40
   healthBar: {fileID: 2113581260}
   Wall: {fileID: 725303465}
 --- !u!114 &1402270646
@@ -17733,7 +17733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  startHealth: 10
+  startHealth: 40
   healthBar: {fileID: 628672917}
   Wall: {fileID: 725303465}
 --- !u!114 &1713585875
@@ -18626,7 +18626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  startHealth: 10
+  startHealth: 40
   healthBar: {fileID: 1255823277}
   Wall: {fileID: 725303465}
 --- !u!114 &1816487946
@@ -19549,7 +19549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  startHealth: 10
+  startHealth: 40
   healthBar: {fileID: 1249537078}
   Wall: {fileID: 871496697}
 --- !u!114 &1968700912
@@ -20565,7 +20565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  startHealth: 10
+  startHealth: 40
   healthBar: {fileID: 200191635}
   Wall: {fileID: 912851871}
 --- !u!114 &2094259444
@@ -21123,6 +21123,26 @@ PrefabInstance:
       propertyPath: LevelText
       value: 
       objectReference: {fileID: 1925196289}
+    - target: {fileID: 1012449253132882538, guid: cd4acde5eac7e9a44861b145d2630396,
+        type: 3}
+      propertyPath: heavyAttackRate
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1012449253132882538, guid: cd4acde5eac7e9a44861b145d2630396,
+        type: 3}
+      propertyPath: attackRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1012449253132882538, guid: cd4acde5eac7e9a44861b145d2630396,
+        type: 3}
+      propertyPath: heavyAttackDamge
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1012449253132882538, guid: cd4acde5eac7e9a44861b145d2630396,
+        type: 3}
+      propertyPath: attackDamage
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd4acde5eac7e9a44861b145d2630396, type: 3}
 --- !u!1001 &5229646376452124590

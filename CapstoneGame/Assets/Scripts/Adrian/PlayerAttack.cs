@@ -6,12 +6,13 @@ public class PlayerAttack : MonoBehaviour
 {
     GameObject enemy;
     public Transform attackPoint;
-    public float attackDamage = 2f;
-    public float heavyAttackDamge = 10f;
+    public float attackDamage = 10f;
+    public float heavyAttackDamge = 25f;
     public float attackRange = 0.5f;
     public float attackRate = 2f;
     public float heavyAttackRate = 10f;
     float nextAttackTime = 0f;
+    float nextHeavyAttackTime = 0f;
     public LayerMask enemyLayers;
     public bool canAttack;
 
@@ -35,10 +36,14 @@ public class PlayerAttack : MonoBehaviour
                     nextAttackTime = Time.time + 1f / attackRate;
                     Debug.Log("Player Attacked!");
                 }
+            }
+
+            if(Time.time >= nextHeavyAttackTime)
+            {
                 if (Input.GetMouseButtonDown(1))
                 {
                     HeavyAttack();
-                    nextAttackTime = Time.time + heavyAttackRate;
+                    nextHeavyAttackTime = Time.time + heavyAttackRate;
                     Debug.Log("Player Heavy Attack");
                 }
             }
