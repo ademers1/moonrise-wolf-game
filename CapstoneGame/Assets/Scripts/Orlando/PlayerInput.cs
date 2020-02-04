@@ -33,12 +33,55 @@ public class PlayerInput : MonoBehaviour
         }
 
         //combat roll
-        if (Input.anyKeyDown)
+        if (Input.GetKeyDown("d"))
         {
 
             if (ButtonCooler > 0 && ButtonCount == 1/*Number of Taps you want Minus One*/)
             {
                 //Has double tapped
+                transform.position += transform.right * (GetComponent<PlayerMovement>().currentSpeed * 2);
+            }
+            else
+            {
+                ButtonCooler = 0.5f;
+                ButtonCount += 1;
+            }
+        }
+        else if (Input.GetKeyDown("a"))
+        {
+
+            if (ButtonCooler > 0 && ButtonCount == 1/*Number of Taps you want Minus One*/)
+            {
+                //Has double tapped
+                transform.position -= transform.right * (GetComponent<PlayerMovement>().currentSpeed * 2);
+            }
+            else
+            {
+                ButtonCooler = 0.5f;
+                ButtonCount += 1;
+            }
+        }
+        if (Input.GetKeyDown("w"))
+        {
+
+            if (ButtonCooler > 0 && ButtonCount == 1/*Number of Taps you want Minus One*/)
+            {
+                //Has double tapped
+                transform.position += transform.forward * (GetComponent<PlayerMovement>().currentSpeed * 2);
+            }
+            else
+            {
+                ButtonCooler = 0.5f;
+                ButtonCount += 1;
+            }
+        }
+        else if (Input.GetKeyDown("s"))
+        {
+
+            if (ButtonCooler > 0 && ButtonCount == 1/*Number of Taps you want Minus One*/)
+            {
+                //Has double tapped
+                transform.position -= transform.forward * (GetComponent<PlayerMovement>().currentSpeed * 2) ;
             }
             else
             {
