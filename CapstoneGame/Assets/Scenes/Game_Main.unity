@@ -17742,7 +17742,6 @@ GameObject:
   - component: {fileID: 441088987}
   - component: {fileID: 441088986}
   - component: {fileID: 441088985}
-  - component: {fileID: 441088991}
   m_Layer: 9
   m_Name: Enemy2 (1)
   m_TagString: Enemy
@@ -17860,31 +17859,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &441088991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 441088984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f6ca0c29547e904f8977542427ba662, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  enemy: {fileID: 0}
-  playerTransform: {fileID: 0}
-  isRunning: 0
-  anim: {fileID: 0}
-  rend: {fileID: 0}
-  key: {fileID: 0}
-  particle: {fileID: 0}
-  nodeObj:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  PlayerLevel: {fileID: 0}
 --- !u!1 &447590595
 GameObject:
   m_ObjectHideFlags: 0
@@ -26495,7 +26469,6 @@ GameObject:
   - component: {fileID: 765437953}
   - component: {fileID: 765437952}
   - component: {fileID: 765437951}
-  - component: {fileID: 765437957}
   m_Layer: 9
   m_Name: Enemy2 (2)
   m_TagString: Enemy
@@ -26613,31 +26586,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &765437957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 765437950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f6ca0c29547e904f8977542427ba662, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  enemy: {fileID: 0}
-  playerTransform: {fileID: 0}
-  isRunning: 0
-  anim: {fileID: 0}
-  rend: {fileID: 0}
-  key: {fileID: 0}
-  particle: {fileID: 0}
-  nodeObj:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  PlayerLevel: {fileID: 0}
 --- !u!1 &792363718
 GameObject:
   m_ObjectHideFlags: 0
@@ -28019,7 +27967,6 @@ GameObject:
   - component: {fileID: 1022758912}
   - component: {fileID: 1022758911}
   - component: {fileID: 1022758910}
-  - component: {fileID: 1022758916}
   m_Layer: 9
   m_Name: Enemy1 (1)
   m_TagString: Enemy
@@ -28137,31 +28084,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &1022758916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1022758909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f6ca0c29547e904f8977542427ba662, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  enemy: {fileID: 0}
-  playerTransform: {fileID: 0}
-  isRunning: 0
-  anim: {fileID: 0}
-  rend: {fileID: 0}
-  key: {fileID: 0}
-  particle: {fileID: 0}
-  nodeObj:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  PlayerLevel: {fileID: 0}
 --- !u!1 &1031037496
 GameObject:
   m_ObjectHideFlags: 0
@@ -31117,7 +31039,6 @@ GameObject:
   - component: {fileID: 1383353226}
   - component: {fileID: 1383353225}
   - component: {fileID: 1383353224}
-  - component: {fileID: 1383353230}
   m_Layer: 9
   m_Name: Enemy4 (1)
   m_TagString: Enemy
@@ -31235,31 +31156,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &1383353230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1383353223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f6ca0c29547e904f8977542427ba662, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  enemy: {fileID: 0}
-  playerTransform: {fileID: 0}
-  isRunning: 0
-  anim: {fileID: 0}
-  rend: {fileID: 0}
-  key: {fileID: 0}
-  particle: {fileID: 0}
-  nodeObj:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  PlayerLevel: {fileID: 0}
 --- !u!1 &1402270644
 GameObject:
   m_ObjectHideFlags: 0
@@ -31274,7 +31170,6 @@ GameObject:
   - component: {fileID: 1402270647}
   - component: {fileID: 1402270646}
   - component: {fileID: 1402270645}
-  - component: {fileID: 1402270651}
   m_Layer: 9
   m_Name: Enemy1 (2)
   m_TagString: Enemy
@@ -31392,31 +31287,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &1402270651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402270644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f6ca0c29547e904f8977542427ba662, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  enemy: {fileID: 0}
-  playerTransform: {fileID: 0}
-  isRunning: 0
-  anim: {fileID: 0}
-  rend: {fileID: 0}
-  key: {fileID: 0}
-  particle: {fileID: 0}
-  nodeObj:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  PlayerLevel: {fileID: 0}
 --- !u!1001 &1414748550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33014,7 +32884,6 @@ GameObject:
   - component: {fileID: 1713585876}
   - component: {fileID: 1713585875}
   - component: {fileID: 1713585874}
-  - component: {fileID: 1713585880}
   m_Layer: 9
   m_Name: Enemy4 (2)
   m_TagString: Enemy
@@ -33132,31 +33001,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &1713585880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713585873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f6ca0c29547e904f8977542427ba662, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  enemy: {fileID: 0}
-  playerTransform: {fileID: 0}
-  isRunning: 0
-  anim: {fileID: 0}
-  rend: {fileID: 0}
-  key: {fileID: 0}
-  particle: {fileID: 0}
-  nodeObj:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  PlayerLevel: {fileID: 0}
 --- !u!1 &1713851908
 GameObject:
   m_ObjectHideFlags: 0
@@ -38811,7 +38655,6 @@ GameObject:
   - component: {fileID: 1816487947}
   - component: {fileID: 1816487946}
   - component: {fileID: 1816487945}
-  - component: {fileID: 1816487951}
   m_Layer: 9
   m_Name: Enemy3 (2)
   m_TagString: Enemy
@@ -38929,31 +38772,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &1816487951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1816487944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f6ca0c29547e904f8977542427ba662, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  enemy: {fileID: 0}
-  playerTransform: {fileID: 0}
-  isRunning: 0
-  anim: {fileID: 0}
-  rend: {fileID: 0}
-  key: {fileID: 0}
-  particle: {fileID: 0}
-  nodeObj:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  PlayerLevel: {fileID: 0}
 --- !u!1 &1839352196
 GameObject:
   m_ObjectHideFlags: 0
@@ -39760,7 +39578,6 @@ GameObject:
   - component: {fileID: 1968700913}
   - component: {fileID: 1968700912}
   - component: {fileID: 1968700911}
-  - component: {fileID: 1968700917}
   m_Layer: 9
   m_Name: Enemy3 (1)
   m_TagString: Enemy
@@ -39878,31 +39695,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &1968700917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968700910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f6ca0c29547e904f8977542427ba662, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  enemy: {fileID: 0}
-  playerTransform: {fileID: 0}
-  isRunning: 0
-  anim: {fileID: 0}
-  rend: {fileID: 0}
-  key: {fileID: 0}
-  particle: {fileID: 0}
-  nodeObj:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  PlayerLevel: {fileID: 0}
 --- !u!1 &1977309466
 GameObject:
   m_ObjectHideFlags: 0
