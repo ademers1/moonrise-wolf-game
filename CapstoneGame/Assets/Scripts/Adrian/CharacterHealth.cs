@@ -46,8 +46,8 @@ public class CharacterHealth : MonoBehaviour
     public void Die()
     {
         Destroy(gameObject);
-       
-        SceneManager.LoadScene("Loss");
         GameManager.Instance.Camera.ShowMouse();
+        SceneManager.LoadScene("Loss");
+        
     }
 }

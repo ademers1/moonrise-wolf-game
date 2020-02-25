@@ -678,7 +678,7 @@ MonoBehaviour:
 
     Jump ~ Space
 
-'
+    Attack ~ Left Click'
 --- !u!222 &1780160220
 CanvasRenderer:
   m_ObjectHideFlags: 0
