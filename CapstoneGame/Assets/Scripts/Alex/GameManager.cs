@@ -10,6 +10,12 @@ public class GameManager : Singleton<GameManager>
     {
         Camera = GameObject.FindGameObjectWithTag("ThirdPersonCamera").GetComponent<CameraController>();
     }
+
+    public void Init()
+    {
+        Debug.Log("Initialized");
+    }
+
 }
 
 

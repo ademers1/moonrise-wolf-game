@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
+    Vector3 inputVector;
+    public Transform cam;
     public bool canMove;
     public float currentSpeed;
     public float walkSpeed = 5.0f;
@@ -18,9 +20,6 @@ public class PlayerMovement : MonoBehaviour
 
     private float radius;
     private playerState state;
-    public bool isoCam = false;
-    public bool thirdCam = false;
-    public bool firstCam = false;
 
     float icecreamfloat;
 
@@ -29,6 +28,11 @@ public class PlayerMovement : MonoBehaviour
     enum playerState
     {
         isGrounded, isAirborn
+    }
+
+    private void Awake()
+    {
+        GameManager.Instance.Init();
     }
 
     void Start()
@@ -41,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (canMove)
         {
@@ -54,14 +58,12 @@ public class PlayerMovement : MonoBehaviour
 
             //movement (WASD)
             #region
-            if (Input.GetKey(KeyCode.W))
-                transform.position += transform.forward * (currentSpeed * currentSpeedMultiplier) * Time.deltaTime;
-            if (Input.GetKey(KeyCode.S))
-                transform.position -= transform.forward * (currentSpeed * 0.85f * currentSpeedMultiplier) * Time.deltaTime;
-            if (Input.GetKey(KeyCode.A))
-                transform.position -= transform.right * (currentSpeed * 0.85f * currentSpeedMultiplier) * Time.deltaTime;
-            if (Input.GetKey(KeyCode.D))
-                transform.position += transform.right * (currentSpeed * 0.85f * currentSpeedMultiplier) * Time.deltaTime;
+
+            if (Input.GetAxis("Vertical") != 0 && state == playerState.isGrounded)
+            {
+                Vector3 dir = transform.forward * currentSpeed * Input.GetAxis("Vertical");
+                rb.velocity = new Vector3(dir.x, rb.velocity.y, dir.z);
+            }
 
             //Set Current Speed back to zero
             if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
@@ -72,40 +74,7 @@ public class PlayerMovement : MonoBehaviour
             #region
 
             float jump = Input.GetAxis("Jump");
-            if (thirdCam)
-            {
-                if (Input.GetKey(KeyCode.W))
-                {
-                    //rb.velocity = Vector3.forward * speed * Time.deltaTime);
-                    transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
-                }
-                //float moveHorizontal = Input.GetAxis("Horizontal");
-                //float moveVertical = Input.GetAxis("Vertical");
-
-                //rb.AddForce(new Vector3(moveHorizontal, 0.0f, moveVertical) * speed);
-            }
-            if (isoCam)
-            {
-                if (Input.GetKey(KeyCode.W))
-                {
-                    transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
-                }
-                if (Input.GetKey(KeyCode.S))
-                {
-                    transform.Translate(Vector3.back * currentSpeed * Time.deltaTime);
-                }
-                if (Input.GetKey(KeyCode.A))
-                {
-                    transform.Rotate(new Vector3(0, rotationSpeed * Time.deltaTime, 0));
-                }
-                if (Input.GetKey(KeyCode.D))
-                {
-                    transform.Rotate(new Vector3(0, -rotationSpeed * Time.deltaTime, 0));
-                }
-                //float moveHorizontal = Input.GetAxis("Horizontal");
-                //float moveVertical = Input.GetAxis("Vertical");
-                //rb.AddForce(new Vector3(moveHorizontal, 0.0f, moveVertical) * speed);
-            }
+            
             Ray ray = new Ray(transform.position, -transform.up);
             RaycastHit info;
 

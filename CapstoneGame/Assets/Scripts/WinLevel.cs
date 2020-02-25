@@ -8,6 +8,7 @@ public class WinLevel : MonoBehaviour
     public Camera ThirdPersonCamera;
     InventorySystem Inventory;
    
+
     void Start()
     {
         Inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventorySystem>();
@@ -29,8 +30,9 @@ public class WinLevel : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Win");
             GameManager.Instance.Camera.ShowMouse();
+            SceneManager.LoadScene("Win");
+            
         }
     }
 }
