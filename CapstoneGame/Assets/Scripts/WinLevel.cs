@@ -30,6 +30,7 @@ public class WinLevel : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            Debug.Log(GameManager.Instance);
             GameManager.Instance.Camera.ShowMouse();
             SceneManager.LoadScene("Win");
             

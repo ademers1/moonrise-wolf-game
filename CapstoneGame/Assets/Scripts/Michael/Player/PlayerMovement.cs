@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        GameManager.Instance.Init();
+        GameManager.Instance.GetCamera();
     }
 
     void Start()

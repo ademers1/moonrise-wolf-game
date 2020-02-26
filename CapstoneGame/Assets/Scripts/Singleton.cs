@@ -29,7 +29,6 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                 {
                     //Search for existing instance.
                     m_Instance = (T)FindObjectOfType(typeof(T));
-                    Debug.Log("qdeasdse");
 
                     //Create new instance if one doesn't already exist
                     if (m_Instance == null)
@@ -38,11 +37,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                         var singletonObject = new GameObject();
                         m_Instance = singletonObject.AddComponent<T>();
                         singletonObject.name = typeof(T).ToString() + " (Singleton)";
-
+                        DontDestroyOnLoad(singletonObject);
                     }
-
-                    //Make instance persistent.
-                    DontDestroyOnLoad(m_Instance);
+                    
                 }
 
                 return m_Instance;
@@ -57,6 +54,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     private void OnDestroy()
     {
+        Debug.Log("Test");
         m_ShuttingDown = true;
     }
 

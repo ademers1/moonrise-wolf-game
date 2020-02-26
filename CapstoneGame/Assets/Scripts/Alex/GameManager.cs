@@ -6,15 +6,17 @@ public class GameManager : Singleton<GameManager>
 {
     [HideInInspector]
     public CameraController Camera;
-    void Start()
+    void Awake()
     {
-        Camera = GameObject.FindGameObjectWithTag("ThirdPersonCamera").GetComponent<CameraController>();
+        Camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
     }
 
-    public void Init()
+    public void GetCamera()
     {
-        Debug.Log("Initialized");
+        Camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
     }
+
+
 
 }
 

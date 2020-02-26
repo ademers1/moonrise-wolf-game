@@ -9,8 +9,6 @@ TagManager:
   - weaponManager
   - Wall
   - Ground
-  - ThirdPersonCamera
-  - FirstPersonCamera
   - Enemy
   - Den
   - stun
