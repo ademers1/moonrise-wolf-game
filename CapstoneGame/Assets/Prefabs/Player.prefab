@@ -19,7 +19,6 @@ GameObject:
   - component: {fileID: 1012449253132882538}
   - component: {fileID: 535051333}
   - component: {fileID: 535051334}
-  - component: {fileID: 535051335}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -153,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44b69851c5317c44cac8e03c2767889d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
   canMove: 0
   currentSpeed: 0
   walkSpeed: 5
@@ -162,9 +162,6 @@ MonoBehaviour:
   rotationSpeed: 60
   moveSpeedMultiplier: 0
   currentSpeedMultiplier: 0
-  isoCam: 0
-  thirdCam: 1
-  firstCam: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -237,22 +234,6 @@ MonoBehaviour:
   playerHealth: {fileID: 1012449253132882539}
   IS: {fileID: 1012449253132882530}
   player: {fileID: 0}
---- !u!114 &535051335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1012449253132882531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e023106573688c041915f73af6a1c581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Raycastpoint: {fileID: 1012449253758229632}
-  mask:
-    serializedVersion: 2
-    m_Bits: 2048
 --- !u!1 &1012449253240784910
 GameObject:
   m_ObjectHideFlags: 0

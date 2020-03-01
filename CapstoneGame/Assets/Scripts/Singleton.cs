@@ -24,7 +24,6 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
             lock (m_Lock)
             {
-                Debug.Log("e5ye5y5e");
                 if (m_Instance == null)
                 {
                     //Search for existing instance.
@@ -33,7 +32,6 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                     //Create new instance if one doesn't already exist
                     if (m_Instance == null)
                     {
-                        Debug.Log("Singleton Script");
                         var singletonObject = new GameObject();
                         m_Instance = singletonObject.AddComponent<T>();
                         singletonObject.name = typeof(T).ToString() + " (Singleton)";
@@ -54,7 +52,6 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     private void OnDestroy()
     {
-        Debug.Log("Test");
         m_ShuttingDown = true;
     }
 

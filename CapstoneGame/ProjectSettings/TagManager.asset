@@ -16,6 +16,7 @@ TagManager:
   - root
   - tranquilized
   - zapped
+  - ThirdPersonCamera
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - Ground
   - Enemies
   - 
-  - Ragdoll
+  - 
   - 
   - 
   - 
