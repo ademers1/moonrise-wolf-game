@@ -5,11 +5,13 @@ using UnityEngine;
 public class WallBlockage : MonoBehaviour
 {
     public List<GameObject> EnemiesToDefeat;
+    public Player player;
+
 
     // Start is called before the first frame update
     void Start()
     {
-
+ 
     }
 
     // Update is called once per frame
@@ -17,7 +19,9 @@ public class WallBlockage : MonoBehaviour
     {
         if(EnemiesToDefeat.Count == 0)
         {
+
             Destroy(this.gameObject);
+           
         }
     }
 
