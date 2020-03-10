@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 1012449253132882541}
   - component: {fileID: 1012449253132882540}
   - component: {fileID: 1012449253132882539}
-  - component: {fileID: 1012449253132882538}
   - component: {fileID: 535051333}
   - component: {fileID: 535051334}
   m_Layer: 0
@@ -160,8 +159,20 @@ MonoBehaviour:
   stalkSpeed: 2.5
   jumpForce: 5
   rotationSpeed: 60
+  ButtonCooler: 0.5
+  ButtonCount: 0
   moveSpeedMultiplier: 0
   currentSpeedMultiplier: 0
+  attackPoint: {fileID: 0}
+  attackDamage: 10
+  heavyAttackDamge: 25
+  attackRange: 0.5
+  attackRate: 2
+  heavyAttackRate: 10
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  canAttack: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -180,28 +191,6 @@ MonoBehaviour:
   health: 0
   startHealth: 100
   healthBar: {fileID: 0}
---- !u!114 &1012449253132882538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1012449253132882531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7039285d695f3a64f90b18a8058236b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackPoint: {fileID: 1012449253758229632}
-  attackDamage: 2
-  heavyAttackDamge: 10
-  attackRange: 0.5
-  attackRate: 2
-  heavyAttackRate: 10
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 512
-  canAttack: 0
 --- !u!114 &535051333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackUp: {fileID: 0}
   HealthUp: {fileID: 0}
-  playerAttack: {fileID: 1012449253132882538}
+  playerMovement: {fileID: 0}
   playerHealth: {fileID: 1012449253132882539}
   IS: {fileID: 1012449253132882530}
   player: {fileID: 0}

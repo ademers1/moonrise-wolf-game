@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class WinLevel : MonoBehaviour
 {
-    public Camera FirstPersonCamera;
     public Camera ThirdPersonCamera;
     InventorySystem Inventory;
    
 
     void Start()
     {
-        Inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventorySystem>();
+        
     }
 
   
@@ -30,7 +29,7 @@ public class WinLevel : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log(GameManager.Instance);
+            Debug.Log("Gameover Enter");
             GameManager.Instance.Camera.ShowMouse();
             SceneManager.LoadScene("Win");
             

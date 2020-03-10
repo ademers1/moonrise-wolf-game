@@ -15,24 +15,34 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 5.0f;
     public float rotationSpeed = 60.0f;
 
+    //roll variables
+    public float ButtonCooler = 0.5f; // Half a second before reset
+    public int ButtonCount = 0;
+
     public float moveSpeedMultiplier;
     public float currentSpeedMultiplier;
 
+    //attack variables
+    public Transform attackPoint;
+    public float attackDamage = 10f;
+    public float heavyAttackDamge = 25f;
+    public float attackRange = 0.5f;
+    public float attackRate = 2f;
+    public float heavyAttackRate = 10f;
+    float nextAttackTime = 0f;
+    float nextHeavyAttackTime = 0f;
+    public LayerMask enemyLayers;
+    public bool canAttack;
+
+
     private float radius;
     private playerState state;
-
-    float icecreamfloat;
 
     [SerializeField] public LayerMask groundLayer;
 
     enum playerState
     {
         isGrounded, isAirborn
-    }
-
-    private void Awake()
-    {
-        GameManager.Instance.GetCamera();
     }
 
     void Start()
@@ -42,6 +52,53 @@ public class PlayerMovement : MonoBehaviour
         canMove = true;
         moveSpeedMultiplier = 1;
         currentSpeedMultiplier = moveSpeedMultiplier;
+
+        canAttack = true;
+    }
+
+    void Update()
+    {
+        if (canAttack)
+        {
+            if (Time.time >= nextAttackTime)
+            {
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    Attack();
+                    nextAttackTime = Time.time + 1f / attackRate;
+                    Debug.Log("Player Attacked!");
+                }
+            }
+
+            if (Time.time >= nextHeavyAttackTime)
+            {
+                if (Input.GetMouseButtonDown(1))
+                {
+                    HeavyAttack();
+                    nextHeavyAttackTime = Time.time + heavyAttackRate;
+                    Debug.Log("Player Heavy Attack");
+                }
+            }
+        }
+
+
+        //abilitie inputs
+        #region
+        if (Input.GetKeyDown("1"))
+        {
+            ability1();
+        }
+
+        if (Input.GetKeyDown("2"))
+        {
+            ability2();
+        }
+
+        if (Input.GetKeyDown("3"))
+        {
+            ability3();
+        }
+        #endregion
     }
 
     // Update is called once per frame
@@ -49,6 +106,23 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canMove)
         {
+            //roll inputs
+            #region
+            if (Input.GetKeyDown("a"))
+            {
+                RollLeft();
+            }
+            if (Input.GetKeyDown("w"))
+            {
+                DashForward();
+            }
+            else if (Input.GetKeyDown("d"))
+            {
+
+                RollRight();
+            }
+            #endregion
+
             if (Input.GetKey(KeyCode.LeftShift))
                 currentSpeed = sprintSpeed;
             else if (Input.GetKey(KeyCode.LeftControl))
@@ -56,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
             else
                 currentSpeed = walkSpeed;
 
-            //movement (WASD)
+            //movement forward and back
             #region
 
             if (Input.GetAxis("Vertical") != 0 && state == playerState.isGrounded)
@@ -113,4 +187,106 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.position -= transform.forward * currentSpeed * 0.3f;
     }
+
+
+
+
+    //rolls
+    #region
+    private void DashForward()
+    {
+        if (ButtonCooler > 0 && ButtonCount == 1/*Number of Taps you want Minus One*/)
+        {
+            //Has double tapped
+            transform.position += transform.forward * (GetComponent<PlayerMovement>().currentSpeed * 2);
+        }
+        else
+        {
+            ButtonCooler = 0.5f;
+            ButtonCount += 1;
+        }
+    }
+
+    private void RollLeft()
+    {
+        if (ButtonCooler > 0 && ButtonCount == 1/*Number of Taps you want Minus One*/)
+        {
+            //Has double tapped
+            transform.position -= transform.right * (GetComponent<PlayerMovement>().currentSpeed * 2);
+        }
+        else
+        {
+            ButtonCooler = 0.5f;
+            ButtonCount += 1;
+        }
+    }
+
+    private void RollRight()
+    {
+        if (ButtonCooler > 0 && ButtonCount == 1/*Number of Taps you want Minus One*/)
+        {
+            //Has double tapped
+            transform.position += transform.right * (GetComponent<PlayerMovement>().currentSpeed * 2);
+        }
+        else
+        {
+            ButtonCooler = 0.5f;
+            ButtonCount += 1;
+        }
+    }
+    #endregion
+
+    //ability calls
+    #region
+    private void ability1()
+    {
+        Debug.Log("ability 1 was pressed");
+    }
+
+    private void ability2()
+    {
+        Debug.Log("ability 2 was pressed");
+    }
+
+    private void ability3()
+    {
+        Debug.Log("ability 3 was pressed");
+    }
+    #endregion
+
+    //attacks
+    #region
+    public void Attack()
+    {
+
+        // Dectect Range of Enemy
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
+        // Damage the Enemy
+        foreach (Collider enemy in hitEnemies)
+        {
+            enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
+            //Debug.Log("Enemy Hit!");
+        }
+    }
+
+    public void HeavyAttack()
+    {
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
+        // Damage the Enemy
+        foreach (Collider enemy in hitEnemies)
+        {
+            enemy.GetComponent<EnemyHealth>().TakeDamage(heavyAttackDamge);
+            //Debug.Log("Super Hit!");
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+        {
+            return;
+        }
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+    #endregion
 }
