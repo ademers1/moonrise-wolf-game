@@ -8,14 +8,17 @@ public class EnemyHealth : MonoBehaviour
     public float startHealth;
     public Image healthBar;
     public GameObject Wall;
-    
 
+    AudioSource hunterAudio;
+    public AudioClip hunterHurt;
 
     void Start()
     {
 
         health = startHealth;
-    }
+        hunterAudio = GetComponent<AudioSource>();
+        
+}
 
     void Update()
     {
@@ -30,7 +33,7 @@ public class EnemyHealth : MonoBehaviour
     {
         health -= amount;
         healthBar.fillAmount = health / startHealth;
-
+        hunterAudio.PlayOneShot(hunterHurt);
     }
 
     public void Die()

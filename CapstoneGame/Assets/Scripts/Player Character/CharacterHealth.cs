@@ -9,12 +9,15 @@ public class CharacterHealth : MonoBehaviour
     public float health;
     public float startHealth;
     public Image healthBar;
-   
+    AudioSource wolfAudio1;
+
+    public AudioClip whine;
 
     void Start()
     {
         
         health = startHealth;
+        wolfAudio1 = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -35,6 +38,7 @@ public class CharacterHealth : MonoBehaviour
         health -= amount;
         healthBar.fillAmount = health/startHealth;
         Debug.Log("Current Health: " + health);
+        wolfAudio1.PlayOneShot(whine);
     }
     //added a healing function
     public void Heal(float amount)

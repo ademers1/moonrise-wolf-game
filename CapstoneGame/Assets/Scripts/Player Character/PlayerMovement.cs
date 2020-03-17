@@ -38,6 +38,10 @@ public class PlayerMovement : MonoBehaviour
     private float radius;
     private playerState state;
 
+    AudioSource wolfAudio;
+    public AudioClip growl;
+
+
     [SerializeField] public LayerMask groundLayer;
 
     enum playerState
@@ -54,6 +58,8 @@ public class PlayerMovement : MonoBehaviour
         currentSpeedMultiplier = moveSpeedMultiplier;
 
         canAttack = true;
+
+        wolfAudio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -67,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
                     Attack();
                     nextAttackTime = Time.time + 1f / attackRate;
                     Debug.Log("Player Attacked!");
+                    wolfAudio.PlayOneShot(growl);
                 }
             }
 
@@ -77,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
                     HeavyAttack();
                     nextHeavyAttackTime = Time.time + heavyAttackRate;
                     Debug.Log("Player Heavy Attack");
+                    wolfAudio.PlayOneShot(growl);
                 }
             }
         }
