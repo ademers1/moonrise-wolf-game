@@ -19,9 +19,9 @@ public class WallBlockage : MonoBehaviour
     {
         if(EnemiesToDefeat.Count == 0)
         {
-            player.skillPoints++;
+            player.AddSkillPoint();
             Destroy(this.gameObject);
-           
+            GameManager.Instance.Camera.ShowMouse();
         }
     }
 

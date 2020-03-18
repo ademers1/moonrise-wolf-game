@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public Button[] skillButtons;
     List<Skill> skills;
     public int skillPoints;
+    public Text skillPointText;
     
     private void Start()
     {      
@@ -63,9 +64,11 @@ public class Player : MonoBehaviour
         if (skillPoints > 0)
         {
             --skillPoints;
+            
             Skill clickedSkill;
             IEnumerable<Skill> list = null;
             GameObject btn = EventSystem.current.currentSelectedGameObject;
+            
             for (int i = 0; i < skills.Count; i++)
             {
                 if (btn.GetComponentInChildren<Text>().text == skills[i].Name)
@@ -88,6 +91,13 @@ public class Player : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void AddSkillPoint()
+    {
+        skillPoints++;
+        visualTree.gameObject.SetActive(true);
+        skillPointText.text = "Skill Points: " + skillPoints;
     }
 
 }
