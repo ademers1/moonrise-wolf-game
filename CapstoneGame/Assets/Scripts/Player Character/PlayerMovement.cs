@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask enemyLayers;
     public bool canAttack;
     [SerializeField] private float knockbackStrength;
+    [SerializeField] private float knockUpStrength;
     [SerializeField] private float knockbackRadius;
 
 
@@ -312,7 +313,7 @@ public class PlayerMovement : MonoBehaviour
             Rigidbody rb = enemy.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                rb.AddExplosionForce(knockbackStrength, transform.position, knockbackRadius, 0f, ForceMode.Impulse);
+                rb.AddExplosionForce(knockbackStrength, transform.position, knockbackRadius, knockUpStrength, ForceMode.Impulse);
             }
         }
     }
