@@ -163,7 +163,8 @@ MonoBehaviour:
   ButtonCount: 0
   moveSpeedMultiplier: 0
   currentSpeedMultiplier: 0
-  attackPoint: {fileID: 0}
+  attackPoint: {fileID: 1012449253758229632}
+  nextTailWhipTime: 1
   attackDamage: 10
   heavyAttackDamge: 25
   attackRange: 0.5
@@ -173,6 +174,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   canAttack: 0
+  knockbackStrength: 10
+  knockbackRadius: 4
+  growl: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -191,6 +195,7 @@ MonoBehaviour:
   health: 0
   startHealth: 100
   healthBar: {fileID: 0}
+  whine: {fileID: 0}
 --- !u!114 &535051333
 MonoBehaviour:
   m_ObjectHideFlags: 0

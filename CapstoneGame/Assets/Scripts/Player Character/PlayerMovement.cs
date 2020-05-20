@@ -24,15 +24,20 @@ public class PlayerMovement : MonoBehaviour
 
     //attack variables
     public Transform attackPoint;
+    public float nextTailWhipTime;
     public float attackDamage = 10f;
     public float heavyAttackDamge = 25f;
     public float attackRange = 0.5f;
     public float attackRate = 2f;
     public float heavyAttackRate = 10f;
     float nextAttackTime = 0f;
-    float nextHeavyAttackTime = 0f;
+    float nextHeavyAttackTimer;
+    float nextHeavyAttack;
     public LayerMask enemyLayers;
     public bool canAttack;
+    [SerializeField] private float knockbackStrength;
+    [SerializeField] private float knockbackRadius;
+
 
 
     private float radius;
@@ -56,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
         canMove = true;
         moveSpeedMultiplier = 1;
         currentSpeedMultiplier = moveSpeedMultiplier;
-
+        
         canAttack = true;
 
         wolfAudio = GetComponent<AudioSource>();
@@ -77,14 +82,26 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-            if (Time.time >= nextHeavyAttackTime)
+            if (Time.time > nextHeavyAttack)
             {
-                if (Input.GetMouseButtonDown(1))
+                if (Input.GetKey(KeyCode.Mouse1))
+                {
+                    nextHeavyAttackTimer += Time.deltaTime;
+                }
+                if (Input.GetKeyUp(KeyCode.Mouse1) && nextHeavyAttackTimer > 3)
                 {
                     HeavyAttack();
-                    nextHeavyAttackTime = Time.time + heavyAttackRate;
                     Debug.Log("Player Heavy Attack");
                     wolfAudio.PlayOneShot(growl);
+                }
+            }
+    
+
+            if(Time.time >= nextTailWhipTime)
+            {
+                if(Input.GetKeyDown(KeyCode.Q))
+                {
+                    KnockBack();
                 }
             }
         }
@@ -287,6 +304,20 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log("Super Hit!");
         }
     }
+    public void KnockBack()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, knockbackRadius);
+        foreach (Collider enemy in colliders)
+        {
+            Rigidbody rb = enemy.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.AddExplosionForce(knockbackStrength, transform.position, knockbackRadius, 0f, ForceMode.Impulse);
+            }
+        }
+    }
+
+    
 
     private void OnDrawGizmosSelected()
     {
@@ -295,6 +326,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        Gizmos.DrawWireSphere(transform.position, knockbackRadius);
     }
     #endregion
 }
