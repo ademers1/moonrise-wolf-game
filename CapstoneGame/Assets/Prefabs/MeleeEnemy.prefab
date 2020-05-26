@@ -114,7 +114,6 @@ GameObject:
   - component: {fileID: 8188281326229080605}
   - component: {fileID: 8188281326229080582}
   - component: {fileID: 8285155985148631005}
-  - component: {fileID: 1948254336509348961}
   m_Layer: 9
   m_Name: MeleeEnemy
   m_TagString: Enemy
@@ -234,7 +233,6 @@ MonoBehaviour:
   startHealth: 30
   healthBar: {fileID: 8188281327373339758}
   Wall: {fileID: 0}
-  hunterHurt: {fileID: 0}
 --- !u!195 &8285155985148631005
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -257,22 +255,6 @@ NavMeshAgent:
   m_BaseOffset: 0.49999997
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1948254336509348961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8188281326229080583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed6a2efe776ce6840b97b8b1ecd14340, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  material:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 2100000, guid: 2388f97562f20e04c90883ad438b2dcb, type: 2}
-  rend: {fileID: 0}
 --- !u!1 &8188281326690897901
 GameObject:
   m_ObjectHideFlags: 0
