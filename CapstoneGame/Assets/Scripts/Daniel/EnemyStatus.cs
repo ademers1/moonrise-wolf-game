@@ -6,11 +6,15 @@ public class EnemyStatus : MonoBehaviour
 {
     [SerializeField] int enemyStatus;
     StunParticals stunParticalsScript;
+    RangedEnemyPatrol partrolScript;
+    EnemyContol enemyScript;
     bool tranquilized;
     // Start is called before the first frame update
     void Start()
     {
         stunParticalsScript = GetComponent<StunParticals>();
+        partrolScript = GetComponent<RangedEnemyPatrol>();
+        enemyScript = GetComponent<EnemyContol>();
     }
     public enum statusEffects
     {
@@ -37,8 +41,12 @@ public class EnemyStatus : MonoBehaviour
     {
         float effectTime = 2f;
         stunParticalsScript.startEmit(stunParticalsScript.stunParticalLauncher);
+        partrolScript.enabled = false;
+        enemyScript.enabled = false;
         yield return new WaitForSeconds(effectTime);
         stunParticalsScript.endEmit(stunParticalsScript.stunParticalLauncher);
+        partrolScript.enabled = true;
+        enemyScript.enabled = true;
     }
     
 }
