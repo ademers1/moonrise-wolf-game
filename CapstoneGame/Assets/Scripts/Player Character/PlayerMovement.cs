@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float stalkSpeed = 2.5f;
     public float jumpForce = 5.0f;
     public float rotationSpeed = 60.0f;
+    Animator anim;
 
     //roll variables
     public float ButtonCooler = 0.5f; // Half a second before reset
@@ -42,7 +43,8 @@ public class PlayerMovement : MonoBehaviour
 
 
     private float radius;
-    private playerState state;
+    private PlayerJumpState state;
+    private PlayerAnimationState animState;
 
     AudioSource wolfAudio;
     public AudioClip growl;
@@ -50,27 +52,44 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] public LayerMask groundLayer;
 
-    enum playerState
+    enum PlayerJumpState
     {
         isGrounded, isAirborn
     }
 
+    enum PlayerAnimationState
+    {
+        isIdle, isMoving, isAttacking
+    }
+
+
     void Start()
     {
+
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         radius = transform.localScale.y * 0.5f;
         canMove = true;
         moveSpeedMultiplier = 1;
-        currentSpeedMultiplier = moveSpeedMultiplier;
-        
-        canAttack = true;
+        currentSpeedMultiplier = moveSpeedMultiplier;      
 
         wolfAudio = GetComponent<AudioSource>();
     }
 
     void Update()
     {
-        if (canAttack)
+        Debug.Log("State: " + state);
+        Debug.Log("Vertical Axis Value: " + Input.GetAxis("Vertical"));
+        Debug.Log("Anim State: " + animState);
+
+        if (Input.GetAxis("Vertical") == 0 && animState == PlayerAnimationState.isMoving)
+        {
+            animState = PlayerAnimationState.isIdle;
+            anim.SetBool("isIdle", true);
+            anim.SetBool("isRunning", false);
+        }
+
+        if (animState == PlayerAnimationState.isIdle || animState == PlayerAnimationState.isMoving)
         {
             if (Time.time >= nextAttackTime)
             {
@@ -80,6 +99,8 @@ public class PlayerMovement : MonoBehaviour
                     nextAttackTime = Time.time + 1f / attackRate;
                     Debug.Log("Player Attacked!");
                     wolfAudio.PlayOneShot(growl);
+                    //animState = PlayerAnimationState.isAttacking;
+                    anim.SetTrigger("isAttacking");
                 }
             }
 
@@ -88,12 +109,16 @@ public class PlayerMovement : MonoBehaviour
                 if (Input.GetKey(KeyCode.Mouse1))
                 {
                     nextHeavyAttackTimer += Time.deltaTime;
+                    //animState = PlayerAnimationState.isAttacking;
+                    anim.SetTrigger("isAttacking");
                 }
                 if (Input.GetKeyUp(KeyCode.Mouse1) && nextHeavyAttackTimer > 3)
                 {
                     HeavyAttack();
                     Debug.Log("Player Heavy Attack");
                     wolfAudio.PlayOneShot(growl);
+                    //animState = PlayerAnimationState.isAttacking;
+                    anim.SetTrigger("isAttacking");
                 }
             }
     
@@ -159,10 +184,13 @@ public class PlayerMovement : MonoBehaviour
             //movement forward and back
             #region
 
-            if (Input.GetAxis("Vertical") != 0 && state == playerState.isGrounded)
+            if (Input.GetAxis("Vertical") != 0 && state == PlayerJumpState.isGrounded && (animState == PlayerAnimationState.isIdle || animState == PlayerAnimationState.isMoving))
             {
                 Vector3 dir = transform.forward * currentSpeed * Input.GetAxis("Vertical");
                 rb.velocity = new Vector3(dir.x, rb.velocity.y, dir.z);
+                animState = PlayerAnimationState.isMoving;
+                anim.SetBool("isIdle", false);
+                anim.SetBool("isRunning", true);
             }
 
             //Set Current Speed back to zero
@@ -175,19 +203,19 @@ public class PlayerMovement : MonoBehaviour
 
             float jump = Input.GetAxis("Jump");
             
-            Ray ray = new Ray(transform.position, -transform.up);
+            Ray ray = new Ray(transform.position + new Vector3(0, 0.3f, 0), -transform.up);
             RaycastHit info;
 
             if (Physics.Raycast(ray, out info, radius + 0.05f, groundLayer, QueryTriggerInteraction.Collide))
             {
-                state = playerState.isGrounded;
+                state = PlayerJumpState.isGrounded;
             }
             else
             {
-                state = playerState.isAirborn;
+                state = PlayerJumpState.isAirborn;
             }
 
-            if (jump > 0 && state == playerState.isGrounded)
+            if (jump > 0 && state == PlayerJumpState.isGrounded)
             {
                 rb.velocity = transform.up * jumpForce;
             }

@@ -12,12 +12,9 @@ GameObject:
   - component: {fileID: 1012449253132882543}
   - component: {fileID: 1012449253132882528}
   - component: {fileID: 1012449253132882529}
-  - component: {fileID: 1012449253132882530}
   - component: {fileID: 1012449253132882541}
   - component: {fileID: 1012449253132882540}
   - component: {fileID: 1012449253132882539}
-  - component: {fileID: 535051333}
-  - component: {fileID: 535051334}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -101,28 +98,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1012449253132882530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1012449253132882531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05a6de763f59e054c9bf4ede5d5de01f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Inventory: []
-  ItemScr: {fileID: 0}
-  InvGraph: {fileID: 0}
-  Player: {fileID: 1012449253132882542}
-  Slot: []
-  slotHolder: {fileID: 0}
-  FirstPersonCamera: {fileID: 0}
-  ThirdPersonCamera: {fileID: 1012449253538503574}
-  running: 1
-  screenOpen: 0
 --- !u!54 &1012449253132882541
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -175,6 +150,7 @@ MonoBehaviour:
     m_Bits: 0
   canAttack: 0
   knockbackStrength: 10
+  knockUpStrength: 0
   knockbackRadius: 4
   growl: {fileID: 0}
   groundLayer:
@@ -196,38 +172,6 @@ MonoBehaviour:
   startHealth: 100
   healthBar: {fileID: 0}
   whine: {fileID: 0}
---- !u!114 &535051333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1012449253132882531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f578a899fd8cb443b2ace163f301f82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ExperienceBar: {fileID: 0}
-  LevelText: {fileID: 0}
---- !u!114 &535051334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1012449253132882531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce8fb39b345a78045a6050e56a04ec2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttackUp: {fileID: 0}
-  HealthUp: {fileID: 0}
-  playerMovement: {fileID: 0}
-  playerHealth: {fileID: 1012449253132882539}
-  IS: {fileID: 1012449253132882530}
-  player: {fileID: 0}
 --- !u!1 &1012449253240784910
 GameObject:
   m_ObjectHideFlags: 0
