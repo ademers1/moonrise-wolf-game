@@ -81,10 +81,6 @@ public class RangedEnemyPatrol : MonoBehaviour
                     randomSpot = Random.Range(0, nodeObj.Length);
                 }
             }
-            else
-            {
-                Debug.Log(enemy.transform.position + "     :     " + nodeObj[randomSpot].position);
-            }
         }
     }
 }

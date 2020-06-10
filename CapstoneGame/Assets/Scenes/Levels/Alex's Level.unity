@@ -546,34 +546,30 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 598609066}
   m_PrefabAsset: {fileID: 0}
---- !u!195 &470286142
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 470286141}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!4 &470286149 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 577512073107289806, guid: 2a143dcca725e2b43a0ccdde521eed31,
     type: 3}
   m_PrefabInstance: {fileID: 598609066}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &470286151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470286141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95a40b71652ab214cac4b7f5906c35cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  senseRadius: 0
+  senseStopRadius: 0
+  senseTimer: 0
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1001 &554758401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -834,11 +830,6 @@ PrefabInstance:
       propertyPath: heavyAttackFill
       value: 0.4
       objectReference: {fileID: 0}
-    - target: {fileID: 5582502994504227159, guid: 2a143dcca725e2b43a0ccdde521eed31,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.001
-      objectReference: {fileID: 0}
     - target: {fileID: 5582502994033462904, guid: 2a143dcca725e2b43a0ccdde521eed31,
         type: 3}
       propertyPath: healthBar
@@ -848,6 +839,11 @@ PrefabInstance:
         type: 3}
       propertyPath: startHealth
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5582502994504227159, guid: 2a143dcca725e2b43a0ccdde521eed31,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a143dcca725e2b43a0ccdde521eed31, type: 3}
@@ -1046,6 +1042,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &821933309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821933296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed6a2efe776ce6840b97b8b1ecd14340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2388f97562f20e04c90883ad438b2dcb, type: 2}
+  rend: {fileID: 0}
+  beingSensed: 0
 --- !u!1001 &844559300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2706,7 +2719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   line: {fileID: 1960853662}
   targetTransform: {fileID: 1220975561}
-  agent: {fileID: 470286142}
+  wolfSenseScript: {fileID: 470286151}
 --- !u!1001 &1964916156
 PrefabInstance:
   m_ObjectHideFlags: 0

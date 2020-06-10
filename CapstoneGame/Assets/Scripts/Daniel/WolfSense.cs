@@ -13,7 +13,7 @@ public class WolfSense : MonoBehaviour
     GameObject closestEnemy;
 
     public GameObject ClosestEnemy { get { return closestEnemy; } }
-
+    public bool WolfSenseOn { get { return wolfSenseOn; } }
 
     // Start is called before the first frame update
     void Start()
@@ -30,65 +30,34 @@ public class WolfSense : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (wolfSenseOn == false)
-            {
-                WolfSensing();
-            }
-            else if (wolfSenseOn == true)
-            {
-                WolfSensingStop();
-            }
+            wolfSenseOn = !wolfSenseOn;
         }
-        if(wolfSenseOn == true)
+        if (wolfSenseOn)
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, senseRadius, enemyLayers);
-            foreach (Collider enemy in colliders)
-            {
-                if (enemy.GetComponent<WolfSenseMaterial>() != null)
-                {
-                    enemy.GetComponent<WolfSenseMaterial>().beingSensed = true;
-                }
-                if (Vector3.Distance(enemy.transform.position, transform.position) > senseRadius && enemy.GetComponent<WolfSenseMaterial>() != null)
-                {
-                    enemy.GetComponent<WolfSenseMaterial>().beingSensed = false;
-                }
-                float distance = Vector3.Distance(enemy.transform.position, transform.position);
-                if(distance < shortesDistance)
-                {
-                    shortesDistance = distance;
-                    closestEnemy = enemy.gameObject;
-                }
-
-            }
+            WolfSensing();
         }
-        
-
+        else
+        {
+            closestEnemy.GetComponent<WolfSenseMaterial>().beingSensed = false;
+        }
     }
+
     void WolfSensing()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, senseRadius, enemyLayers);
         foreach (Collider enemy in colliders)
         {
-            if(enemy.GetComponent<WolfSenseMaterial>() != null)
-            {
-                enemy.GetComponent<WolfSenseMaterial>().beingSensed = true;
-            }
-            
-        }
-        wolfSenseOn = true;
-    }
-   void WolfSensingStop()
-    {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, senseStopRadius, enemyLayers);
-        foreach (Collider enemy in colliders)
-        {
-            if (enemy.GetComponent<WolfSenseMaterial>() != null)
-            {
-                enemy.GetComponent<WolfSenseMaterial>().beingSensed = false;
+            enemy.GetComponent<WolfSenseMaterial>().beingSensed = false;
 
+            float distance = Vector3.Distance(enemy.transform.position, transform.position);
+            if (distance < shortesDistance)
+            {
+                shortesDistance = distance;
+                closestEnemy = enemy.gameObject;
             }
         }
-        wolfSenseOn = false;
+        closestEnemy.GetComponent<WolfSenseMaterial>().beingSensed = true;
+        wolfSenseOn = true;
     }
     
     private void OnDrawGizmosSelected()
