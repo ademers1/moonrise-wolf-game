@@ -22,13 +22,13 @@ public class PathRenderer : MonoBehaviour
     }
     void getPath()
     {
-        //line.SetPosition(0, agent.transform.position); //set the line's origin
+        line.SetPosition(0, agent.transform.position); //set the line's origin
 
-        //agent.SetDestination(targetTransform.position); //create the path
+        agent.SetDestination(targetTransform.position); //create the path
 
-        //DrawPath(agent.path);
+        DrawPath(agent.path);
 
-        //agent.isStopped = true;//add this if you don't want to move the agent
+        agent.isStopped = true;//add this if you don't want to move the agent
 
     }
 
