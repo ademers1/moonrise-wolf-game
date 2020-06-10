@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour
     {
         mouseX += Input.GetAxis("Mouse X") * RotationSpeed;
         mouseY -= Input.GetAxis("Mouse Y") * RotationSpeed;
-        mouseY = Mathf.Clamp(mouseY, -65, 60);
+        mouseY = Mathf.Clamp(mouseY, -90, 30);
 
         transform.LookAt(Target);
 
@@ -56,20 +56,20 @@ public class CameraController : MonoBehaviour
 
         if(Physics.Raycast(transform.position, Target.position - transform.position, out hit, 4.5f))
         {
-            if (hit.collider.gameObject.tag != "Player") {
+            if (hit.collider.gameObject.tag != "Player" && hit.collider.gameObject.tag != "Ground") {
                 Obstruction = hit.transform;
                 Obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
 
                 if (Vector3.Distance(Obstruction.position, transform.position) >= 3f && Vector3.Distance(transform.position, Target.position) >= 1.5f)
                 {
-                    transform.Translate(Vector3.forward * zoomSpeed * Time.deltaTime);
+                    //transform.Translate(Vector3.forward * zoomSpeed * Time.deltaTime);
                 }
             }
             else if (Player != null)
             {
                 if (Vector3.Distance(transform.position, Target.position) < 4.5f)
                 {
-                    transform.Translate(Vector3.back * zoomSpeed * Time.deltaTime);
+                    //transform.Translate(Vector3.back * zoomSpeed * Time.deltaTime);
                 }
             }
         }

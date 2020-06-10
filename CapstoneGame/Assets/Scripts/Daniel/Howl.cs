@@ -7,6 +7,7 @@ public class Howl : MonoBehaviour
     [SerializeField] private float howlRadius;
     [SerializeField] private float howlCooldown;
     public LayerMask enemyLayers;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +31,10 @@ public class Howl : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, howlRadius, enemyLayers);
         foreach (Collider enemy in colliders)
         {
-            enemy.GetComponent<EnemyStatus>().Effect(0);
+            if (enemy.tag != "Player")
+            {
+                enemy.GetComponent<EnemyStatus>().Effect(0);
+            }
         }
     }
     private void OnDrawGizmosSelected()

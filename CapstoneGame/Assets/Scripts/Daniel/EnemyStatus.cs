@@ -41,12 +41,23 @@ public class EnemyStatus : MonoBehaviour
     {
         float effectTime = 2f;
         stunParticalsScript.startEmit(stunParticalsScript.stunParticalLauncher);
-        partrolScript.enabled = false;
-        enemyScript.enabled = false;
+        if (partrolScript != null) {
+            partrolScript.enabled = false;
+        }
+        if (enemyScript != null)
+        {
+            enemyScript.enabled = false;
+        }
         yield return new WaitForSeconds(effectTime);
         stunParticalsScript.endEmit(stunParticalsScript.stunParticalLauncher);
-        partrolScript.enabled = true;
-        enemyScript.enabled = true;
+        if (partrolScript != null)
+        {
+            partrolScript.enabled = true;
+        }
+        if (enemyScript != null)
+        {
+            enemyScript.enabled = true;
+        }
     }
     
 }

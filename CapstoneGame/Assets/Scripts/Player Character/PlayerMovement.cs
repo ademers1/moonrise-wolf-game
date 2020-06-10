@@ -83,9 +83,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("State: " + state);
-        Debug.Log("Vertical Axis Value: " + Input.GetAxis("Vertical"));
-        Debug.Log("Anim State: " + animState);
 
         if (Input.GetAxis("Vertical") == 0 && animState == PlayerAnimationState.isMoving)
         {
@@ -102,7 +99,6 @@ public class PlayerMovement : MonoBehaviour
                 {
                     Attack();
                     nextAttackTime = Time.time + 1f / attackRate;
-                    Debug.Log("Player Attacked!");
                     wolfAudio.PlayOneShot(growl);
                     //animState = PlayerAnimationState.isAttacking;
                     anim.SetTrigger("isAttacking");
@@ -120,7 +116,6 @@ public class PlayerMovement : MonoBehaviour
                 if (Input.GetKeyUp(KeyCode.Mouse1) && nextHeavyAttackTimer > 3)
                 {
                     HeavyAttack();
-                    Debug.Log("Player Heavy Attack");
                     wolfAudio.PlayOneShot(growl);
                     //animState = PlayerAnimationState.isAttacking;
                     anim.SetTrigger("isAttacking");
@@ -337,9 +332,10 @@ public class PlayerMovement : MonoBehaviour
         // Damage the Enemy
         foreach (Collider enemy in hitEnemies)
         {
+
             enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
             furyBar.fillAmount += basicAttackFill;
-            //Debug.Log("Enemy Hit!");
+            
         }
     }
 
@@ -351,7 +347,6 @@ public class PlayerMovement : MonoBehaviour
         {
             enemy.GetComponent<EnemyHealth>().TakeDamage(heavyAttackDamge);
             furyBar.fillAmount += heavyAttackFill;
-            //Debug.Log("Super Hit!");
         }
     }
     public void KnockBack()
@@ -359,10 +354,15 @@ public class PlayerMovement : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, knockbackRadius);
         foreach (Collider enemy in colliders)
         {
-            Rigidbody rb = enemy.GetComponent<Rigidbody>();
-            if (rb != null)
+            if (enemy.tag != "Player")
             {
-                rb.AddExplosionForce(knockbackStrength, transform.position, knockbackRadius, knockUpStrength, ForceMode.Impulse);
+                Rigidbody rb = enemy.GetComponent<Rigidbody>();
+                Debug.Log(enemy.gameObject);
+                if (rb != null)
+                {
+
+                    rb.AddExplosionForce(knockbackStrength, transform.position, knockbackRadius, knockUpStrength, ForceMode.Impulse);
+                }
             }
         }
     }

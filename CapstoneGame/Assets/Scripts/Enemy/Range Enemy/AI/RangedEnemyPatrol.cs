@@ -73,9 +73,17 @@ public class RangedEnemyPatrol : MonoBehaviour
         if (isPatrol == true)
         {
             agent.destination = nodeObj[randomSpot].position;
-            if (Vector3.Distance(enemy.transform.position, nodeObj[randomSpot].position) < 1f)
+            if (Vector3.Distance(enemy.transform.position, nodeObj[randomSpot].position) < 1.4f)
             {
-                randomSpot = Random.Range(0, nodeObj.Length);
+                int oldRandomSpot = randomSpot;
+                while (randomSpot == oldRandomSpot)
+                {
+                    randomSpot = Random.Range(0, nodeObj.Length);
+                }
+            }
+            else
+            {
+                Debug.Log(enemy.transform.position + "     :     " + nodeObj[randomSpot].position);
             }
         }
     }
