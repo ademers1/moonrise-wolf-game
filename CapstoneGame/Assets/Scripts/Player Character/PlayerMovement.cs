@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -24,6 +25,10 @@ public class PlayerMovement : MonoBehaviour
     public float currentSpeedMultiplier;
 
     //attack variables
+    public Image furyBar;
+    public float furyTimer;
+    public float basicAttackFill = 0.15f;
+    public float heavyAttackFill = 0.25f;
     public Transform attackPoint;
     public float nextTailWhipTime;
     public float attackDamage = 10f;
@@ -65,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-
+        furyBar.fillAmount = 0;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         radius = transform.localScale.y * 0.5f;
@@ -131,7 +136,21 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+       
+            if (furyBar.fillAmount >= 1)
+            {
+                if (Input.GetKeyDown(KeyCode.Tab))
+                {
+                    furyTimer += Time.deltaTime;
+                    FuryMode();
+                    Debug.Log("Fury Active");
+                }
+            }
 
+        if(Time.time >= furyTimer)
+        {
+            DefaultMode();
+        }
 
         //abilitie inputs
         #region
@@ -319,6 +338,7 @@ public class PlayerMovement : MonoBehaviour
         foreach (Collider enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
+            furyBar.fillAmount += basicAttackFill;
             //Debug.Log("Enemy Hit!");
         }
     }
@@ -330,6 +350,7 @@ public class PlayerMovement : MonoBehaviour
         foreach (Collider enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyHealth>().TakeDamage(heavyAttackDamge);
+            furyBar.fillAmount += heavyAttackFill;
             //Debug.Log("Super Hit!");
         }
     }
@@ -346,7 +367,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    
+    public void FuryMode()
+    {
+        // values Change to match fury mode;
+        //faster attack speed;
+        //more damage;
+        //move movement speed;
+
+    }
+
+    public void DefaultMode()
+    {
+        //sets all the orginal values back;
+        furyBar.fillAmount = 0f;
+    }
 
     private void OnDrawGizmosSelected()
     {
