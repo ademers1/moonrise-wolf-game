@@ -9,22 +9,25 @@ public class PathRenderer : MonoBehaviour
     [SerializeField]
     Transform targetTransform; //to hold the transform of the target
     public NavMeshAgent agent; //to hold the agent of this gameObject
-
+    GameObject closestEnemyGO;
+    public WolfSense wolfSenseScript;
     void Awake()
     {
         line = GetComponent<LineRenderer>(); //get the line renderer
         agent = GameObject.Find("Player").GetComponent<NavMeshAgent>(); //get the agent
+        wolfSenseScript = closestEnemyGO.GetComponent<WolfSense>();
     }
 
     private void Update()
     {
+        closestEnemyGO = closestEnemyGO.GetComponent<WolfSense>().ClosestEnemy;
         getPath();
     }
     void getPath()
     {
         line.SetPosition(0, agent.transform.position); //set the line's origin
 
-        agent.SetDestination(targetTransform.position); //create the path
+        agent.SetDestination(closestEnemyGO.transform.position); //create the path
 
         DrawPath(agent.path);
 

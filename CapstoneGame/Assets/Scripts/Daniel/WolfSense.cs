@@ -9,6 +9,11 @@ public class WolfSense : MonoBehaviour
     [SerializeField] private float senseTimer;
     bool wolfSenseOn;
     public LayerMask enemyLayers;
+    float shortesDistance;
+    GameObject closestEnemy;
+
+    public GameObject ClosestEnemy { get { return closestEnemy; } }
+
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +22,7 @@ public class WolfSense : MonoBehaviour
         senseStopRadius = 200.0f;
         senseTimer = 1.0f;
         wolfSenseOn = false;
+        shortesDistance = Mathf.Infinity;
     }
 
     // Update is called once per frame
@@ -45,6 +51,12 @@ public class WolfSense : MonoBehaviour
                 if (Vector3.Distance(enemy.transform.position, transform.position) > senseRadius && enemy.GetComponent<WolfSenseMaterial>() != null)
                 {
                     enemy.GetComponent<WolfSenseMaterial>().beingSensed = false;
+                }
+                float distance = Vector3.Distance(enemy.transform.position, transform.position);
+                if(distance < shortesDistance)
+                {
+                    shortesDistance = distance;
+                    closestEnemy = enemy.gameObject;
                 }
 
             }
