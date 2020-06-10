@@ -786,7 +786,7 @@ PrefabInstance:
         type: 3}
       propertyPath: furyBar
       value: 
-      objectReference: {fileID: 732651810}
+      objectReference: {fileID: 1302971281}
     - target: {fileID: 5582502994033462855, guid: 2a143dcca725e2b43a0ccdde521eed31,
         type: 3}
       propertyPath: attackRange
@@ -797,6 +797,26 @@ PrefabInstance:
       propertyPath: enemyLayers.m_Bits
       value: 512
       objectReference: {fileID: 0}
+    - target: {fileID: 5582502994033462855, guid: 2a143dcca725e2b43a0ccdde521eed31,
+        type: 3}
+      propertyPath: furyTimer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5582502994033462855, guid: 2a143dcca725e2b43a0ccdde521eed31,
+        type: 3}
+      propertyPath: basicAttackFill
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5582502994033462855, guid: 2a143dcca725e2b43a0ccdde521eed31,
+        type: 3}
+      propertyPath: heavyAttackFill
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5582502994504227159, guid: 2a143dcca725e2b43a0ccdde521eed31,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.001
+      objectReference: {fileID: 0}
     - target: {fileID: 5582502994033462904, guid: 2a143dcca725e2b43a0ccdde521eed31,
         type: 3}
       propertyPath: healthBar
@@ -806,11 +826,6 @@ PrefabInstance:
         type: 3}
       propertyPath: startHealth
       value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 5582502994504227159, guid: 2a143dcca725e2b43a0ccdde521eed31,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a143dcca725e2b43a0ccdde521eed31, type: 3}
@@ -883,18 +898,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89907263fea6373429c5d3e68f596de2, type: 3}
---- !u!114 &732651810 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3651475129553126642, guid: 07bcec041e5123c4f84a908c5735d1b2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1302971280}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &749368082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1536,6 +1539,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07bcec041e5123c4f84a908c5735d1b2, type: 3}
+--- !u!114 &1302971281 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3651475129368253082, guid: 07bcec041e5123c4f84a908c5735d1b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1302971280}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1356339322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2598,6 +2613,11 @@ PrefabInstance:
         type: 3}
       propertyPath: playerLayer.m_Bits
       value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188281326229080582, guid: e42ddf674150e20478d5f65a1821da87,
+        type: 3}
+      propertyPath: startHealth
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e42ddf674150e20478d5f65a1821da87, type: 3}

@@ -134,18 +134,18 @@ public class PlayerMovement : MonoBehaviour
        
             if (furyBar.fillAmount >= 1)
             {
-                if (Input.GetKeyDown(KeyCode.Tab))
+                if (Input.GetKeyDown(KeyCode.Z))
                 {
                     furyTimer += Time.deltaTime;
                     FuryMode();
                     Debug.Log("Fury Active");
+                 if(Time.time >= furyTimer)
+                 {
+                     DefaultMode();
+                 }
                 }
             }
 
-        if(Time.time >= furyTimer)
-        {
-            DefaultMode();
-        }
 
         //abilitie inputs
         #region
