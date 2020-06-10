@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     //attack variables
     public Image furyBar;
     public float furyTimer;
+    public float furyAttackDamage = 20f;
     public float basicAttackFill = 0.15f;
     public float heavyAttackFill = 0.25f;
     public Transform attackPoint;
@@ -138,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     furyTimer += Time.deltaTime;
                     FuryMode();
-                    Debug.Log("Fury Active");
+                   
                  if(Time.time >= furyTimer)
                  {
                      DefaultMode();
@@ -371,7 +372,9 @@ public class PlayerMovement : MonoBehaviour
     {
         // values Change to match fury mode;
         //faster attack speed;
+        attackRate = 4f;
         //more damage;
+        attackDamage = furyAttackDamage;
         //move movement speed;
 
     }
@@ -379,6 +382,8 @@ public class PlayerMovement : MonoBehaviour
     public void DefaultMode()
     {
         //sets all the orginal values back;
+        attackRate = 2f;
+        attackDamage = 10f;
         furyBar.fillAmount = 0f;
     }
 
