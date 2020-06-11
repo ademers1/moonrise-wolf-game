@@ -20,7 +20,6 @@ public class PathRenderer : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(closestEnemyGO);
         if (wolfSenseScript.ClosestEnemy != null)
         {
             closestEnemyGO = wolfSenseScript.ClosestEnemy;

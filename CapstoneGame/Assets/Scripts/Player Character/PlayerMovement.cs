@@ -84,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-
+        GameManager.Instance.PlayGameMusic();
         if (Input.GetAxis("Vertical") == 0 && animState == PlayerAnimationState.isMoving)
         {
             animState = PlayerAnimationState.isIdle;

@@ -18,13 +18,11 @@ public class EnemyContol : MonoBehaviour
 
     int xpValue = 50;
 
-    AudioSource gunAudio;
-    public AudioClip gunShot;
+    public string gunshotAudioClipName;
 
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
-        gunAudio = GetComponent<AudioSource>();
     }
 
     void UpdateTarget()
@@ -89,7 +87,7 @@ public class EnemyContol : MonoBehaviour
             bullet.Seek(target);
         }
 
-        gunAudio.PlayOneShot(gunShot);
+        GameManager.Instance.PlaySound(gunshotAudioClipName);
     }
 
     //placeholder death function that isn't called

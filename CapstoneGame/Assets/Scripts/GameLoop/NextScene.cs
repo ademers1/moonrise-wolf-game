@@ -7,7 +7,7 @@ public class NextScene : MonoBehaviour
 {
     public void ChangeScene()
     {
-        SceneManager.LoadScene("Game_Main");
+        SceneManager.LoadScene("Alex's Level");
     }
 
     private void Update()

@@ -38,7 +38,10 @@ public class WolfSense : MonoBehaviour
         }
         else
         {
-            closestEnemy.GetComponent<WolfSenseMaterial>().beingSensed = false;
+            if (closestEnemy != null)
+            {
+                closestEnemy.GetComponent<WolfSenseMaterial>().beingSensed = false;
+            }
         }
     }
 

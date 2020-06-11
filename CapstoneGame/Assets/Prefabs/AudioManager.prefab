@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5170389153454633023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5170389153454633021}
+  - component: {fileID: 5170389153454633022}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5170389153454633021
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5170389153454633023}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 237.61697, y: 1.3691154, z: 36.757133}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5170389153454633022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5170389153454633023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a330af6e5415bd549a224b45de347da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: AmbientNoise
+    clip: {fileID: 8300000, guid: e791bb888c617264d94dcf4de1ce4750, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: WolfHurt
+    clip: {fileID: 8300000, guid: 16bdb088b4aa741439a520053ea1102e, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: Victory
+    clip: {fileID: 8300000, guid: a4dd7692aa0a7d84e84714cf6334e868, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: Gameover
+    clip: {fileID: 8300000, guid: 925476e73b8afba4bb70f764aa8324df, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: WolfAttack
+    clip: {fileID: 8300000, guid: a27096ae9a8ffc44f9f3fc812213ef1d, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: Gunshot
+    clip: {fileID: 8300000, guid: 616b2491941e0164aa264f30cd3cf142, type: 3}
+    volume: 1
+    pitch: 0.5
+    randomVolume: 0
+    randomPitch: 0
+  - name: EnemyInjured
+    clip: {fileID: 8300000, guid: 0f459e498a55052488ff04a1a119e770, type: 3}
+    volume: 1
+    pitch: 0.5
+    randomVolume: 0
+    randomPitch: 0
