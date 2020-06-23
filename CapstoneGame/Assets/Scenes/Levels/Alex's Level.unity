@@ -2278,6 +2278,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &2029234369 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2943072835397522746, guid: cd4acde5eac7e9a44861b145d2630396,
+    type: 3}
+  m_PrefabInstance: {fileID: 7327055069288595655}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &577512072529656420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7903062979288840867, guid: cd4acde5eac7e9a44861b145d2630396,
@@ -2290,6 +2296,38 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7327055069288595655}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4492593462276245624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4492593462276245623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f060cd3857586a341be27721e2c4c58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  furyBar: {fileID: 1302971281}
+  furyTimer: 0
+  furyAttackDamage: 20
+  basicAttackFill: 0.15
+  heavyAttackFill: 0.25
+  attackPoint: {fileID: 2029234369}
+  nextTailWhipTime: 0
+  attackDamage: 10
+  heavyAttackDamge: 25
+  attackRange: 0.5
+  attackRate: 2
+  heavyAttackRate: 10
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  canAttack: 0
+  knockbackStrength: 10
+  knockUpStrength: 10
+  knockbackRadius: 5
+  growl: {fileID: 0}
 --- !u!1001 &5170389153529078951
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2441,5 +2479,15 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1f456272a6e26284394ddf99c73c2611, type: 2}
+    - target: {fileID: 2943072835397522746, guid: cd4acde5eac7e9a44861b145d2630396,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.846
+      objectReference: {fileID: 0}
+    - target: {fileID: 2943072835397522746, guid: cd4acde5eac7e9a44861b145d2630396,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.036
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd4acde5eac7e9a44861b145d2630396, type: 3}

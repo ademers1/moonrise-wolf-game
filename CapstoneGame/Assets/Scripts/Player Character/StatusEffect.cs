@@ -6,11 +6,13 @@ public class StatusEffect : MonoBehaviour
 {
     [SerializeField] int playerStatus;
     PlayerMovement playerMovementScript;
+    PlayerAttacks playerAttackScript;
     StunParticals stunParticalsScript;
     bool tranquilized;
     private void Start()
     {
         playerMovementScript = GetComponent<PlayerMovement>();
+        playerAttackScript = GetComponent<PlayerAttacks>();
         stunParticalsScript = GetComponent<StunParticals>();
     }
     //list of status effects
@@ -102,11 +104,11 @@ public class StatusEffect : MonoBehaviour
     {
         float effectTime = 2f;
         playerMovementScript.canMove = false;
-        playerMovementScript.canAttack = false;
+        playerAttackScript.canAttack = false;
         stunParticalsScript.startEmit(stunParticalsScript.stunParticalLauncher);
         yield return new WaitForSeconds(effectTime);
         playerMovementScript.canMove = true;
-        playerMovementScript.canAttack = true;
+        playerAttackScript.canAttack = true;
         stunParticalsScript.endEmit(stunParticalsScript.stunParticalLauncher);
     }
     IEnumerator Slow()
@@ -132,26 +134,26 @@ public class StatusEffect : MonoBehaviour
     {
         float zapCooldown = 0.3f;
         playerMovementScript.canMove = false;
-        playerMovementScript.canAttack = false;
+        playerAttackScript.canAttack = false;
         stunParticalsScript.startEmit(stunParticalsScript.zapParticalLauncher);
         yield return new WaitForSeconds(zapCooldown);
         playerMovementScript.canMove = true;
-        playerMovementScript.canAttack = true;
+        playerAttackScript.canAttack = true;
         yield return new WaitForSeconds(zapCooldown);
         playerMovementScript.canMove = false;
-        playerMovementScript.canAttack = false;
+        playerAttackScript.canAttack = false;
         stunParticalsScript.startEmit(stunParticalsScript.zapParticalLauncher);
         yield return new WaitForSeconds(zapCooldown);
         playerMovementScript.canMove = true;
-        playerMovementScript.canAttack = true;
+        playerAttackScript.canAttack = true;
         yield return new WaitForSeconds(zapCooldown);
         playerMovementScript.canMove = false;
-        playerMovementScript.canAttack = false;
+        playerAttackScript.canAttack = false;
         stunParticalsScript.startEmit(stunParticalsScript.zapParticalLauncher);
         yield return new WaitForSeconds(zapCooldown);
         stunParticalsScript.endEmit(stunParticalsScript.zapParticalLauncher);
         playerMovementScript.canMove = true;
-        playerMovementScript.canAttack = true;
+        playerAttackScript.canAttack = true;
     }
     IEnumerator Tranquilized()
     {

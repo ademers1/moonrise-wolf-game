@@ -10,7 +10,7 @@ public class WolfLevel : MonoBehaviour
     ExperienceDisplay experienceDisplay;
     public Image AttackUp;
     public Image HealthUp;
-    public PlayerMovement playerMovement;
+    public PlayerAttacks playerAttack;
     public CharacterHealth playerHealth;
     public InventorySystem IS;
     public Player player;
@@ -75,7 +75,7 @@ public class WolfLevel : MonoBehaviour
     public void LevelUpAttack()
     {
         level.LevelUpAttack(experienceDisplay);
-        playerMovement.attackDamage += 1;
+        playerAttack.attackDamage += 1;
     }
 
     public void LevelUpHealth()
