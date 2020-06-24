@@ -24,9 +24,6 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeedMultiplier;
     public float currentSpeedMultiplier;
 
-    
-
-
 
     private float radius;
     private PlayerJumpState state;
@@ -51,8 +48,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-       
-        
+
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         radius = transform.localScale.y * 0.5f;
         canMove = true;
