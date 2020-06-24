@@ -11,6 +11,8 @@ public class PathRenderer : MonoBehaviour
     GameObject closestEnemyGO;
     public WolfSense wolfSenseScript;
     GameObject Player;
+    RaycastHit hit;
+    public LayerMask enemyLayer;
     void Awake()
     {
         line = GetComponent<LineRenderer>(); //get the line renderer
@@ -20,9 +22,13 @@ public class PathRenderer : MonoBehaviour
 
     private void Update()
     {
-        if (wolfSenseScript.ClosestEnemy != null)
+        if (wolfSenseScript.ClosestEnemy != null && Input.GetKeyDown(KeyCode.V))
         {
-            closestEnemyGO = wolfSenseScript.ClosestEnemy;
+            if(Physics.Raycast(Player.transform.position, Player.transform.forward, out hit, enemyLayer))
+
+            {
+                closestEnemyGO = hit.transform.gameObject;
+            }
         }
         getPath();
     }

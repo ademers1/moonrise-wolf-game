@@ -2323,6 +2323,9 @@ MonoBehaviour:
   line: {fileID: 1960853662}
   targetTransform: {fileID: 1220975561}
   wolfSenseScript: {fileID: 470286151}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1001 &1964916156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2467,13 +2470,17 @@ MonoBehaviour:
   attackRange: 0.5
   attackRate: 2
   heavyAttackRate: 10
+  resetTime: 0
+  comboNum: 0
+  reset: 0
+  knockbackStrength: 10
+  knockUpStrength: 10
+  knockbackRadius: 5
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
   canAttack: 0
-  knockbackStrength: 10
-  knockUpStrength: 10
-  knockbackRadius: 5
+  growl: {fileID: 0}
 --- !u!1001 &5170389153529078951
 PrefabInstance:
   m_ObjectHideFlags: 0
