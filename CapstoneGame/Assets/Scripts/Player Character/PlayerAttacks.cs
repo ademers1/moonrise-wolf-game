@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PlayerAttacks : MonoBehaviour
 {
-    //attack variables
+    //Fury variables
     public Image furyBar;
     public float furyTimer;
     public float furyAttackDamage = 20f;
     public float basicAttackFill = 0.15f;
     public float heavyAttackFill = 0.25f;
+
+    //Attack Damage Variables
     public Transform attackPoint;
     public float nextTailWhipTime;
     public float attackDamage = 10f;
@@ -17,23 +19,30 @@ public class PlayerAttacks : MonoBehaviour
     public float attackRange = 0.5f;
     public float attackRate = 2f;
     public float heavyAttackRate = 10f;
+
+    // Timers
     float nextAttackTime = 0f;
     float nextHeavyAttackTimer;
     float nextHeavyAttack;
-    public LayerMask enemyLayers;
-    public bool canAttack;
+    public float resetTime;
+    public int comboNum;
+    public float reset;
+
+    //Knockbacks
     [SerializeField] private float knockbackStrength;
     [SerializeField] private float knockUpStrength;
     [SerializeField] private float knockbackRadius;
+
+    //Misc
     private float radius;
-
     Animator anim;
-
+    public LayerMask enemyLayers;
+    public bool canAttack;
     private PlayerJumpState state;
     private PlayerAnimationState animState;
 
-    string wolfGrowl = "WolfAttack";
-    
+    AudioSource wolfAudio;
+    public AudioClip growl;
     enum PlayerJumpState
     {
         isGrounded, isAirborn
@@ -54,57 +63,80 @@ public class PlayerAttacks : MonoBehaviour
         if (animState == PlayerAnimationState.isIdle || animState == PlayerAnimationState.isMoving)
         {
             if (Time.time >= nextAttackTime)
-        {
-            if (Input.GetButtonDown("Fire1"))
             {
-                Attack();
-                nextAttackTime = Time.time + 1f / attackRate;
-                GameManager.Instance.PlaySound(wolfGrowl);
-                //animState = PlayerAnimationState.isAttacking;
-                anim.SetTrigger("isAttacking");
-            }
-        }
-
-        if (Time.time > nextHeavyAttack)
-        {
-            if (Input.GetKey(KeyCode.Mouse1))
-            {
-                nextHeavyAttackTimer += Time.deltaTime;
-                //animState = PlayerAnimationState.isAttacking;
-                anim.SetTrigger("isAttacking");
-            }
-            if (Input.GetKeyUp(KeyCode.Mouse1) && nextHeavyAttackTimer > 3)
-            {
-                HeavyAttack();
-                GameManager.Instance.PlaySound(wolfGrowl);
-                //animState = PlayerAnimationState.isAttacking;
-                anim.SetTrigger("isAttacking");
-            }
-        }
-
-
-        if (Time.time >= nextTailWhipTime)
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                KnockBack();
-            }
-        }
-    }
-       
-            if (furyBar.fillAmount >= 1)
-            {
-                if (Input.GetKeyDown(KeyCode.Z))
+                if (Input.GetButtonDown("Fire1") && comboNum < 3)
                 {
-                    furyTimer += Time.deltaTime;
-                    FuryMode();
-                   
-                 if(Time.time >= furyTimer)
-                 {
-                     DefaultMode();
-}
+                    Attack();
+                    nextAttackTime = Time.time + 1f / attackRate;
+                    //  wolfAudio.PlayOneShot(growl);
+                    //animState = PlayerAnimationState.isAttacking;
+                    anim.SetTrigger("isAttacking");
+                    comboNum++;
+                    reset = 0f;
+                }
+
+            }
+            if (Time.time > nextHeavyAttack)
+            {
+                if (Input.GetKey(KeyCode.Mouse1))
+                {
+                    nextHeavyAttackTimer += Time.deltaTime;
+                    //animState = PlayerAnimationState.isAttacking;
+                    anim.SetTrigger("isAttacking");
+                }
+                if (Input.GetKeyUp(KeyCode.Mouse1) && nextHeavyAttackTimer > 3)
+                {
+                    HeavyAttack();
+                    wolfAudio.PlayOneShot(growl);
+                    //animState = PlayerAnimationState.isAttacking;
+                    anim.SetTrigger("isAttacking");
                 }
             }
+
+
+            if (Time.time >= nextTailWhipTime)
+            {
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    KnockBack();
+                }
+            }
+        }
+
+        if (furyBar.fillAmount >= 1)
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                furyTimer += Time.deltaTime;
+                FuryMode();
+
+                if (Time.time >= furyTimer)
+                {
+                    DefaultMode();
+                }
+            }
+        }
+
+
+        if (comboNum > 0)
+        {
+            reset += Time.deltaTime;
+            if (reset > resetTime)
+            {
+                comboNum = 0;
+            }
+        }
+        if (comboNum >= 3)
+        {
+            HeavyAttack();
+            resetTime = 3f;
+            comboNum = 0;
+        }
+        else
+        {
+            resetTime = 1f;
+        }
+
     }
 
     //attacks
