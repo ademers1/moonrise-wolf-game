@@ -29,9 +29,6 @@ public class PlayerMovement : MonoBehaviour
     private PlayerJumpState state;
     private PlayerAnimationState animState;
 
-  /*AudioSource wolfAudio;
-    public AudioClip growl;*/
-
 
     [SerializeField] public LayerMask groundLayer;
 
@@ -55,8 +52,6 @@ public class PlayerMovement : MonoBehaviour
         canMove = true;
         moveSpeedMultiplier = 1;
         currentSpeedMultiplier = moveSpeedMultiplier;      
-
-        //wolfAudio = GetComponent<AudioSource>();
     }
 
     void Update()

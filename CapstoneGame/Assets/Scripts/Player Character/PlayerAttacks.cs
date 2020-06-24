@@ -32,8 +32,8 @@ public class PlayerAttacks : MonoBehaviour
     private PlayerJumpState state;
     private PlayerAnimationState animState;
 
-    AudioSource wolfAudio;
-    public AudioClip growl;
+    string wolfGrowl = "WolfAttack";
+    
     enum PlayerJumpState
     {
         isGrounded, isAirborn
@@ -59,7 +59,7 @@ public class PlayerAttacks : MonoBehaviour
             {
                 Attack();
                 nextAttackTime = Time.time + 1f / attackRate;
-              //  wolfAudio.PlayOneShot(growl);
+                GameManager.Instance.PlaySound(wolfGrowl);
                 //animState = PlayerAnimationState.isAttacking;
                 anim.SetTrigger("isAttacking");
             }
@@ -76,7 +76,7 @@ public class PlayerAttacks : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.Mouse1) && nextHeavyAttackTimer > 3)
             {
                 HeavyAttack();
-                wolfAudio.PlayOneShot(growl);
+                GameManager.Instance.PlaySound(wolfGrowl);
                 //animState = PlayerAnimationState.isAttacking;
                 anim.SetTrigger("isAttacking");
             }
