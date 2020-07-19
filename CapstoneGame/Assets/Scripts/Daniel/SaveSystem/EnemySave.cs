@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSave : MonoBehaviour
+public class EnemySave : MonoBehaviour
 {
-    CharacterHealth player;
+    EnemyHealth enemy;
     private void Start()
     {
-        player = this.gameObject.GetComponent<CharacterHealth>();
+        enemy = this.gameObject.GetComponent<EnemyHealth>();
     }
     void Update()
     {
+
         //Call the Save System's Save Player function when you press 1. Pass it the current Player script component.
         if (Input.GetKeyDown(KeyCode.F5))
         {
@@ -21,24 +22,18 @@ public class PlayerSave : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.F6))
         {
             //Load player returns type PlayerData
-            PlayerData data = SaveSystem.LoadPlayer();
-
+            EnemyData data = EnemySaveSystem.LoadEnemy();
             if (data != null)
             {
-                player.health = data.playerHealth;
-                transform.position = new Vector3(data.playerPosition[0], data.playerPosition[1], data.playerPosition[2]);
+                enemy.health = data.enemyHealth;
+                transform.position = new Vector3(data.enemyPosition[0], data.enemyPosition[1], data.enemyPosition[2]);
             }
         }
     }
     public void Save()
     {
-        SaveSystem.SavePlayer(player);
+        EnemySaveSystem.SaveEnemy(enemy);
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "CheckPoint")
-        {
-            Save();
-        }
-    }
+    
+    
 }

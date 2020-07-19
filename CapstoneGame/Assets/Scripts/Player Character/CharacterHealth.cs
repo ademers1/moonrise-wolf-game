@@ -29,6 +29,8 @@ public class CharacterHealth : MonoBehaviour
         {
             health = startHealth;
         }
+     //updates health bar every frame
+        healthBar.fillAmount = health / startHealth;
     }
 
     public void TakeDamage(float amount)
