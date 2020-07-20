@@ -7,7 +7,7 @@ enum AnimState
 {
     isIdle, isMoving, isAttacking, isJumping, isSneaking, isDashing, isHowling, isTailwhiping
 }
-public class PlayerController : MonoBehaviour
+public class PlayerController : Killable
 {
 
     public Transform cam;
@@ -66,6 +66,11 @@ public class PlayerController : MonoBehaviour
     private bool heavyAttackOnCooldown;
     private bool attackOnCooldown;
 
+    //health
+    Image healthBar;
+    public Image healthbar;
+    float healthBarWidth = 150;
+    float newWidth;
 
     Vector3 moveDir = new Vector3(0,0,1);
 
@@ -79,6 +84,8 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         enemies = LayerMask.GetMask("Enemies");
         furyBar.fillAmount = 0;
+
+        Health = 100;
     }
 
     // Update is called once per frame
@@ -307,6 +314,25 @@ public class PlayerController : MonoBehaviour
         foreach (Collider enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyHealth>().TakeDamage(heavyAttackDamage);
+        }
+    }
+
+
+    //dealt damage
+    public override int Health
+    {
+        get
+        {
+            return base.Health;
+        }
+        set
+        {
+            //when health is changed we need to update our health bar we get the ratio of the current health to max health 
+            //and we set the original width of the green bar to that ratio
+            base.Health = value;
+            float ratio = (float)Health / (float)MaxHealth;
+            newWidth = healthBarWidth * ratio;
+            healthbar.GetComponent<RectTransform>().sizeDelta = new Vector2(newWidth, healthbar.GetComponent<RectTransform>().sizeDelta.y);
         }
     }
 

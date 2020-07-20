@@ -58,6 +58,17 @@ public class GameManager : Singleton<GameManager>
         audioManager.StopMusic(musicName);
     }
 
+    public void EnemyKilled()
+    {
+
+    }
+
+    public void Died()
+    {
+        GameManager.Instance.Camera.ShowMouse();
+        SceneManager.LoadScene("Loss");
+    }
+
     public void PlayGameMusic()
     {
         if(SceneManager.GetSceneByName("Alex's Level") == SceneManager.GetActiveScene() && _musicState != MusicState.Ambience)
