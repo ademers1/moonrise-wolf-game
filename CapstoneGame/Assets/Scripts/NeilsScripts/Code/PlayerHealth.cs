@@ -33,9 +33,9 @@ public class PlayerHealth : Killable
         }
     }
 
-    public void Damage(int amount)
+    public void Damage(float amount)
     {
-        Health -= amount;
+        Health -= (int)amount;
 
         slider.value = (float)Health / (float)MaxHealth;
     }

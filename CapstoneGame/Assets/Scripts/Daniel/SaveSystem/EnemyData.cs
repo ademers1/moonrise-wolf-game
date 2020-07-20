@@ -7,13 +7,13 @@ using UnityEngine;
 public class EnemyData
 {
     public float[] enemyPosition;
-    public float enemyHealth;
+    public int enemyHealth;
 
     //Constructor to create the default player data class
     public EnemyData(EnemyHealth enemy)
     {
         //get player health
-        enemyHealth = enemy.health;
+        enemyHealth = enemy.Health;
         //get player position
         enemyPosition = new float[3];
         enemyPosition[0] = enemy.transform.position.x;

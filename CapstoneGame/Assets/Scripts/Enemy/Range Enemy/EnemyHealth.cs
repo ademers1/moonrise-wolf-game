@@ -2,40 +2,26 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : Killable
 {
-    public float health;
-    public float startHealth;
     public Image healthBar;
-
     string enemyHit = "EnemyHit";
 
     void Start()
     {
-
-        health = startHealth;
-        
-}
+        Health = 100;       
+    }
 
     void Update()
     {
-        if (health <= 0)
-        {
-            Die();
-        }
         //updates health bar every frame
-        healthBar.fillAmount = health / startHealth;
+        healthBar.fillAmount = Health / MaxHealth;
     }
 
     public void TakeDamage(float amount)
     {
-        health -= amount;
-        healthBar.fillAmount = health / startHealth;
+        Health -= (int)amount;
+        healthBar.fillAmount = Health / MaxHealth;
         GameManager.Instance.PlaySound(enemyHit);
-    }
-
-    public void Die()
-    {
-        Destroy(gameObject);
     }
 }

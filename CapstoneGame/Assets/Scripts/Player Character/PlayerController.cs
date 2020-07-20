@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
 
 enum AnimState
 {
     isIdle, isMoving, isAttacking, isJumping, isSneaking, isDashing, isHowling, isTailwhiping
 }
-public class PlayerController : Killable
+public class PlayerController : MonoBehaviour
 {
 
     public Transform cam;
+    CharacterController controller;
 
     public float speed = 6f;
 
+    public float rotationSpeed = 10f;
+
     public float turnSmoothTime = 0.2f;
-    float turnSmoothVelocity;
+    //float turnSmoothVelocity;
 
     Rigidbody rb;
     Animator anim;
@@ -53,6 +57,9 @@ public class PlayerController : Killable
     public float tailWhipCooldownAmount = 10.0f;
     public float tailWhipTimer = 0.0f;
     public float tailWhipRadius = 10.0f;
+    private bool tailWhipOnCooldown;
+    public float knockBackStrength = 10f;
+    public float knockUpStrength = 5f;
 
     //attack variables
     public Transform attackPoint;
@@ -78,16 +85,27 @@ public class PlayerController : Killable
         anim = GetComponent<Animator>();
         enemies = LayerMask.GetMask("Enemies");
         furyBar.fillAmount = 0;
-
-        Health = 100;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        
+        //controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
 
     private void Update()
     {
+        if (_animState == AnimState.isIdle || _animState == AnimState.isMoving)
+        {
+            if (Input.GetAxis("Mouse X") < 0)
+
+                transform.Rotate(Vector3.up * rotationSpeed);
+            if (Input.GetAxis("Mouse X") > 0)
+                transform.Rotate(Vector3.up * -rotationSpeed);
+        }
+
         //recharge dashes if we don't currently have 3
-        if(dashesRemaining < 3)
+        if (dashesRemaining < 3)
         {
             dashTimer += Time.deltaTime;
             if(dashTimer > dashChargeTime)
@@ -169,11 +187,11 @@ public class PlayerController : Killable
         //howl
         if(_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking)
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Q) && !howlOnCooldown)
             {
                 //grab all the enemies in howl radius and loop through setting them to stunned
                 _animState = AnimState.isIdle;
-                Collider[] colliders = Physics.OverlapSphere(transform.position, howlRadius, enemies);
+                Collider[] colliders = Physics.OverlapSphere(transform.position, tailWhipRadius, enemies);
                 howlOnCooldown = true;
                 
                 foreach (Collider enemy in colliders)
@@ -194,6 +212,45 @@ public class PlayerController : Killable
                 howlTimer = 0f;
             }
         }
+
+        //tailwhip
+        if(_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking)
+        {
+            if (Input.GetKeyDown(KeyCode.R) && !tailWhipOnCooldown)
+            {
+                _animState = AnimState.isIdle;
+                Collider[] colliders = Physics.OverlapSphere(transform.position, howlRadius, enemies);
+                tailWhipOnCooldown = true;
+
+                foreach(Collider enemy in colliders)
+                {
+                    enemy.GetComponent<Rigidbody>().isKinematic = false;
+                    
+                }
+                Knockback(colliders);
+            }
+        }
+
+        if (tailWhipOnCooldown)
+        {
+            tailWhipTimer += Time.deltaTime;
+            if(tailWhipTimer > 2f)
+            {
+                GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
+                foreach(GameObject enemy in enemys)
+                {
+                    if (!enemy.GetComponent<Rigidbody>().isKinematic)
+                    {
+                        enemy.GetComponent<Rigidbody>().isKinematic = true;
+                    }
+                }
+            }
+            if(tailWhipTimer >= tailWhipCooldownAmount)
+            {
+                tailWhipTimer = 0;
+                tailWhipOnCooldown = false;
+            }
+        }
     }
     void FixedUpdate()
     {
@@ -201,20 +258,20 @@ public class PlayerController : Killable
         if (_animState == AnimState.isIdle || _animState == AnimState.isMoving)
         {
             
-            float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
-            Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+            Vector3 direction = new Vector3(0f, 0f, vertical).normalized;
             t = 0;
             if (direction.magnitude >= 0.1f)
             {
                 _animState = AnimState.isMoving;
                 //get the angle we move and change the camera to match that angle
-                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                
+                //float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                //transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
 
                 //here we get movedir which is the direction the camera is facing so we're always moving forward
-                moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                moveDir = vertical * transform.forward;
                 rb.velocity = moveDir.normalized * speed;
             }
 
@@ -238,7 +295,7 @@ public class PlayerController : Killable
                     //or forward/back is held down
                     //then we want to dash straight ahead
                     horizontal = 0;
-                    dashDirection = moveDir;
+                    dashDirection = transform.forward;
                     Debug.Log(dashDirection);
                     rb.AddForce(dashDirection * dashForce, ForceMode.Impulse);
                 }
@@ -311,23 +368,11 @@ public class PlayerController : Killable
         }
     }
 
-
-    //dealt damage
-    public override int Health
+    private void Knockback(Collider[] colliders)
     {
-        get
+        foreach (Collider enemy in colliders)
         {
-            return base.Health;
-        }
-        set
-        {
-            //when health is changed we need to update our health bar we get the ratio of the current health to max health 
-            //and we set the original width of the green bar to that ratio
-            base.Health = value;
-            float ratio = (float)Health / (float)MaxHealth;
-            //newWidth = healthBarWidth * ratio;
-            //healthbar.GetComponent<RectTransform>().sizeDelta = new Vector2(newWidth, healthbar.GetComponent<RectTransform>().sizeDelta.y);
+            enemy.GetComponent<Rigidbody>().AddExplosionForce(knockBackStrength, transform.position, tailWhipRadius, knockUpStrength, ForceMode.Impulse);
         }
     }
-
 }

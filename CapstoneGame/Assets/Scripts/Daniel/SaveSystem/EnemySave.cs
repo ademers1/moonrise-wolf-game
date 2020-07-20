@@ -25,7 +25,7 @@ public class EnemySave : MonoBehaviour
             EnemyData data = EnemySaveSystem.LoadEnemy();
             if (data != null)
             {
-                enemy.health = data.enemyHealth;
+                enemy.Health = data.enemyHealth;
                 transform.position = new Vector3(data.enemyPosition[0], data.enemyPosition[1], data.enemyPosition[2]);
             }
         }
