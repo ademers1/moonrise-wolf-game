@@ -7,6 +7,8 @@ using UnityEngine;
 public class PlayerData
 {
     public float[] playerPosition;
+    public float[] playerRotation;
+    public float[] playerScale;
     public float playerHealth;
 
     //Constructor to create the default player data class
@@ -19,5 +21,16 @@ public class PlayerData
         playerPosition[0] = player.transform.position.x;
         playerPosition[1] = player.transform.position.y;
         playerPosition[2] = player.transform.position.z;
+        //get player rotation
+        playerRotation = new float[4];
+        playerRotation[0] = player.transform.rotation.x;
+        playerRotation[1] = player.transform.rotation.y;
+        playerRotation[2] = player.transform.rotation.z;
+        playerRotation[3] = player.transform.rotation.w;
+        //get player scale
+        playerScale = new float[3];
+        playerScale[0] = player.transform.localScale.x;
+        playerScale[1] = player.transform.localScale.y;
+        playerScale[2] = player.transform.localScale.z;
     }
 }
