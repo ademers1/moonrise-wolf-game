@@ -60,7 +60,6 @@ public class GameManager : Singleton<GameManager>
 
     public void PlayGameMusic()
     {
-        Debug.Log(SceneManager.GetActiveScene());
         if(SceneManager.GetSceneByName("Alex's Level") == SceneManager.GetActiveScene() && _musicState != MusicState.Ambience)
         {
             PlayMusic(ambienceAudioClip);

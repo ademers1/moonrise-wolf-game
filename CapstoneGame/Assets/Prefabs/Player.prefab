@@ -1501,7 +1501,6 @@ GameObject:
   - component: {fileID: 2943072836633738526}
   - component: {fileID: 2943072836633738527}
   - component: {fileID: 2943072836633738524}
-  - component: {fileID: 2943072836633738521}
   m_Layer: 0
   m_Name: ThirdPersonCamera
   m_TagString: MainCamera
@@ -1574,22 +1573,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2943072836633738525}
   m_Enabled: 1
---- !u!114 &2943072836633738521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2943072836633738525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbc9d7e47bb4f9a45880254d5c0ff03b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RotationSpeed: 1
-  Target: {fileID: 2943072835066915183}
-  Player: {fileID: 7903062979288840867}
-  showMouse: 0
 --- !u!1 &3080148203219879902
 GameObject:
   m_ObjectHideFlags: 0
@@ -3069,26 +3052,6 @@ MonoBehaviour:
   ButtonCount: 0
   moveSpeedMultiplier: 0
   currentSpeedMultiplier: 0
-  furyBar: {fileID: 0}
-  furyTimer: 15
-  furyAttackDamage: 20
-  basicAttackFill: 0.25
-  heavyAttackFill: 0.4
-  attackPoint: {fileID: 2943072835397522746}
-  nextTailWhipTime: 1
-  attackDamage: 10
-  heavyAttackDamge: 25
-  attackRange: 0.65
-  attackRate: 2
-  heavyAttackRate: 10
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 512
-  canAttack: 0
-  knockbackStrength: 10
-  knockUpStrength: 0
-  knockbackRadius: 4
-  growl: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -3107,7 +3070,7 @@ MonoBehaviour:
   health: 0
   startHealth: 25
   healthBar: {fileID: 0}
-  whine: {fileID: 0}
+  whineSound: WolfHurt
 --- !u!114 &2943072835866280465
 MonoBehaviour:
   m_ObjectHideFlags: 0
