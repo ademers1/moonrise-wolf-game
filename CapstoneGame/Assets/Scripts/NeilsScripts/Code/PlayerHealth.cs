@@ -4,39 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : Killable
 {
-    public int maxHealth;
-    public int health;
-    public float immune;
-    public Slider slider;
-    public Material primaryMat;
-    public Material flashMat;
-
     
-    public float flashLength;
-    private float flashTimeRemaining;
-    private bool flashActive;
-    [SerializeField]
-    
-
-
-    public SkinnedMeshRenderer meshRenderer;
-    Color originalColor;
-    
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        health = maxHealth;
-        //modelRender1 = GetComponent<MeshFilter>();
-        //originalColor = meshRenderer.material.color;
-    }
-
-    public bool IsAlive()
-    {
-        return health > 0;
-    }
 
     public void EndGame()
     {
@@ -49,7 +19,10 @@ public class PlayerHealth : MonoBehaviour
         StartCoroutine(FlashRoutine());
     }
 
-    
+    private void Start()
+    {
+        MaxHealth = 100;
+    }
 
     // Update is called once per frame
     void Update()
@@ -62,23 +35,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void Damage(int amount)
     {
-        if(flashTimeRemaining > 0)
-        {
-            return;
-        }
-        
-        if ((health -= amount) <= 0)
-        {
-            
-            SceneManager.LoadScene(2);
-        }
-        else
-        {
-            Flash();
+        Health -= amount;
 
-        }
-
-        slider.value = (float)health / maxHealth;
+        slider.value = (float)Health / (float)MaxHealth;
     }
 
     void Respawn()
@@ -106,8 +65,6 @@ public class PlayerHealth : MonoBehaviour
         }
         flashActive = false;
         meshRenderer.material = primaryMat;
-
     }
-
     
 }

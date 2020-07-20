@@ -36,7 +36,7 @@ namespace Assets.Code.FSM.MyStates
             {
                 PlayerHealth health = npc.target.GetComponent<PlayerHealth>();
                 health.Damage(attackDamage);
-                if(health.IsAlive())
+                if(health.isAlive)
                 {
                     fsm.EnterState(FSMStateType.RETREAT);
                     //anim.SetBool("isAttacking", false);

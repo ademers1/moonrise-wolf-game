@@ -66,12 +66,6 @@ public class PlayerController : Killable
     private bool heavyAttackOnCooldown;
     private bool attackOnCooldown;
 
-    //health
-    Image healthBar;
-    public Image healthbar;
-    float healthBarWidth = 150;
-    float newWidth;
-
     Vector3 moveDir = new Vector3(0,0,1);
 
     private AnimState _animState = AnimState.isIdle;
@@ -331,8 +325,8 @@ public class PlayerController : Killable
             //and we set the original width of the green bar to that ratio
             base.Health = value;
             float ratio = (float)Health / (float)MaxHealth;
-            newWidth = healthBarWidth * ratio;
-            healthbar.GetComponent<RectTransform>().sizeDelta = new Vector2(newWidth, healthbar.GetComponent<RectTransform>().sizeDelta.y);
+            //newWidth = healthBarWidth * ratio;
+            //healthbar.GetComponent<RectTransform>().sizeDelta = new Vector2(newWidth, healthbar.GetComponent<RectTransform>().sizeDelta.y);
         }
     }
 
