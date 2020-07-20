@@ -2,21 +2,21 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public static class SaveSystem
+public static class EnemySaveSystem
 {
-    public static void SavePlayer(CharacterHealth player)
+    public static void SaveEnemy(EnemyHealth enemy)
     {
         //Create Binary Formatter to write to a file
         BinaryFormatter formatter = new BinaryFormatter();
 
         //Path to our file creation - Unity chooses the filepath based on operating system
-        string path = Application.persistentDataPath + "/playerdata.io";
+        string path = Application.persistentDataPath + "/enemydata.io";
 
         //Creating our stream to save the file
         FileStream stream = new FileStream(path, FileMode.Create);
 
         //PlayerData is now being created
-        PlayerData data = new PlayerData(player);
+        EnemyData data = new EnemyData(enemy);
 
         //Serializing the PlayerData
         formatter.Serialize(stream, data);
@@ -25,10 +25,10 @@ public static class SaveSystem
         stream.Close();
     }
 
-    public static PlayerData LoadPlayer()
+    public static EnemyData LoadEnemy()
     {
         //Path to our file - Unity chooses the filepath based on operating system
-        string path = Application.persistentDataPath + "/playerdata.io";
+        string path = Application.persistentDataPath + "/enemydata.io";
 
         //Check to make sure if the file exists
         if (File.Exists(path))
@@ -40,7 +40,7 @@ public static class SaveSystem
             FileStream stream = new FileStream(path, FileMode.Open);
 
             //Deserializing our data - Deserialize function ouputs an object so we have to cast the object to our PlayerData class
-            PlayerData data = formatter.Deserialize(stream) as PlayerData;
+            EnemyData data = formatter.Deserialize(stream) as EnemyData;
 
             //Closing the stream - VERY IMPORTANT STEP
             stream.Close();

@@ -17,6 +17,7 @@ TagManager:
   - tranquilized
   - zapped
   - ThirdPersonCamera
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
