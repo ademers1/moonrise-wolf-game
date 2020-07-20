@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 enum AnimState
 {
@@ -21,13 +21,13 @@ public class PlayerController : MonoBehaviour
     Animator anim;
 
     //movement values
-    float currentSpeed;
+    private float currentSpeed;
     public float walkSpeed = 6f;
     public float runSpeed = 10f;
     public float stalkSpeed = 2.5f;
     public float jumpForce = 100.0f;
     public float dashForce = 1000f;
-    float t = 0;
+    private float t = 0;//this variable will be discontinued with animation events
 
     private int dashesRemaining = 3;
     public float dashChargeTime = 3.0f;
@@ -39,6 +39,34 @@ public class PlayerController : MonoBehaviour
     private bool howlOnCooldown;
     private LayerMask enemies;
 
+
+
+    //**ATTACK**//
+
+    //fury
+    public Image furyBar;
+    private float furyTimer;
+    private float furyDamageModifier = 2.0f;
+    private float fillAmount = 0.4f;
+
+    //tail whip variables
+    public float tailWhipCooldownAmount = 10.0f;
+    public float tailWhipTimer = 0.0f;
+    public float tailWhipRadius = 10.0f;
+
+    //attack variables
+    public Transform attackPoint;
+    public float attackDamage = 10f;
+    public float heavyAttackDamage = 25f;
+    public float attackRange = 0.5f;
+    public float attackCooldown = 2.0f;
+    public float heavyAttackCooldown = 10.0f;
+    private float attackTimer = 0f;
+    private float heavyAttackTimer = 0f;
+    private bool heavyAttackOnCooldown;
+    private bool attackOnCooldown;
+
+
     Vector3 moveDir = new Vector3(0,0,1);
 
     private AnimState _animState = AnimState.isIdle;
@@ -49,7 +77,8 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-        enemies = LayerMask.GetMask("Enemy");
+        enemies = LayerMask.GetMask("Enemies");
+        furyBar.fillAmount = 0;
     }
 
     // Update is called once per frame
@@ -78,6 +107,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        //if jumping check if we hit ground to go back to idle
         if(_animState == AnimState.isJumping)
         {
             if (isGrounded())
@@ -86,11 +116,62 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        //attacks
         if(_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking)
         {
-            if (Input.GetKey("Fire2"))
+            if (Input.GetButtonDown("Fire1") && !attackOnCooldown)
             {
-                _animState = AnimState.isHowling;
+                _animState = AnimState.isAttacking;
+                anim.SetTrigger("isAttacking");
+                attackOnCooldown = true;
+                Attack();
+            }
+
+            if (Input.GetButtonDown("Fire2") && !heavyAttackOnCooldown)
+            {
+                _animState = AnimState.isAttacking;
+                anim.SetTrigger("isAttacking");
+                heavyAttackOnCooldown = true;
+                HeavyAttack();
+            }
+        }
+
+        //set cooldown of attack and heavy attack
+        if (attackOnCooldown)
+        {
+            attackTimer += Time.deltaTime;
+            if(attackTimer >= 0.5f)
+            {
+                _animState = AnimState.isIdle;
+            }
+            if(attackTimer >= attackCooldown)
+            {
+                attackTimer = 0;
+                attackOnCooldown = false;
+            }
+        }
+
+        if (heavyAttackOnCooldown)
+        {
+            heavyAttackTimer += Time.deltaTime;
+            if (heavyAttackTimer >= 0.5f)
+            {
+                _animState = AnimState.isIdle;
+            }
+            if (heavyAttackTimer >= heavyAttackCooldown)
+            {
+                heavyAttackTimer = 0;
+                heavyAttackOnCooldown = false;
+            }
+        }
+
+        //howl
+        if(_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking)
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                //grab all the enemies in howl radius and loop through setting them to stunned
+                _animState = AnimState.isIdle;
                 Collider[] colliders = Physics.OverlapSphere(transform.position, howlRadius, enemies);
                 howlOnCooldown = true;
                 
@@ -143,7 +224,7 @@ public class PlayerController : MonoBehaviour
         if(_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking && dashesRemaining > 0)
         {
             //left ctrl or left mouse button
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetKeyDown(KeyCode.Z))
             {
                 dashesRemaining--;
                 _animState = AnimState.isDashing;
@@ -179,6 +260,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        //jump logic
         if(_animState == AnimState.isMoving && isGrounded())
         {
             if (Input.GetButtonDown("Jump"))
@@ -191,7 +273,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-
+    //basic ground check by raycast
     private bool isGrounded()
     {
         RaycastHit ray;
@@ -202,4 +284,30 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
+
+    //basic attack
+    public void Attack()
+    {
+        
+        // Dectect Range of Enemy
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemies);
+        // Damage the Enemy 
+        //TODO: make this only target one enemy
+        foreach (Collider enemy in hitEnemies)
+        {
+            Debug.Log("tets");
+            enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
+        }
+    }
+
+    public void HeavyAttack()
+    {
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemies);
+        // Damage the Enemy
+        foreach (Collider enemy in hitEnemies)
+        {
+            enemy.GetComponent<EnemyHealth>().TakeDamage(heavyAttackDamage);
+        }
+    }
+
 }

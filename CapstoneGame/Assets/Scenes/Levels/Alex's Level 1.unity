@@ -3334,7 +3334,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089401833}
-  m_LocalRotation: {x: 0.12451125, y: -0.000000012804362, z: 0.0000000016067907, w: 0.9922182}
+  m_LocalRotation: {x: 0.12451125, y: 0.000000012804364, z: -0.0000000016067909, w: 0.9922182}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3354,41 +3354,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7327055069288595655}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4492593462276245624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4492593462276245623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f060cd3857586a341be27721e2c4c58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  furyBar: {fileID: 1302971281}
-  furyTimer: 0
-  furyAttackDamage: 20
-  basicAttackFill: 0.15
-  heavyAttackFill: 0.25
-  attackPoint: {fileID: 2029234369}
-  nextTailWhipTime: 0
-  attackDamage: 10
-  heavyAttackDamge: 25
-  attackRange: 0.5
-  attackRate: 2
-  heavyAttackRate: 10
-  resetTime: 0
-  comboNum: 0
-  reset: 0
-  knockbackStrength: 10
-  knockUpStrength: 10
-  knockbackRadius: 5
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 512
-  canAttack: 0
-  growl: {fileID: 0}
 --- !u!114 &4492593462276245627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3414,6 +3379,16 @@ MonoBehaviour:
   howlCooldownAmount: 5
   howlTimer: 0
   howlRadius: 10
+  furyBar: {fileID: 1302971281}
+  tailWhipCooldownAmount: 10
+  tailWhipTimer: 0
+  tailWhipRadius: 10
+  attackPoint: {fileID: 2029234369}
+  attackDamage: 10
+  heavyAttackDamage: 25
+  attackRange: 0.5
+  attackCooldown: 2
+  heavyAttackCooldown: 10
 --- !u!1001 &5170389153529078951
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3593,12 +3568,12 @@ PrefabInstance:
     - target: {fileID: 2943072836633738526, guid: cd4acde5eac7e9a44861b145d2630396,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.25887144
+      value: 0.2588715
       objectReference: {fileID: 0}
     - target: {fileID: 2943072836633738526, guid: cd4acde5eac7e9a44861b145d2630396,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0324852
+      value: -0.032485206
       objectReference: {fileID: 0}
     - target: {fileID: 2943072836633738526, guid: cd4acde5eac7e9a44861b145d2630396,
         type: 3}
@@ -3662,4 +3637,5 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2943072835866280490, guid: cd4acde5eac7e9a44861b145d2630396, type: 3}
+    - {fileID: 2943072835866280465, guid: cd4acde5eac7e9a44861b145d2630396, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cd4acde5eac7e9a44861b145d2630396, type: 3}
