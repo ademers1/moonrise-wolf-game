@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 8188281326229080601}
   - component: {fileID: 8188281326229080605}
   - component: {fileID: 8188281326229080582}
+  - component: {fileID: 2876469765197761252}
   - component: {fileID: 8285155985148631005}
   - component: {fileID: 1948254336509348961}
   m_Layer: 9
@@ -230,11 +231,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c669d5bb78f0daf4387318a1e6e34cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  startHealth: 30
+  flashLength: 0
+  meshRenderer: {fileID: 0}
+  slider: {fileID: 0}
+  primaryMat: {fileID: 0}
+  flashMat: {fileID: 0}
   healthBar: {fileID: 8188281327373339758}
-  Wall: {fileID: 0}
-  hunterHurt: {fileID: 0}
+--- !u!114 &2876469765197761252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8188281326229080583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c56753087b3fb4889b30436842e3e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!195 &8285155985148631005
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -273,6 +287,7 @@ MonoBehaviour:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 2100000, guid: 2388f97562f20e04c90883ad438b2dcb, type: 2}
   rend: {fileID: 0}
+  beingSensed: 0
 --- !u!1 &8188281326690897901
 GameObject:
   m_ObjectHideFlags: 0

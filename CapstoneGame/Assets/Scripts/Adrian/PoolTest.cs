@@ -17,5 +17,11 @@ public class PoolTest : MonoBehaviour
         {
             PoolManager.instance.ReuseObject(prefab, Vector3.zero, Quaternion.identity);
         }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PoolManager.instance.AddToPool(prefab);
+        }
     }
+
+    
 }

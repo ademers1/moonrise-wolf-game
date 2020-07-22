@@ -5,7 +5,7 @@ using UnityEngine;
 public class PoolManager : MonoBehaviour
 {
     Dictionary<int, Queue<ObjectInstance>> poolDictionary = new Dictionary<int, Queue<ObjectInstance>>();
-
+    GameObject poolHolder;
     static PoolManager _instance;
     public static PoolManager instance
     {
@@ -22,7 +22,7 @@ public class PoolManager : MonoBehaviour
   public void CreatePool(GameObject prefab, int poolSize)
     {
         int poolKey = prefab.GetInstanceID();
-        GameObject poolHolder = new GameObject(prefab.name + " Pool");
+        poolHolder = new GameObject(prefab.name + " Pool");
         poolHolder.transform.parent = transform;
         if(!poolDictionary.ContainsKey(poolKey))
         {
@@ -34,6 +34,14 @@ public class PoolManager : MonoBehaviour
                 newObject.SetParent(poolHolder.transform);
             }
         }
+    }
+
+    public void AddToPool(GameObject prefab)
+    {
+        int poolKey = prefab.GetInstanceID();
+        ObjectInstance newObject = new ObjectInstance(Instantiate(prefab) as GameObject);
+        poolDictionary[poolKey].Enqueue(newObject);
+        newObject.SetParent(poolHolder.transform);
     }
 
     public void ReuseObject(GameObject prefab, Vector3 position, Quaternion rotation)
