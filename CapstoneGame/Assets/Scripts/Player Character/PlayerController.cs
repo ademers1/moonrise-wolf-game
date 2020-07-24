@@ -7,7 +7,7 @@ enum AnimState
 {
     isIdle, isMoving, isAttacking, isJumping, isSneaking, isDashing, isHowling, isTailwhiping
 }
-public class PlayerController : Killable
+public class PlayerController : MonoBehaviour
 {
 
     public Transform cam;
@@ -79,7 +79,7 @@ public class PlayerController : Killable
         enemies = LayerMask.GetMask("Enemies");
         furyBar.fillAmount = 0;
 
-        Health = 100;
+        //Health = 100;
     }
 
     // Update is called once per frame
@@ -313,7 +313,7 @@ public class PlayerController : Killable
 
 
     //dealt damage
-    public override int Health
+    /*public override int Health
     {
         get
         {
@@ -328,6 +328,6 @@ public class PlayerController : Killable
             //newWidth = healthBarWidth * ratio;
             //healthbar.GetComponent<RectTransform>().sizeDelta = new Vector2(newWidth, healthbar.GetComponent<RectTransform>().sizeDelta.y);
         }
-    }
+    }*/
 
 }

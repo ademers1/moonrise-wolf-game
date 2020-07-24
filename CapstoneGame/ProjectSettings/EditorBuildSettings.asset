@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Loss.unity
     guid: d3c0e0e015d8f6441992b6caa7434b1a
   - enabled: 1
-    path: Assets/Scenes/Levels/Alex's Level.unity
+    path: Assets/Scenes/Levels/MainLevel.unity
     guid: 51a19c8a3992217489a1dbd1f19f0b15
   m_configObjects: {}
