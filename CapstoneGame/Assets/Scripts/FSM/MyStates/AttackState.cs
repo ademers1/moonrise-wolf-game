@@ -26,7 +26,7 @@ namespace Assets.Code.FSM.MyStates
         public override bool EnterState()
         {
             EnteredState = true;
-            //anim.SetBool("isAttacking", true);
+            
             return EnteredState;
         }
                
@@ -39,22 +39,19 @@ namespace Assets.Code.FSM.MyStates
                 if(health.isAlive)
                 {
                     fsm.EnterState(FSMStateType.RETREAT);
-                    //anim.SetBool("isAttacking", false);
-                    //anim.SetBool("isWalking", true);
+                    
                 }
                 else
                 {
                     fsm.EnterState(FSMStateType.IDLE);
-                    //anim.SetBool("isAttacking", false);
-                    //anim.SetBool("isWalking", false);
-                    //anim.SetBool("isIdle", true);
+                    
                 }
             }
         }
 
         public override bool ExitState()
         {
-            //anim.SetBool("isAttacking", false);
+            
             base.ExitState();
             Debug.Log("Exiting Attack state");
 
