@@ -22,13 +22,19 @@ public class PathRenderer : MonoBehaviour
 
     private void Update()
     {
-        if (wolfSenseScript.ClosestEnemy != null && Input.GetKeyDown(KeyCode.V))
-        {
-            if(Physics.Raycast(Player.transform.position, Player.transform.forward, out hit, enemyLayer))
+        //aim and press V to choose target
+        //if (wolfSenseScript.ClosestEnemy != null && Input.GetKeyDown(KeyCode.V))
+        //{
+        //    if(Physics.Raycast(Player.transform.position, Player.transform.forward, out hit, enemyLayer))
 
-            {
-                closestEnemyGO = hit.transform.gameObject;
-            }
+        //    {
+        //        closestEnemyGO = hit.transform.gameObject;
+        //    }
+        //}
+        //chooses closest enemy every update
+        if (wolfSenseScript.ClosestEnemy != null)
+        {
+            closestEnemyGO = wolfSenseScript.ClosestEnemy;
         }
         getPath();
     }
@@ -40,7 +46,7 @@ public class PathRenderer : MonoBehaviour
         }
         if (closestEnemyGO != null && wolfSenseScript.WolfSenseOn)
         {
-            line.startWidth = 1;
+            line.startWidth = 0.3f;
             line.SetPosition(1, closestEnemyGO.transform.position);
         }
         else

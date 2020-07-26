@@ -613,6 +613,11 @@ PrefabInstance:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 577512072529656420}
+    - target: {fileID: 297764544202412643, guid: 560dd73980461114399177930447c300,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 297764544202412644, guid: 560dd73980461114399177930447c300,
         type: 3}
       propertyPath: gunShotAudioClip
@@ -622,6 +627,11 @@ PrefabInstance:
         type: 3}
       propertyPath: gunshotAudioClipName
       value: Gunshot
+      objectReference: {fileID: 0}
+    - target: {fileID: 297764544202412644, guid: 560dd73980461114399177930447c300,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 297764544202412647, guid: 560dd73980461114399177930447c300,
         type: 3}
@@ -851,9 +861,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 56b33fe9ad1d99d4990bdd5b3f746ba6, type: 2}
   - {fileID: 2100000, guid: 2388f97562f20e04c90883ad438b2dcb, type: 2}
-  rend: {fileID: 0}
+  rend: {fileID: 1960853662}
   beingSensed: 0
 --- !u!1001 &844559300
 PrefabInstance:
@@ -1263,6 +1273,16 @@ PrefabInstance:
     - target: {fileID: 3651475130221947575, guid: 07bcec041e5123c4f84a908c5735d1b2,
         type: 3}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145510754149380087, guid: 07bcec041e5123c4f84a908c5735d1b2,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145510754149380087, guid: 07bcec041e5123c4f84a908c5735d1b2,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2170,8 +2190,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 1
+        time: 0.0028174054
+        value: 0.16455616
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -2251,7 +2271,7 @@ PrefabInstance:
     - target: {fileID: 8188281326229080602, guid: e42ddf674150e20478d5f65a1821da87,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 216.33627
+      value: 209.8
       objectReference: {fileID: 0}
     - target: {fileID: 8188281326229080602, guid: e42ddf674150e20478d5f65a1821da87,
         type: 3}
@@ -2261,7 +2281,7 @@ PrefabInstance:
     - target: {fileID: 8188281326229080602, guid: e42ddf674150e20478d5f65a1821da87,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 39.05
+      value: 46.2
       objectReference: {fileID: 0}
     - target: {fileID: 8188281326229080602, guid: e42ddf674150e20478d5f65a1821da87,
         type: 3}
@@ -2318,6 +2338,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1f456272a6e26284394ddf99c73c2611, type: 2}
+    - target: {fileID: 1948254336509348961, guid: e42ddf674150e20478d5f65a1821da87,
+        type: 3}
+      propertyPath: material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 56b33fe9ad1d99d4990bdd5b3f746ba6, type: 2}
+    - target: {fileID: 1948254336509348961, guid: e42ddf674150e20478d5f65a1821da87,
+        type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 1960853662}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e42ddf674150e20478d5f65a1821da87, type: 3}
 --- !u!198 &1971775974 stripped
@@ -2512,7 +2542,7 @@ PrefabInstance:
     - target: {fileID: 7903062979288840867, guid: cd4acde5eac7e9a44861b145d2630396,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.904665
+      value: 12.42
       objectReference: {fileID: 0}
     - target: {fileID: 7903062979288840867, guid: cd4acde5eac7e9a44861b145d2630396,
         type: 3}
