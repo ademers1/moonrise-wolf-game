@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4309ddadc49dab7468785f83da669366, type: 3}
-  m_Name: RangedAttackState
+  m_Script: {fileID: 11500000, guid: 81515ae4770bae64395c82712c24ee43, type: 3}
+  m_Name: RangedAttackState 1
   m_EditorClassIdentifier: 
   attackDamage: 10
   attackDelay: 1
-  shootDistance: 10
+  shootDistance: 0
