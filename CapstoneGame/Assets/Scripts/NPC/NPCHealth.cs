@@ -20,7 +20,12 @@ public class NPCHealth : MonoBehaviour
         if(enemyCurrentHealth <= 0)
         {
             //Replace with enemy death animation
-            Destroy(gameObject);
+            Destroy(gameObject, 2f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            HurtEnemy(1);
         }
     }
 
@@ -33,4 +38,6 @@ public class NPCHealth : MonoBehaviour
     {
         enemyCurrentHealth = enemyMaxhealth;
     }
+
+    
 }

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:CapstoneGame/Assets/Blockout/OUR ASSETS/Grass_Dan.meta
 guid: dac1816efd2cbfb4d953bd6bc179f32f
+=======
+guid: 757f6be72dedcb9468cddd9431ff8b37
+>>>>>>> 75c11fe3bc899e8db0e5f56d3fffa9641f73524d:CapstoneGame/Assets/ExampleAssets/Models.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

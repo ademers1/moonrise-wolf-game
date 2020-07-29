@@ -26,7 +26,9 @@ namespace Assets.Code.FSM.MyStates
         public override bool EnterState()
         {
             EnteredState = true;
-            
+
+            fsm.anim.SetBool("isAttacking", true);
+
             return EnteredState;
         }
                
@@ -53,7 +55,8 @@ namespace Assets.Code.FSM.MyStates
         {
             
             base.ExitState();
-            Debug.Log("Exiting Attack state");
+
+            fsm.anim.SetBool("isAttacking", false);
 
             return true;
         }

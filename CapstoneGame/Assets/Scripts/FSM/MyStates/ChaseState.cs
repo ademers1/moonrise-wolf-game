@@ -23,6 +23,8 @@ namespace Assets.Code.FSM.MyStates
         [SerializeField]
         private float chaseDistance;
 
+        float blendSpeed = 1f;
+
         
 
         public override void OnEnable()
@@ -35,7 +37,7 @@ namespace Assets.Code.FSM.MyStates
         {
             EnteredState = false;
             direction = npc.transform.rotation.y;
-            //anim.SetBool("isRunning", true);
+            fsm.anim.SetFloat("speed", blendSpeed);
 
             return EnteredState;
         }

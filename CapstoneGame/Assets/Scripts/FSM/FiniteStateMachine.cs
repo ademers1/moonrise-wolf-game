@@ -6,10 +6,12 @@ using UnityEngine;
 using UnityEngine.AI;
 using Assets.Code.NPCCode;
 using System.Threading.Tasks;
+using System.Runtime.Remoting.Messaging;
 
 namespace Assets.Code.FSM
 {
-    public class FiniteStateMachine: MonoBehaviour
+    [RequireComponent(typeof(NPCHealth))]
+    public class FiniteStateMachine : MonoBehaviour
     {
         [SerializeField]
         //FSMState startingState;
@@ -18,8 +20,12 @@ namespace Assets.Code.FSM
         [SerializeField]
         List<FSMState> validStates;
         [SerializeField]
-        
 
+        NPCHealth health;
+
+        public Animator anim;
+
+        bool isDead;
                     //Key                  //Value
         Dictionary<FSMStateType, FSMState> fsmStates;
 
@@ -31,10 +37,10 @@ namespace Assets.Code.FSM
 
             NavMeshAgent navMeshAgent = this.GetComponent<NavMeshAgent>();
             NPC npc = this.GetComponent<NPC>();
-            
 
+            anim = this.GetComponent<Animator>();
             //Iterate through each state in list
-            foreach(FSMState validState in validStates)
+            foreach (FSMState validState in validStates)
             {
                 FSMState state = Instantiate<FSMState>(validState);
                 state.SetExecutingFSM(this);
@@ -57,7 +63,13 @@ namespace Assets.Code.FSM
 
         public void Update()
         {
-            if(currentState != null)
+            if (health.enemyCurrentHealth == 0 && !isDead)
+            {
+                isDead = true;
+                anim.SetBool("isDead", true);
+            }
+
+            if(currentState != null && !isDead)
             {
                 currentState.UpdateState();
             }
@@ -100,9 +112,6 @@ namespace Assets.Code.FSM
         }
         
         #endregion
-
-
-
 
     }
 }

@@ -24,7 +24,7 @@ namespace Assets.Code.FSM.MyStates
         private Vector3 lastPos;
         private float lastPosTime;
 
-
+        float blendValue = 0.5f;
 
 
 
@@ -64,6 +64,7 @@ namespace Assets.Code.FSM.MyStates
                     }
 
                     SetDestination(patrolPoints[patrolPointIndex]);
+                    fsm.anim.SetFloat("speed", blendValue);
                     EnteredState = true;
                 }
             }
@@ -79,7 +80,6 @@ namespace Assets.Code.FSM.MyStates
         {
             if(EnteredState)
             {
-                Debug.Log("Patrol " + Time.time);
                 if(Scan())
                 {
                     return;
@@ -87,11 +87,9 @@ namespace Assets.Code.FSM.MyStates
 
                 if(lastPos == navMeshAgent.transform.position)
                 {
-                    Debug.Log("Patrol state stuck");
                     lastPosTime += Time.deltaTime;
                     if(lastPosTime >= 3)
                     {
-                        Debug.Log("Patrol State UnStuck");
                         fsm.EnterState(FSMStateType.IDLE);
                     }
                 }
@@ -108,9 +106,7 @@ namespace Assets.Code.FSM.MyStates
         public override bool ExitState()
         {
             
-            base.ExitState();
-            Debug.Log("Exiting Patrol State");
-            
+            base.ExitState();            
 
             return true;
         }
