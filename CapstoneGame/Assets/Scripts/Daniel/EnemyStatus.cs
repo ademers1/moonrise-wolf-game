@@ -6,15 +6,15 @@ public class EnemyStatus : MonoBehaviour
 {
     [SerializeField] int enemyStatus;
     StunParticals stunParticalsScript;
-    RangedEnemyPatrol partrolScript;
-    EnemyContol enemyScript;
+    //RangedEnemyPatrol partrolScript;
+    //EnemyContol enemyScript;
     bool tranquilized;
     // Start is called before the first frame update
     void Start()
     {
         stunParticalsScript = GetComponent<StunParticals>();
-        partrolScript = GetComponent<RangedEnemyPatrol>();
-        enemyScript = GetComponent<EnemyContol>();
+        //partrolScript = GetComponent<RangedEnemyPatrol>();
+        //enemyScript = GetComponent<EnemyContol>();
     }
     public enum statusEffects
     {
@@ -29,7 +29,7 @@ public class EnemyStatus : MonoBehaviour
         {
             case 0:
                 Debug.Log(statusEffects.Stunned);
-                StartCoroutine(Stun());
+                //StartCoroutine(Stun());
                 break;
             case 1:
                 Debug.Log("default Status");
@@ -37,27 +37,27 @@ public class EnemyStatus : MonoBehaviour
         }
     }
     // Update is called once per frame
-    IEnumerator Stun()
-    {
-        float effectTime = 2f;
-        stunParticalsScript.startEmit(stunParticalsScript.stunParticalLauncher);
-        if (partrolScript != null) {
-            partrolScript.enabled = false;
-        }
-        if (enemyScript != null)
-        {
-            enemyScript.enabled = false;
-        }
-        yield return new WaitForSeconds(effectTime);
-        stunParticalsScript.endEmit(stunParticalsScript.stunParticalLauncher);
-        if (partrolScript != null)
-        {
-            partrolScript.enabled = true;
-        }
-        if (enemyScript != null)
-        {
-            enemyScript.enabled = true;
-        }
-    }
+    /* IEnumerator Stun()
+     {
+         float effectTime = 2f;
+         stunParticalsScript.startEmit(stunParticalsScript.stunParticalLauncher);
+         if (partrolScript != null) {
+             partrolScript.enabled = false;
+         }
+         if (enemyScript != null)
+         {
+             enemyScript.enabled = false;
+         }
+         yield return new WaitForSeconds(effectTime);
+         stunParticalsScript.endEmit(stunParticalsScript.stunParticalLauncher);
+         if (partrolScript != null)
+         {
+             partrolScript.enabled = true;
+         }
+         if (enemyScript != null)
+         {
+             enemyScript.enabled = true;
+         }
+}*/
     
 }

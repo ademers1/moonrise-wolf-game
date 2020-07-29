@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     public float rotationSpeed = 10f;
 
-    public float turnSmoothTime = 0.2f;
+    public float turnSmoothTime = 0.05f;
     float turnSmoothVelocity;
 
     Rigidbody rb;
@@ -264,6 +264,7 @@ public class PlayerController : MonoBehaviour
 
                 //here we get movedir which is the direction the camera is facing so we're always moving forward
                 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, targetAngle, 0f), Time.time * 1f);
                 rb.velocity = moveDir.normalized * speed;
             }
 
@@ -317,6 +318,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log(isGrounded());
                 _animState = AnimState.isJumping;
+                //rb.AddForce(transform.up * 10, ForceMode.Impulse);
                 rb.velocity = rb.velocity + Vector3.up * jumpForce;
             }
         }

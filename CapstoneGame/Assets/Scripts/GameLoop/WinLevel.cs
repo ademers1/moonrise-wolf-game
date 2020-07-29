@@ -4,9 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class WinLevel : MonoBehaviour
 {
-    public Camera ThirdPersonCamera;
-    InventorySystem Inventory;
-   
+    public Camera ThirdPersonCamera;  
 
     void Start()
     {
