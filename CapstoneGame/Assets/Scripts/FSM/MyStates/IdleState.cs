@@ -16,6 +16,7 @@ namespace Assets.Code.FSM.MyStates
 
         float totalDuration;
 
+        float speed = 0;
         
 
         public override void OnEnable()
@@ -29,8 +30,8 @@ namespace Assets.Code.FSM.MyStates
             EnteredState = base.EnterState();
             if (EnteredState)
             {
-                Debug.Log("Entered Idle State");
                 totalDuration = 0f;
+                fsm.anim.SetFloat("speed", speed);
             }
             
             return EnteredState;
@@ -42,7 +43,6 @@ namespace Assets.Code.FSM.MyStates
             if (EnteredState)
             {
                 totalDuration += Time.deltaTime;
-                Debug.Log("Updating Idle State" + totalDuration + " seconds.");
 
                 if(totalDuration >= idleDuration)
                 {
@@ -54,9 +54,7 @@ namespace Assets.Code.FSM.MyStates
         public override bool ExitState()
         {
             
-            base.ExitState();
-            Debug.Log("Exiting Idle state");
-           
+            base.ExitState();          
 
             return true;
         }

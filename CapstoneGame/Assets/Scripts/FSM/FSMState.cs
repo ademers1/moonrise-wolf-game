@@ -30,6 +30,7 @@ public abstract class FSMState : ScriptableObject
     protected NPC npc;
     protected FiniteStateMachine fsm;
     
+    
 
     public ExecutionState ExecutionState { get; protected set; }//Public get, protected Set - Inline property
 
