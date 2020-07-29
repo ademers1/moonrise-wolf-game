@@ -2910,9 +2910,6 @@ GameObject:
   - component: {fileID: 2943072835866280488}
   - component: {fileID: 2943072835866280468}
   - component: {fileID: 2943072835866280471}
-  - component: {fileID: 2943072835866280490}
-  - component: {fileID: 2943072835866280469}
-  - component: {fileID: 2943072835866280465}
   - component: {fileID: 7327055068818833280}
   m_Layer: 0
   m_Name: Player
@@ -3028,66 +3025,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &2943072835866280490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6626492906685057200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44b69851c5317c44cac8e03c2767889d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  canMove: 0
-  currentSpeed: 0
-  walkSpeed: 5
-  sprintSpeed: 12
-  stalkSpeed: 2.5
-  jumpForce: 5
-  rotationSpeed: 60
-  ButtonCooler: 0.5
-  ButtonCount: 0
-  moveSpeedMultiplier: 0
-  currentSpeedMultiplier: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
---- !u!114 &2943072835866280469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6626492906685057200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce70f53e10509ba4e85d992e8599da64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  startHealth: 25
-  healthBar: {fileID: 0}
-  whineSound: WolfHurt
---- !u!114 &2943072835866280465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6626492906685057200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da6ff1795d7994045b0ebfee33da915a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  howlRadius: 0
-  howlCooldown: 0
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 1536
 --- !u!114 &7327055068818833280
 MonoBehaviour:
   m_ObjectHideFlags: 0

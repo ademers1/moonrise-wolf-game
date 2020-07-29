@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 10f;
 
     public float turnSmoothTime = 0.2f;
-    //float turnSmoothVelocity;
+    float turnSmoothVelocity;
 
     Rigidbody rb;
     Animator anim;
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
     private bool heavyAttackOnCooldown;
     private bool attackOnCooldown;
 
-    Vector3 moveDir = new Vector3(0,0,1);
+    Vector3 moveDir = new Vector3(0, 0, 1);
 
     private AnimState _animState = AnimState.isIdle;
 
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
         furyBar.fillAmount = 0;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        
+
         //controller = GetComponent<CharacterController>();
     }
 
@@ -95,20 +95,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (_animState == AnimState.isIdle || _animState == AnimState.isMoving)
-        {
-            if (Input.GetAxis("Mouse X") < 0)
-
-                transform.Rotate(Vector3.up * rotationSpeed);
-            if (Input.GetAxis("Mouse X") > 0)
-                transform.Rotate(Vector3.up * -rotationSpeed);
-        }
-
         //recharge dashes if we don't currently have 3
         if (dashesRemaining < 3)
         {
             dashTimer += Time.deltaTime;
-            if(dashTimer > dashChargeTime)
+            if (dashTimer > dashChargeTime)
             {
                 dashTimer = 0;
                 dashesRemaining++;
@@ -127,7 +118,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //if jumping check if we hit ground to go back to idle
-        if(_animState == AnimState.isJumping)
+        if (_animState == AnimState.isJumping)
         {
             if (isGrounded())
             {
@@ -136,7 +127,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //attacks
-        if(_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking)
+        if (_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking)
         {
             if (Input.GetButtonDown("Fire1") && !attackOnCooldown)
             {
@@ -159,11 +150,11 @@ public class PlayerController : MonoBehaviour
         if (attackOnCooldown)
         {
             attackTimer += Time.deltaTime;
-            if(attackTimer >= 0.5f)
+            if (attackTimer >= 0.5f)
             {
                 _animState = AnimState.isIdle;
             }
-            if(attackTimer >= attackCooldown)
+            if (attackTimer >= attackCooldown)
             {
                 attackTimer = 0;
                 attackOnCooldown = false;
@@ -185,7 +176,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //howl
-        if(_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking)
+        if (_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking)
         {
             if (Input.GetKeyDown(KeyCode.Q) && !howlOnCooldown)
             {
@@ -193,20 +184,20 @@ public class PlayerController : MonoBehaviour
                 _animState = AnimState.isIdle;
                 Collider[] colliders = Physics.OverlapSphere(transform.position, tailWhipRadius, enemies);
                 howlOnCooldown = true;
-                
+
                 foreach (Collider enemy in colliders)
                 {
                     enemy.GetComponent<EnemyStatus>().Effect(0);
                 }
                 //TODO: start howling cooldown at end of animation
-                
+
             }
         }
         //handles howl cooldown recharge
-        if(howlOnCooldown)
+        if (howlOnCooldown)
         {
             howlTimer += Time.deltaTime;
-            if(howlTimer >= howlCooldownAmount)
+            if (howlTimer >= howlCooldownAmount)
             {
                 howlOnCooldown = false;
                 howlTimer = 0f;
@@ -214,7 +205,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //tailwhip
-        if(_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking)
+        if (_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking)
         {
             if (Input.GetKeyDown(KeyCode.R) && !tailWhipOnCooldown)
             {
@@ -222,10 +213,10 @@ public class PlayerController : MonoBehaviour
                 Collider[] colliders = Physics.OverlapSphere(transform.position, howlRadius, enemies);
                 tailWhipOnCooldown = true;
 
-                foreach(Collider enemy in colliders)
+                foreach (Collider enemy in colliders)
                 {
                     enemy.GetComponent<Rigidbody>().isKinematic = false;
-                    
+
                 }
                 Knockback(colliders);
             }
@@ -234,10 +225,10 @@ public class PlayerController : MonoBehaviour
         if (tailWhipOnCooldown)
         {
             tailWhipTimer += Time.deltaTime;
-            if(tailWhipTimer > 2f)
+            if (tailWhipTimer > 2f)
             {
                 GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
-                foreach(GameObject enemy in enemys)
+                foreach (GameObject enemy in enemys)
                 {
                     if (!enemy.GetComponent<Rigidbody>().isKinematic)
                     {
@@ -245,7 +236,7 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-            if(tailWhipTimer >= tailWhipCooldownAmount)
+            if (tailWhipTimer >= tailWhipCooldownAmount)
             {
                 tailWhipTimer = 0;
                 tailWhipOnCooldown = false;
@@ -257,21 +248,22 @@ public class PlayerController : MonoBehaviour
 
         if (_animState == AnimState.isIdle || _animState == AnimState.isMoving)
         {
-            
+
             float vertical = Input.GetAxisRaw("Vertical");
-            Vector3 direction = new Vector3(0f, 0f, vertical).normalized;
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
             t = 0;
             if (direction.magnitude >= 0.1f)
             {
                 _animState = AnimState.isMoving;
                 //get the angle we move and change the camera to match that angle
-                
-                //float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-                //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-                //transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
                 //here we get movedir which is the direction the camera is facing so we're always moving forward
-                moveDir = vertical * transform.forward;
+                moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                 rb.velocity = moveDir.normalized * speed;
             }
 
@@ -279,7 +271,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isRunning", true);
         }
 
-        if(_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking && dashesRemaining > 0)
+        if (_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking && dashesRemaining > 0)
         {
             //left ctrl or left mouse button
             if (Input.GetKeyDown(KeyCode.Z))
@@ -289,7 +281,7 @@ public class PlayerController : MonoBehaviour
                 Vector3 dashDirection;
                 float horizontal = Input.GetAxisRaw("Horizontal");
                 float vertical = Input.GetAxisRaw("Vertical");
-                if(vertical != 0 || horizontal == 0)
+                if (vertical != 0 || horizontal == 0)
                 {
                     //if a key isn't held down 
                     //or forward/back is held down
@@ -304,7 +296,7 @@ public class PlayerController : MonoBehaviour
                     //else we want to dash to the side
                     //currently not working as we start moving to the side first
                     //TODO: figure out a new key to press for sideways dashes
-                    if(horizontal < 0)
+                    if (horizontal < 0)
                     {
                         dashDirection = new Vector3(-1, 0, 0);
                         rb.AddForce(dashDirection * dashForce, ForceMode.Impulse);
@@ -319,7 +311,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //jump logic
-        if(_animState == AnimState.isMoving && isGrounded())
+        if (_animState == AnimState.isMoving && isGrounded())
         {
             if (Input.GetButtonDown("Jump"))
             {
@@ -328,7 +320,7 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = rb.velocity + Vector3.up * jumpForce;
             }
         }
-        
+
     }
 
     //basic ground check by raycast
@@ -336,7 +328,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit ray;
         LayerMask ground = LayerMask.GetMask("Ground");
-        if(Physics.Raycast(transform.position + new Vector3(0, 0.3f, 0), Vector3.down, out ray, .4f, ground))
+        if (Physics.Raycast(transform.position + new Vector3(0, 0.3f, 0), Vector3.down, out ray, .4f, ground))
         {
             return true;
         }
@@ -346,7 +338,7 @@ public class PlayerController : MonoBehaviour
     //basic attack
     public void Attack()
     {
-        
+
         // Dectect Range of Enemy
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemies);
         // Damage the Enemy 
