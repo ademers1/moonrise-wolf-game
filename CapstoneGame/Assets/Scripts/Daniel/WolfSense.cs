@@ -50,7 +50,6 @@ public class WolfSense : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, senseRadius, enemyLayers);
         foreach (Collider enemy in colliders)
         {
-            enemy.GetComponent<WolfSenseMaterial>().beingSensed = false;
 
             float distance = Vector3.Distance(enemy.transform.position, transform.position);
             if (distance < shortesDistance)
@@ -58,9 +57,15 @@ public class WolfSense : MonoBehaviour
                 shortesDistance = distance;
                 closestEnemy = enemy.gameObject;
             }
+            if (distance < senseRadius)
+            {
+                enemy.gameObject.GetComponent<WolfSenseMaterial>().beingSensed = true;
+            }
+            else
+            {
+                enemy.gameObject.GetComponent<WolfSenseMaterial>().beingSensed = false;
+            }
         }
-        closestEnemy.GetComponent<WolfSenseMaterial>().beingSensed = true;
-        wolfSenseOn = true;
     }
     
     private void OnDrawGizmosSelected()
