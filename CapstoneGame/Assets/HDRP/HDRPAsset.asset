@@ -121,6 +121,7 @@ MonoBehaviour:
   shaderVariantLogLevel: 0
   diffusionProfileSettings: {fileID: 0}
   diffusionProfileSettingsList:
+  - {fileID: 11400000, guid: e547a13da528ccd4a8646b4876052c15, type: 2}
   - {fileID: 11400000, guid: cd2748c59aa04d7469cd01869e447083, type: 2}
   m_Version: 6
   m_ObsoleteFrameSettings:

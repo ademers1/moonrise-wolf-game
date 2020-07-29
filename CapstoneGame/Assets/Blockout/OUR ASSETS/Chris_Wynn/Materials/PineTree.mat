@@ -115,6 +115,7 @@ Material:
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
+    - _AddPrecomputedVelocity: 0
     - _AlbedoAffectEmissive: 0
     - _AlphaCutoff: 0.373
     - _AlphaCutoffEnable: 1
@@ -231,7 +232,7 @@ Material:
     - _UVBase: 0
     - _UVDetail: 0
     - _UVEmissive: 0
-    - _UseEmissiveIntensity: 0
+    - _UseEmissiveIntensity: 1
     - _UseShadowThreshold: 1
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 3
@@ -239,9 +240,9 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.45768064, g: 0.5188679, b: 0.457682, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0.45768058, g: 0.51886785, b: 0.457682, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DiffusionProfileAsset: {r: -3202.4875, g: 6.516591e+31, b: -2.4413115e-35,
         a: -7.060843e-37}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
