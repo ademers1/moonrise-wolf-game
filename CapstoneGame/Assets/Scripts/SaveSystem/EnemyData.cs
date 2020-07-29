@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemyData
 {
     public float[] enemyPosition;
-    public int enemyHealth;
+    public float enemyHealth;
 
     //Constructor to create the default player data class
     public EnemyData(NPCHealth enemy)

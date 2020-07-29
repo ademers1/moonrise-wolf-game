@@ -5,8 +5,8 @@ using UnityEngine;
 public class NPCHealth : MonoBehaviour
 {
 
-    public int enemyMaxhealth;
-    public int enemyCurrentHealth;
+    public float enemyMaxhealth;
+    public float enemyCurrentHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,7 @@ public class NPCHealth : MonoBehaviour
         }
     }
 
-    public void HurtEnemy(int damageToGive)
+    public void HurtEnemy(float damageToGive)
     {
         enemyCurrentHealth -= damageToGive;
     }

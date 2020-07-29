@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityStandardAssets.Characters.FirstPerson;
 
 enum AnimState
 {
@@ -348,7 +347,7 @@ public class PlayerController : MonoBehaviour
         foreach (Collider enemy in hitEnemies)
         {
             Debug.Log("tets");
-            enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
+            enemy.GetComponent<NPCHealth>().HurtEnemy(attackDamage);
         }
     }
 
@@ -358,7 +357,7 @@ public class PlayerController : MonoBehaviour
         // Damage the Enemy
         foreach (Collider enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyHealth>().TakeDamage(heavyAttackDamage);
+            enemy.GetComponent<NPCHealth>().HurtEnemy(heavyAttackDamage);
         }
     }
 

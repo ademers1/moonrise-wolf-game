@@ -5,9 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    [HideInInspector]
-    public CameraController Camera;
-
     //cache
     private AudioManager audioManager;
     private string ambienceAudioClip = "AmbientNoise";
@@ -18,13 +15,7 @@ public class GameManager : Singleton<GameManager>
 
     void Awake()
     {
-        Camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
         audioManager = AudioManager.instance;
-    }
-
-    public void GetCamera()
-    {
-        Camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
     }
 
     private void Start()
@@ -65,7 +56,6 @@ public class GameManager : Singleton<GameManager>
 
     public void Died()
     {
-        GameManager.Instance.Camera.ShowMouse();
         SceneManager.LoadScene("Loss");
     }
 

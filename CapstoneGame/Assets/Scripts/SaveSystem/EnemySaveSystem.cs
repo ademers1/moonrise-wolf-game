@@ -4,7 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class EnemySaveSystem
 {
-    public static void SaveEnemy(EnemyHealth enemy)
+    public static void SaveEnemy(NPCHealth enemy)
     {
         //Create Binary Formatter to write to a file
         BinaryFormatter formatter = new BinaryFormatter();

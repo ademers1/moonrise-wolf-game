@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemySave : MonoBehaviour
 {
-    EnemyHealth enemy;
+    NPCHealth enemy;
     private void Start()
     {
-        enemy = this.gameObject.GetComponent<EnemyHealth>();
+        enemy = this.gameObject.GetComponent<NPCHealth>();
     }
     void Update()
     {
@@ -25,7 +25,7 @@ public class EnemySave : MonoBehaviour
             EnemyData data = EnemySaveSystem.LoadEnemy();
             if (data != null)
             {
-                enemy.Health = data.enemyHealth;
+                enemy.enemyCurrentHealth = data.enemyHealth;
                 transform.position = new Vector3(data.enemyPosition[0], data.enemyPosition[1], data.enemyPosition[2]);
             }
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StatusEffect : MonoBehaviour
 {
-    [SerializeField] int playerStatus;
+    /*[SerializeField] int playerStatus;
     PlayerMovement playerMovementScript;
     PlayerAttacks playerAttackScript;
     StunParticals stunParticalsScript;
@@ -161,5 +161,5 @@ public class StatusEffect : MonoBehaviour
         stunParticalsScript.startEmit(stunParticalsScript.slowParticalLauncher);
         yield return new WaitForSeconds(effectTime);
         stunParticalsScript.endEmit(stunParticalsScript.slowParticalLauncher);
-    }
+    }*/
 }
