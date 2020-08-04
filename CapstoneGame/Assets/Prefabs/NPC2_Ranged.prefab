@@ -138,6 +138,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d419a6dcc8a4dc54ca62ca508c12b739, type: 2}
   - {fileID: 11400000, guid: 2d60faa720d873b47aa4e5783148c376, type: 2}
   - {fileID: 11400000, guid: 4a0d1bc69952db24793c04073d85eaba, type: 2}
+  health: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!114 &39444319185459003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,11 +154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   patrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
