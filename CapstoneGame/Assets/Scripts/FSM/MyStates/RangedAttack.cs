@@ -52,8 +52,9 @@ namespace Assets.Code.FSM.MyStates
                     fsm.EnterState(FSMStateType.CHASE);
                     return;
                 }
+                Shoot();
                 Debug.Log("Is Ranged Shooting");
-
+               
                 PlayerHealth health = npc.target.GetComponent<PlayerHealth>();
                 health.Damage(attackDamage);
                 if (health.isAlive)
@@ -77,6 +78,11 @@ namespace Assets.Code.FSM.MyStates
             Debug.Log("Exiting Attack state");
 
             return true;
+        }
+
+        public void Shoot()
+        {
+
         }
     }
 }
