@@ -23,11 +23,25 @@ namespace Assets.Code.FSM.MyStates
         [SerializeField]
         float shootDistance;
 
+        [SerializeField]
+        public GameObject bullet;
+
+        [SerializeField]
+        private Transform muzzleEnd;
+
+        [SerializeField]
+        public AudioClip gunShot;
+
+        private bool isShooting;
+        private float shootForce;
+        private float shootRate;
+        private float shootRateTime;
 
         public override void OnEnable()
         {
             base.OnEnable();
             StateType = FSMStateType.ATTACK;
+
         }
 
         public override bool EnterState()
@@ -82,6 +96,13 @@ namespace Assets.Code.FSM.MyStates
 
         public void Shoot()
         {
+            if(Time.time >shootRateTime)
+            {
+                GameObject go = (GameObject)Instantiate(bullet, muzzleEnd.position, muzzleEnd.rotation);
+                go.GetComponent<Rigidbody>().AddForce(muzzleEnd.forward * shootForce);
+                shootRateTime = Time.time + shootRate;
+            }
+            isShooting = true;
 
         }
     }
