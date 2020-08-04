@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerSave : MonoBehaviour
 {
-    PlayerHealth player;
+    CharacterHealth player;
     private void Start()
     {
-        player = this.gameObject.GetComponent<PlayerHealth>();
+        player = this.gameObject.GetComponent<CharacterHealth>();
     }
     void Update()
     {
@@ -25,7 +25,7 @@ public class PlayerSave : MonoBehaviour
 
             if (data != null)
             {
-                player.Health = data.playerHealth;
+                player.health = data.playerHealth;
                 transform.position = new Vector3(data.playerPosition[0], data.playerPosition[1], data.playerPosition[2]);
                 transform.rotation = new Quaternion(data.playerRotation[0], data.playerRotation[1], data.playerRotation[2], data.playerRotation[3]);
                 transform.localScale = new Vector3(data.playerScale[0], data.playerScale[1], data.playerScale[2]);
