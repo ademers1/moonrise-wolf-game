@@ -4080,7 +4080,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1599686554}
   - component: {fileID: 1599686553}
-  - component: {fileID: 1599686555}
   m_Layer: 0
   m_Name: CM TargetGroup1
   m_TagString: Untagged
@@ -4121,24 +4120,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1599686555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1599686552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0066d5cb06b291f46b8f0889769b0229, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lockOnRadius: 0
-  lockOnStopRadius: 0
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 512
-  wolfLockOn: 0
 --- !u!1001 &1645924488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4779,7 +4760,7 @@ PrefabInstance:
     - target: {fileID: 8188281326229080602, guid: e42ddf674150e20478d5f65a1821da87,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 185.53
+      value: 235.9
       objectReference: {fileID: 0}
     - target: {fileID: 8188281326229080602, guid: e42ddf674150e20478d5f65a1821da87,
         type: 3}
@@ -4789,7 +4770,7 @@ PrefabInstance:
     - target: {fileID: 8188281326229080602, guid: e42ddf674150e20478d5f65a1821da87,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 39.05
+      value: 41.13
       objectReference: {fileID: 0}
     - target: {fileID: 8188281326229080602, guid: e42ddf674150e20478d5f65a1821da87,
         type: 3}
@@ -4963,7 +4944,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089401833}
-  m_LocalRotation: {x: 0.14253858, y: -0.000000008515345, z: 0.0000000012262865, w: 0.98978925}
+  m_LocalRotation: {x: 0.14253858, y: 0.000000008515345, z: -0.0000000012262865, w: 0.98978925}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5001,6 +4982,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3488d58dbde93304ba4b8a5ed4196062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4492593462276245625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4492593462276245623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0066d5cb06b291f46b8f0889769b0229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockOnRadius: 0
+  lockOnStopRadius: 0
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  wolfLockOn: 0
 --- !u!1001 &4940867286481143732
 PrefabInstance:
   m_ObjectHideFlags: 0
