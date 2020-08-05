@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PoolTest : MonoBehaviour
@@ -15,6 +16,16 @@ public class PoolTest : MonoBehaviour
         Instantiate(spawnLocations[1], transform.position, Quaternion.identity);
         Instantiate(spawnLocations[2], transform.position, Quaternion.identity);
         Instantiate(spawnLocations[3], transform.position, Quaternion.identity);
+       
+        System.Random rnd = new System.Random();
+        spawnLocations = spawnLocations.OrderBy(x => rnd.Next()).ToArray(); 
+
+
+        //Transform[] newSpawnLocations = spawnLocations.OrderBy(x => rnd.Next()).ToArray();
+        //for (int i = 0; i < newSpawnLocations.Length; i++)
+        //{
+        //    print(spawnLocations[i].position + " | " + newSpawnLocations[i].position);
+        //}
     }
     private void Update()
     {
@@ -25,15 +36,11 @@ public class PoolTest : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.O))
         {
+            RandomizeSpawnPositions();
             for (int i = 0; i < spawnLocations.Length; i++)
             {
-                rand = Random.Range(0, spawnLocations.Length);
                 PoolManager.instance.ReuseObject(prefab, spawnLocations[i].position, Quaternion.identity);
-                locationIndex--;
-                if (locationIndex <= -1)
-                {
-                    locationIndex = 3;
-                }
+               
             }
         }
        
@@ -52,10 +59,20 @@ public class PoolTest : MonoBehaviour
                 locationIndex = 3;
             }
 
+            List<int> numbers = new List<int>();
+            System.Random rnd = new System.Random();
+            Transform[] newSpawnLocations = spawnLocations.OrderBy(x => rnd.Next()).ToArray();
+            print(newSpawnLocations);
+
+
             // rand = Random.Range(0, spawnLocations.Length);
             // Instantiate(spawnLocations[rand], transform.position, Quaternion.identity);
             // PoolManager.instance.ReuseObject(prefab,spawnLocations[rand].position, Quaternion.identity);
         }
     }
-
+    void RandomizeSpawnPositions()
+    {
+        System.Random rnd = new System.Random();
+        spawnLocations = spawnLocations.OrderBy(x => rnd.Next()).ToArray();
+    }
 }
