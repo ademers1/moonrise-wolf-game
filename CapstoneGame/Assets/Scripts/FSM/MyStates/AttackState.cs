@@ -15,9 +15,6 @@ namespace Assets.Code.FSM.MyStates
 
         [SerializeField]
         int attackDamage = 10;
-        public bool ikActive = false;
-        public Transform rightHandObj = null;
-        public Transform lookObj = null;
 
         
         public override void OnEnable()
@@ -31,8 +28,6 @@ namespace Assets.Code.FSM.MyStates
             EnteredState = true;
 
             fsm.anim.SetBool("isAttacking", true);
-            ikActive = true;
-            
 
             return EnteredState;
         }
@@ -60,39 +55,10 @@ namespace Assets.Code.FSM.MyStates
         {
             
             base.ExitState();
-            ikActive = false;
+
             fsm.anim.SetBool("isAttacking", false);
 
             return true;
-        }
-
-        void OnAnimatorIK()
-        {
-            if (fsm.anim)
-            {
-                if (ikActive)
-                {
-                    if(lookObj != null)
-                    {
-                        fsm.anim.SetLookAtWeight(1);
-                        fsm.anim.SetLookAtPosition(lookObj.position);
-                    }
-
-                    if(rightHandObj != null)
-                    {
-                        fsm.anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-                        fsm.anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
-                        fsm.anim.SetIKPosition(AvatarIKGoal.RightHand, rightHandObj.position);
-                        fsm.anim.SetIKRotation(AvatarIKGoal.RightHand, rightHandObj.rotation);
-                    }
-                }
-                else
-                {
-                    fsm.anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 0);
-                    fsm.anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 0);
-                    fsm.anim.SetLookAtWeight(0);
-                }
-            }
         }
     }
 }

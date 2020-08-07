@@ -9,13 +9,13 @@ public class PlayerData
     public float[] playerPosition;
     public float[] playerRotation;
     public float[] playerScale;
-    public int playerHealth;
+    public float playerHealth;
 
     //Constructor to create the default player data class
-    public PlayerData(PlayerHealth player)
+    public PlayerData(CharacterHealth player)
     {
         //get player health
-        playerHealth = player.Health;
+        playerHealth = player.health;
         //get player position
         playerPosition = new float[3];
         playerPosition[0] = player.transform.position.x;
