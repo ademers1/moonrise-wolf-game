@@ -101,8 +101,9 @@ namespace Assets.Code.FSM.MyStates
                 GameObject go = (GameObject)Instantiate(bullet, muzzleEnd.position, muzzleEnd.rotation);
                 go.GetComponent<Rigidbody>().AddForce(muzzleEnd.forward * shootForce);
                 shootRateTime = Time.time + shootRate;
+                isShooting = true;
             }
-            isShooting = true;
+           
 
         }
     }
