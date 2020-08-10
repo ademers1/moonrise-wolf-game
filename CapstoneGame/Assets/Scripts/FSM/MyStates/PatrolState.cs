@@ -21,6 +21,11 @@ namespace Assets.Code.FSM.MyStates
         float scanDegrees;
         [SerializeField]
         float scanDistance;
+        [SerializeField]
+        private float sneakScanDistance;
+        [SerializeField]
+        private float sneakScanDegrees;
+
         private Vector3 lastPos;
         private float lastPosTime;
 
@@ -122,27 +127,49 @@ namespace Assets.Code.FSM.MyStates
 
         public bool Scan()
         {
-            RaycastHit hit; 
-            //For Loop for Ray Cast
-            for(int i = 0; i <= scanDegrees / 5; i++)
+            if (npc.target.GetComponent<PlayerController>().animState != AnimState.isSneaking) 
             {
-                Vector3 rayDir = Quaternion.Euler(0, (i - scanDegrees / 10) * 5, 0) * npc.transform.forward;
-                Debug.DrawRay(npc.transform.position, rayDir * scanDistance, Color.red);
-                if(Physics.Raycast(npc.transform.position, rayDir, out hit, scanDistance))
+                RaycastHit hit;
+                //For Loop for Ray Cast
+                for (int i = 0; i <= scanDegrees / 5; i++)
                 {
-                    if(hit.transform.CompareTag("Player"))
+                    Vector3 rayDir = Quaternion.Euler(0, (i - scanDegrees / 10) * 5, 0) * npc.transform.forward;
+                    Debug.DrawRay(npc.transform.position, rayDir * scanDistance, Color.red);
+                    if (Physics.Raycast(npc.transform.position, rayDir, out hit, scanDistance))
                     {
-                        npc.target = hit.transform;
+                        if (hit.transform.CompareTag("Player"))
+                        {
+                            npc.target = hit.transform;
+                            fsm.EnterState(FSMStateType.CHASE);
+                            return true;
+                        }
+                    }
+                }
+
+            }
+
+            RaycastHit hit2;
+            //For Loop for Ray Cast
+            for (int i = 0; i <= sneakScanDegrees / 5; i++)
+            {
+                Vector3 rayDir = Quaternion.Euler(0, (i - sneakScanDegrees / 10) * 5, 0) * npc.transform.forward;
+                Debug.DrawRay(npc.transform.position, rayDir * sneakScanDistance, Color.red);
+                if (Physics.Raycast(npc.transform.position, rayDir, out hit2, sneakScanDistance))
+                {
+                    if (hit2.transform.CompareTag("Player"))
+                    {
+                        npc.target = hit2.transform;
                         fsm.EnterState(FSMStateType.CHASE);
                         return true;
                     }
                 }
             }
-                //if raycast hits
-                    //if target is a player 
-                        //set the target
-                        //start the chase state
-                       // return true;
+
+            //if raycast hits
+            //if target is a player 
+            //set the target
+            //start the chase state
+            // return true;
             return false;
         }
     }
