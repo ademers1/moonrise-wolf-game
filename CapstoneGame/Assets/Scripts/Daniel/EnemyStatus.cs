@@ -22,6 +22,7 @@ public class EnemyStatus : MonoBehaviour
         Stunned = 0,
         defaultStatus = 1
     }
+    //reference this script to use status effect;
     public void Effect(int e)
     {
         enemyStatus = e;
@@ -29,12 +30,25 @@ public class EnemyStatus : MonoBehaviour
         {
             case 0:
                 Debug.Log(statusEffects.Stunned);
-                //StartCoroutine(Stun());
+                StartCoroutine(Stun());
                 break;
             case 1:
                 Debug.Log("default Status");
                 break;
         }
+    }
+    IEnumerator Stun()
+    {
+        float effectTime = 2f;
+        stunParticalsScript.startEmit(stunParticalsScript.stunParticalLauncher);
+
+        yield return new WaitForSeconds(effectTime);
+        stunParticalsScript.endEmit(stunParticalsScript.stunParticalLauncher);
+    }
+    private void Update()
+    {
+        //calling status effect (test)
+        Effect(0);
     }
     // Update is called once per frame
     /* IEnumerator Stun()
@@ -59,5 +73,5 @@ public class EnemyStatus : MonoBehaviour
              enemyScript.enabled = true;
          }
 }*/
-    
+
 }

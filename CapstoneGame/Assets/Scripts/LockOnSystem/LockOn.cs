@@ -42,7 +42,6 @@ public class LockOn : MonoBehaviour
         }
         else
         {
-            Debug.Log(previousClosestEnemy);
             if (previousClosestEnemy != null)
             {
                 //lock off
