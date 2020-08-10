@@ -245,7 +245,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
 
-        if (_animState == AnimState.isIdle || _animState == AnimState.isMoving)
+        if (_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking)
         {
 
             float vertical = Input.GetAxisRaw("Vertical");
@@ -265,7 +265,14 @@ public class PlayerController : MonoBehaviour
                 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                 //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, targetAngle, 0f), Time.time * 1f);
                 rb.velocity = moveDir.normalized * speed;
+             
             }
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                _animState = AnimState.isSneaking;
+                rb.velocity = moveDir.normalized * speed * 0.5f;
+            }
+         
 
             anim.SetBool("isIdle", false);
             anim.SetBool("isRunning", true);
