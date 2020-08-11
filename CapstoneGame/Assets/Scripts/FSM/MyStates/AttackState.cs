@@ -13,8 +13,7 @@ namespace Assets.Code.FSM.MyStates
     public class AttackState : FSMState
     {
 
-        [SerializeField]
-        int attackDamage = 10;
+        
         public bool ikActive = false;
         public Transform rightHandObj = null;
         public Transform lookObj = null;
@@ -41,8 +40,8 @@ namespace Assets.Code.FSM.MyStates
         {
             if(EnteredState)
             {
+                npc.Attack(npc.target);
                 PlayerHealth health = npc.target.GetComponent<PlayerHealth>();
-                health.Damage(attackDamage);
                 if(health.isAlive)
                 {
                     fsm.EnterState(FSMStateType.RETREAT);

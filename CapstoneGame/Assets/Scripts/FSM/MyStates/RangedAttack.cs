@@ -13,8 +13,7 @@ namespace Assets.Code.FSM.MyStates
     public class RangedAttack : FSMState
     {
 
-        [SerializeField]
-        int attackDamage = 10;
+        
 
         [SerializeField]
         float attackDelay = 1f;
@@ -66,11 +65,11 @@ namespace Assets.Code.FSM.MyStates
                     fsm.EnterState(FSMStateType.CHASE);
                     return;
                 }
-                Shoot();
-                Debug.Log("Is Ranged Shooting");
+                
+                
                
                 PlayerHealth health = npc.target.GetComponent<PlayerHealth>();
-                health.Damage(attackDamage);
+                
                 if (health.isAlive)
                 {
                     delayTimeRemaining = attackDelay;
@@ -94,17 +93,6 @@ namespace Assets.Code.FSM.MyStates
             return true;
         }
 
-        public void Shoot()
-        {
-            if(Time.time >shootRateTime)
-            {
-                GameObject go = (GameObject)Instantiate(bullet, muzzleEnd.position, muzzleEnd.rotation);
-                go.GetComponent<Rigidbody>().AddForce(muzzleEnd.forward * shootForce);
-                shootRateTime = Time.time + shootRate;
-                isShooting = true;
-            }
-           
-
-        }
+        
     }
 }

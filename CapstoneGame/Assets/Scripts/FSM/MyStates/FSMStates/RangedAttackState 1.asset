@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 10
   attackDelay: 1
-  shootDistance: 0
+  shootDistance: 10
   bullet: {fileID: 3525404273870077009, guid: 081a398e1e3749547bc21e6d4eaaa782, type: 3}
   muzzleEnd: {fileID: 0}
   gunShot: {fileID: 0}
