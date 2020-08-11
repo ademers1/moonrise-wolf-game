@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using JetBrains.Annotations;
+using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
+using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 using UnityEngine.UI;
 
-enum AnimState
+public enum AnimState
 {
     isIdle, isMoving, isAttacking, isJumping, isSneaking, isDashing, isHowling, isTailwhiping
 }
@@ -32,12 +35,8 @@ public class PlayerController : MonoBehaviour
     public float runSpeed = 10f;
     public float stalkSpeed = 2.5f;
     public float jumpForce = 100.0f;
-    public float dashForce = 1000f;
     private float t = 0;//this variable will be discontinued with animation events
 
-    private int dashesRemaining = 3;
-    public float dashChargeTime = 3.0f;
-    public float dashTimer = 0f;
 
     public float howlCooldownAmount = 5.0f;
     public float howlTimer = 0;
@@ -97,8 +96,30 @@ public class PlayerController : MonoBehaviour
     Vector3 moveDir = new Vector3(0, 0, 1);
 
     private AnimState _animState = AnimState.isIdle;
+    public AnimState animState
+    {
+        get
+        {
+            return _animState;
+        }
+    }
 
+    //dash variables
+    private int dashesRemaining = 3;
+    public float dashChargeTime = 3.0f;
+    public float dashTimer = 0f;
+    public float dashLength = 0.15f;
+    public float dashSpeed = 100f;
+    public BoxCollider collider;
 
+    private Vector3 dashMove;
+    private float dashing = 0f;
+    private float dashingTime = 0f;
+    private bool canDash = true;
+    private bool dashReset = true;
+    Collider[] dashCollider;
+
+    Vector3 velocity;
 
     private void Start()
     {
@@ -116,6 +137,104 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
+        velocityY += Time.deltaTime * gravity;
+
+        //if we're not moving we need to constantly check if we're groudned and if not fall
+        if (_animState != AnimState.isMoving)
+        {
+            
+            if (controller.isGrounded)
+            {
+                velocityY = 0;
+            }
+            else
+            {
+                velocity = Vector3.zero + Vector3.up * velocityY;
+                controller.Move(velocity * Time.deltaTime);
+            }
+        }
+
+        //basic movement
+        if (_animState == AnimState.isIdle || _animState == AnimState.isMoving)
+        {
+
+            float vertical = Input.GetAxisRaw("Vertical");
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+            t = 0;
+
+            if (Input.GetButtonDown("Jump"))
+                Jump();
+
+            
+            if (direction.magnitude >= 0.1f)
+            {
+                _animState = AnimState.isMoving;
+                //get the angle we move and change the camera to match that angle
+
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                //transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+
+                bool running = Input.GetKey(KeyCode.LeftShift);
+                float currentSpeed = ((running) ? runSpeed : walkSpeed) * direction.magnitude;
+
+                velocityY += Time.deltaTime * gravity;
+
+                velocity = transform.forward * currentSpeed + Vector3.up * velocityY;
+
+                controller.Move(velocity * Time.deltaTime);
+
+                if (controller.isGrounded)
+                {
+                    velocityY = 0;
+                }
+            }
+
+            anim.SetBool("isIdle", false);
+            anim.SetBool("isRunning", true);
+        }
+
+        //dash
+        if (_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking && dashesRemaining > 0)
+        {
+            //left ctrl or left mouse button
+            if (Input.GetKeyDown(KeyCode.Z) && canDash && dashesRemaining >= 1)
+            {
+                dashMove = velocity.normalized;
+                canDash = false;
+                _animState = AnimState.isDashing;
+                dashReset = false;
+                dashesRemaining--;
+                dashCollider = Physics.OverlapSphere(transform.position, tailWhipRadius, enemies);
+                foreach(Collider col in dashCollider)
+                {
+                    col.isTrigger = true;
+                }
+            }
+
+            
+        }
+
+        if(!canDash && dashing < dashLength)
+        {
+            controller.Move(dashMove * dashSpeed * Time.deltaTime);
+            dashing += Time.deltaTime;
+        }
+
+
+        if (controller.isGrounded && canDash == false && dashing >= dashLength)
+        {
+            _animState = AnimState.isIdle;
+            canDash = true;
+            dashing = 0f;
+            foreach(Collider col in dashCollider)
+            {
+                col.isTrigger = false;
+            }
+        }
+
         //recharge dashes if we don't currently have 3
         if (dashesRemaining < 3)
         {
@@ -203,7 +322,7 @@ public class PlayerController : MonoBehaviour
             {
                 //grab all the enemies in howl radius and loop through setting them to stunned
                 _animState = AnimState.isIdle;
-                Collider[] colliders = Physics.OverlapSphere(transform.position, tailWhipRadius, enemies);
+                Collider[] colliders = Physics.OverlapSphere(transform.position, howlRadius, enemies);
                 howlOnCooldown = true;
 
                 foreach (Collider enemy in colliders)
@@ -231,13 +350,11 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.R) && !tailWhipOnCooldown)
             {
                 _animState = AnimState.isIdle;
-                Collider[] colliders = Physics.OverlapSphere(transform.position, howlRadius, enemies);
+                Collider[] colliders = Physics.OverlapSphere(transform.position, tailWhipRadius, enemies);
                 tailWhipOnCooldown = true;
-
-                foreach (Collider enemy in colliders)
+                foreach(Collider enemy in colliders)
                 {
                     enemy.GetComponent<Rigidbody>().isKinematic = false;
-
                 }
                 Knockback(colliders);
             }
@@ -246,17 +363,6 @@ public class PlayerController : MonoBehaviour
         if (tailWhipOnCooldown)
         {
             tailWhipTimer += Time.deltaTime;
-            if (tailWhipTimer > 2f)
-            {
-                GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
-                foreach (GameObject enemy in enemys)
-                {
-                    if (!enemy.GetComponent<Rigidbody>().isKinematic)
-                    {
-                        enemy.GetComponent<Rigidbody>().isKinematic = true;
-                    }
-                }
-            }
             if (tailWhipTimer >= tailWhipCooldownAmount)
             {
                 tailWhipTimer = 0;
@@ -264,126 +370,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    void FixedUpdate()
-    {
-
-        if (_animState == AnimState.isIdle || _animState == AnimState.isMoving)
-        {
-
-            float vertical = Input.GetAxisRaw("Vertical");
-            float horizontal = Input.GetAxisRaw("Horizontal");
-            Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-            t = 0;
-
-            if (Input.GetButtonDown("Jump"))
-                Jump();
-
-            if (direction.magnitude >= 0.1f)
-            {
-                _animState = AnimState.isMoving;
-                //get the angle we move and change the camera to match that angle
-
-                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-                transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-                //transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
-
-                bool running = Input.GetKey(KeyCode.LeftShift);
-                float currentSpeed = ((running) ? runSpeed : walkSpeed) * direction.magnitude;
-
-                velocityY += Time.deltaTime * gravity;
-
-                Vector3 velocity = transform.forward * currentSpeed + Vector3.up * velocityY;
-
-                controller.Move(velocity * Time.deltaTime);
-
-                if (controller.isGrounded)
-                {
-                    velocityY = 0;
-                }
-            }
-
-            anim.SetBool("isIdle", false);
-            anim.SetBool("isRunning", true);
-        }
-
-        if (_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking && dashesRemaining > 0)
-        {
-            //left ctrl or left mouse button
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                dashesRemaining--;
-                _animState = AnimState.isDashing;
-                Vector3 dashDirection;
-                float horizontal = Input.GetAxisRaw("Horizontal");
-                float vertical = Input.GetAxisRaw("Vertical");
-                if (vertical != 0 || horizontal == 0)
-                {
-                    //if a key isn't held down 
-                    //or forward/back is held down
-                    //then we want to dash straight ahead
-                    horizontal = 0;
-                    dashDirection = transform.forward;
-                    Debug.Log(dashDirection);
-                    //.AddForce(dashDirection * dashForce, ForceMode.Impulse);
-                }
-                else
-                {
-                    //else we want to dash to the side
-                    //currently not working as we start moving to the side first
-                    //TODO: figure out a new key to press for sideways dashes
-                    if (horizontal < 0)
-                    {
-                        dashDirection = new Vector3(-1, 0, 0);
-                        //rb.AddForce(dashDirection * dashForce, ForceMode.Impulse);
-                    }
-                    else
-                    {
-                        dashDirection = new Vector3(1, 0, 0);
-                        //rb.AddForce(dashDirection * dashForce, ForceMode.Impulse);
-                    }
-                }
-            }
-        }
-
-    #region IK
-
-        if(enableFeetIk == false) { return; }
-
-        if(anim == null) { return; }
-
-       
-
-
-
-    }
-
-    private void OnAnimatorIK(int layerIndex)
-    {
-
-    }
-
-
-    #endregion
-
-
-    #region FeetGroundingMethods 
-    public void MoveFeetToIkPoint(AvatarIKGoal foot, Vector3 posiitionIkHolder, Quaternion rotationIkHolder, ref float lastFootPositionY)
-    {
-
-    }
-
-    private void MovePelvisHeight()
-    {
-
-    }
-
-    private void FeetPositionSolver(Vector3 fromSkyPosition, ref Vector3 feetIkPositions, ref Quaternion feetIkRotations)
-    {
-
-    }
-
-
-    #endregion
 
 
     private void Jump()
@@ -436,7 +422,20 @@ public class PlayerController : MonoBehaviour
     {
         foreach (Collider enemy in colliders)
         {
-            enemy.GetComponent<Rigidbody>().AddExplosionForce(knockBackStrength, transform.position, tailWhipRadius, knockUpStrength, ForceMode.Impulse);
+            Vector3 enemyKnockBackDirection = enemy.transform.position - transform.position;
+            enemyKnockBackDirection.y = 0;
+            enemyKnockBackDirection.Normalize();
+            enemy.GetComponent<Rigidbody>().AddForce(enemyKnockBackDirection * 10, ForceMode.Impulse);
+        }
+        StartCoroutine(ReAddKinematic(colliders));
+    }
+
+    private IEnumerator ReAddKinematic(Collider[] colliders)
+    {
+        yield return new WaitForSeconds(1.0f);
+        foreach(Collider enemy in colliders)
+        {
+            enemy.GetComponent<Rigidbody>().isKinematic = true;
         }
     }
 }
