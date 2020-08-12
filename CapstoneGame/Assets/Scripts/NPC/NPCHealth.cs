@@ -23,10 +23,10 @@ public class NPCHealth : MonoBehaviour
             Destroy(gameObject, 2f);
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            HurtEnemy(1);
-        }
+     //  if (Input.GetKeyDown(KeyCode.D))
+     //  {
+     //      HurtEnemy(1);
+     //  }
     }
 
     public void HurtEnemy(float damageToGive)

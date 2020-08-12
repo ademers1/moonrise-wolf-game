@@ -156,7 +156,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //basic movement
-        if (_animState == AnimState.isIdle || _animState == AnimState.isMoving)
+        if (_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking)
         {
 
             float vertical = Input.GetAxisRaw("Vertical");
@@ -178,7 +178,15 @@ public class PlayerController : MonoBehaviour
                 //transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
 
                 bool running = Input.GetKey(KeyCode.LeftShift);
+                bool sneaking = Input.GetKey(KeyCode.LeftControl);
                 float currentSpeed = ((running) ? runSpeed : walkSpeed) * direction.magnitude;
+                float sneakSpeed = ((sneaking) ? stalkSpeed : walkSpeed) * direction.magnitude;
+
+                if(sneaking)
+                {
+                    _animState = AnimState.isSneaking;
+                    currentSpeed = sneakSpeed;
+                }
 
                 velocityY += Time.deltaTime * gravity;
 
@@ -186,6 +194,7 @@ public class PlayerController : MonoBehaviour
 
                 controller.Move(velocity * Time.deltaTime);
 
+            
                 if (controller.isGrounded)
                 {
                     velocityY = 0;
@@ -269,21 +278,21 @@ public class PlayerController : MonoBehaviour
         //attacks
         if (_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking)
         {
-            if (Input.GetButtonDown("Fire1") && !attackOnCooldown)
-            {
-                _animState = AnimState.isAttacking;
-                anim.SetTrigger("isAttacking");
-                attackOnCooldown = true;
-                Attack();
-            }
-
-            if (Input.GetButtonDown("Fire2") && !heavyAttackOnCooldown)
-            {
-                _animState = AnimState.isAttacking;
-                anim.SetTrigger("isAttacking");
-                heavyAttackOnCooldown = true;
-                HeavyAttack();
-            }
+          // if (Input.GetButtonDown("Fire1") && !attackOnCooldown)
+          // {
+          //     _animState = AnimState.isAttacking;
+          //     anim.SetTrigger("isAttacking");
+          //     attackOnCooldown = true;
+          //     Attack();
+          // }
+          //
+          // if (Input.GetButtonDown("Fire2") && !heavyAttackOnCooldown)
+          // {
+          //     _animState = AnimState.isAttacking;
+          //     anim.SetTrigger("isAttacking");
+          //     heavyAttackOnCooldown = true;
+          //     HeavyAttack();
+          // }
         }
 
         //set cooldown of attack and heavy attack
