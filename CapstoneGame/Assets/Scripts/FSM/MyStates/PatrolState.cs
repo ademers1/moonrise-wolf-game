@@ -9,8 +9,8 @@ using Assets.Code.NPCCode;
 
 namespace Assets.Code.FSM.MyStates
 {
-    [RequireComponent(typeof (IdleState))]
-    [CreateAssetMenu(fileName ="PatrolState", menuName = "Unity-FSM/MyStates/Patrol", order = 2)]//Second In List
+    [RequireComponent(typeof(IdleState))]
+    [CreateAssetMenu(fileName = "PatrolState", menuName = "Unity-FSM/MyStates/Patrol", order = 2)]//Second In List
 
     public class PatrolState : FSMState
     {
@@ -21,11 +21,6 @@ namespace Assets.Code.FSM.MyStates
         float scanDegrees;
         [SerializeField]
         float scanDistance;
-        [SerializeField]
-        private float sneakScanDistance;
-        [SerializeField]
-        private float sneakScanDegrees;
-
         private Vector3 lastPos;
         private float lastPosTime;
 
@@ -74,51 +69,51 @@ namespace Assets.Code.FSM.MyStates
                 }
             }
 
-            
+
 
             return EnteredState;
 
-            
+
         }
 
         public override void UpdateState()
         {
-            if(EnteredState)
+            if (EnteredState)
             {
-                if(Scan())
+                if (Scan())
                 {
                     return;
                 }
 
-                if(lastPos == navMeshAgent.transform.position)
+                if (lastPos == navMeshAgent.transform.position)
                 {
                     lastPosTime += Time.deltaTime;
-                    if(lastPosTime >= 3)
+                    if (lastPosTime >= 3)
                     {
                         fsm.EnterState(FSMStateType.IDLE);
                     }
                 }
                 lastPos = navMeshAgent.transform.position;
                 //Logic
-                if(Vector3.Distance(navMeshAgent.transform.position, patrolPoints[patrolPointIndex].transform.position) <= 1f)
+                if (Vector3.Distance(navMeshAgent.transform.position, patrolPoints[patrolPointIndex].transform.position) <= 1f)
                 {
                     fsm.EnterState(FSMStateType.IDLE);
                 }
-                
+
             }
         }
 
         public override bool ExitState()
         {
-            
-            base.ExitState();            
+
+            base.ExitState();
 
             return true;
         }
 
         private void SetDestination(NPCPatrolPoints destination)
         {
-            if(navMeshAgent != null && destination != null)
+            if (navMeshAgent != null && destination != null)
             {
                 //Position of patrol point
                 navMeshAgent.SetDestination(destination.transform.position);
@@ -127,44 +122,22 @@ namespace Assets.Code.FSM.MyStates
 
         public bool Scan()
         {
-            if (npc.target.GetComponent<PlayerController>().animState != AnimState.isSneaking) 
-            {
-                RaycastHit hit;
-                //For Loop for Ray Cast
-                for (int i = 0; i <= scanDegrees / 5; i++)
-                {
-                    Vector3 rayDir = Quaternion.Euler(0, (i - scanDegrees / 10) * 5, 0) * npc.transform.forward;
-                    Debug.DrawRay(npc.transform.position, rayDir * scanDistance, Color.red);
-                    if (Physics.Raycast(npc.transform.position, rayDir, out hit, scanDistance))
-                    {
-                        if (hit.transform.CompareTag("Player"))
-                        {
-                            npc.target = hit.transform;
-                            fsm.EnterState(FSMStateType.CHASE);
-                            return true;
-                        }
-                    }
-                }
-
-            }
-
-            RaycastHit hit2;
+            RaycastHit hit;
             //For Loop for Ray Cast
-            for (int i = 0; i <= sneakScanDegrees / 5; i++)
+            for (int i = 0; i <= scanDegrees / 5; i++)
             {
-                Vector3 rayDir = Quaternion.Euler(0, (i - sneakScanDegrees / 10) * 5, 0) * npc.transform.forward;
-                Debug.DrawRay(npc.transform.position, rayDir * sneakScanDistance, Color.red);
-                if (Physics.Raycast(npc.transform.position, rayDir, out hit2, sneakScanDistance))
+                Vector3 rayDir = Quaternion.Euler(0, (i - scanDegrees / 10) * 5, 0) * npc.transform.forward;
+                Debug.DrawRay(npc.transform.position, rayDir * scanDistance, Color.red);
+                if (Physics.Raycast(npc.transform.position, rayDir, out hit, scanDistance))
                 {
-                    if (hit2.transform.CompareTag("Player"))
+                    if (hit.transform.CompareTag("Player"))
                     {
-                        npc.target = hit2.transform;
+                        npc.target = hit.transform;
                         fsm.EnterState(FSMStateType.CHASE);
                         return true;
                     }
                 }
             }
-
             //if raycast hits
             //if target is a player 
             //set the target
