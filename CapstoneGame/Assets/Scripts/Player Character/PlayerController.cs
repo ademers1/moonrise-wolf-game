@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         enemies = LayerMask.GetMask("Enemies");
-        furyBar.fillAmount = 0;
+        //furyBar.fillAmount = 0;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
