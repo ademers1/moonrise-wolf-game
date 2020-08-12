@@ -55,7 +55,7 @@ public class LockOn : MonoBehaviour
 
     void WolfLockOn()
     {
-        float shortesDistance = Mathf.Infinity;
+        float shortestDistance = Mathf.Infinity;
         closestEnemy = null;
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, lockOnRadius, enemyLayers);
@@ -69,9 +69,9 @@ public class LockOn : MonoBehaviour
         {
             
             float distance = Vector3.Distance(enemy.transform.position, transform.position);
-            if (distance < shortesDistance)
+            if (distance < shortestDistance)
             {
-                shortesDistance = distance;
+                shortestDistance = distance;
                 closestEnemy = enemy.gameObject;
             }
         }
