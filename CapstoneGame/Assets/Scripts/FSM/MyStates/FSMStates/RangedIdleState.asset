@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed28fb16cf118a046a7d2af6ce6fd526, type: 3}
-  m_Name: IdleState
+  m_Name: RangedIdleState
   m_EditorClassIdentifier: 
   idleDuration: 3
   canScan: 1
-  scanDegrees: 90
-  scanDistance: 25
+  scanDegrees: 360
+  scanDistance: 15
