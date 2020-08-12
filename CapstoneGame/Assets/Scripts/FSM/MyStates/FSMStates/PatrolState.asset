@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8fcc18cf1f16b041ace97772722aa60, type: 3}
   m_Name: PatrolState
   m_EditorClassIdentifier: 
-  scanDegrees: 180
+  scanDegrees: 360
   scanDistance: 10
+  sneakScanDistance: 75
+  sneakScanDegrees: 15
