@@ -13,8 +13,7 @@ namespace Assets.Code.FSM.MyStates
     public class RangedAttack : FSMState
     {
 
-        [SerializeField]
-        int attackDamage = 10;
+
 
         [SerializeField]
         float attackDelay = 1f;
@@ -56,55 +55,44 @@ namespace Assets.Code.FSM.MyStates
             if (EnteredState)
             {
                 delayTimeRemaining -= Time.deltaTime;
-                if(delayTimeRemaining > 0)
+                if (delayTimeRemaining > 0)
                 {
                     return;
                 }
-                if(Vector3.Distance(npc.target.position, npc.transform.position)>shootDistance)
+                if (Vector3.Distance(npc.target.position, npc.transform.position) > shootDistance)
                 {
                     navMeshAgent.isStopped = false;
                     fsm.EnterState(FSMStateType.CHASE);
                     return;
                 }
-                Shoot();
-                Debug.Log("Is Ranged Shooting");
-               
+
+
+
                 PlayerHealth health = npc.target.GetComponent<PlayerHealth>();
-                health.Damage(attackDamage);
+
                 if (health.isAlive)
                 {
                     delayTimeRemaining = attackDelay;
-                   
+
                 }
                 else
                 {
                     navMeshAgent.isStopped = false;
                     fsm.EnterState(FSMStateType.PATROL);
-                    
+
                 }
             }
         }
 
         public override bool ExitState()
         {
-            
+
             base.ExitState();
             Debug.Log("Exiting Attack state");
 
             return true;
         }
 
-        public void Shoot()
-        {
-            if(Time.time >shootRateTime)
-            {
-                GameObject go = (GameObject)Instantiate(bullet, muzzleEnd.position, muzzleEnd.rotation);
-                go.GetComponent<Rigidbody>().AddForce(muzzleEnd.forward * shootForce);
-                shootRateTime = Time.time + shootRate;
-                isShooting = true;
-            }
-           
 
-        }
     }
 }

@@ -9,8 +9,8 @@ using Assets.Code.NPCCode;
 
 namespace Assets.Code.FSM.MyStates
 {
-    [RequireComponent(typeof (IdleState))]
-    [CreateAssetMenu(fileName ="PatrolState", menuName = "Unity-FSM/MyStates/Patrol", order = 2)]//Second In List
+    [RequireComponent(typeof(IdleState))]
+    [CreateAssetMenu(fileName = "PatrolState", menuName = "Unity-FSM/MyStates/Patrol", order = 2)]//Second In List
 
     public class PatrolState : FSMState
     {
@@ -69,51 +69,51 @@ namespace Assets.Code.FSM.MyStates
                 }
             }
 
-            
+
 
             return EnteredState;
 
-            
+
         }
 
         public override void UpdateState()
         {
-            if(EnteredState)
+            if (EnteredState)
             {
-                if(Scan())
+                if (Scan())
                 {
                     return;
                 }
 
-                if(lastPos == navMeshAgent.transform.position)
+                if (lastPos == navMeshAgent.transform.position)
                 {
                     lastPosTime += Time.deltaTime;
-                    if(lastPosTime >= 3)
+                    if (lastPosTime >= 3)
                     {
                         fsm.EnterState(FSMStateType.IDLE);
                     }
                 }
                 lastPos = navMeshAgent.transform.position;
                 //Logic
-                if(Vector3.Distance(navMeshAgent.transform.position, patrolPoints[patrolPointIndex].transform.position) <= 1f)
+                if (Vector3.Distance(navMeshAgent.transform.position, patrolPoints[patrolPointIndex].transform.position) <= 1f)
                 {
                     fsm.EnterState(FSMStateType.IDLE);
                 }
-                
+
             }
         }
 
         public override bool ExitState()
         {
-            
-            base.ExitState();            
+
+            base.ExitState();
 
             return true;
         }
 
         private void SetDestination(NPCPatrolPoints destination)
         {
-            if(navMeshAgent != null && destination != null)
+            if (navMeshAgent != null && destination != null)
             {
                 //Position of patrol point
                 navMeshAgent.SetDestination(destination.transform.position);
@@ -122,15 +122,15 @@ namespace Assets.Code.FSM.MyStates
 
         public bool Scan()
         {
-            RaycastHit hit; 
+            RaycastHit hit;
             //For Loop for Ray Cast
-            for(int i = 0; i <= scanDegrees / 5; i++)
+            for (int i = 0; i <= scanDegrees / 5; i++)
             {
                 Vector3 rayDir = Quaternion.Euler(0, (i - scanDegrees / 10) * 5, 0) * npc.transform.forward;
                 Debug.DrawRay(npc.transform.position, rayDir * scanDistance, Color.red);
-                if(Physics.Raycast(npc.transform.position, rayDir, out hit, scanDistance))
+                if (Physics.Raycast(npc.transform.position, rayDir, out hit, scanDistance))
                 {
-                    if(hit.transform.CompareTag("Player"))
+                    if (hit.transform.CompareTag("Player"))
                     {
                         npc.target = hit.transform;
                         fsm.EnterState(FSMStateType.CHASE);
@@ -138,11 +138,11 @@ namespace Assets.Code.FSM.MyStates
                     }
                 }
             }
-                //if raycast hits
-                    //if target is a player 
-                        //set the target
-                        //start the chase state
-                       // return true;
+            //if raycast hits
+            //if target is a player 
+            //set the target
+            //start the chase state
+            // return true;
             return false;
         }
     }
