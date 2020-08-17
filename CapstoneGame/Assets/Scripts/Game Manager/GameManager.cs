@@ -33,6 +33,17 @@ public class GameManager : Singleton<GameManager>
         Instance.PlayGameMusic();
     }
 
+    public void HideMouse()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public void ShowMouse()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+    }
 
     public void PlaySound(string soundName)
     {
