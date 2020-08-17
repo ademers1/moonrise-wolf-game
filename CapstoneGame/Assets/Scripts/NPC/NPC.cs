@@ -15,7 +15,7 @@ namespace Assets.Code.NPCCode
     {
         public Transform target;
 
-        public AnimState targetAnimState;
+        public PlayerController player;
 
         [SerializeField]
         protected NPCPatrolPoints[] patrolPoints;
@@ -30,7 +30,7 @@ namespace Assets.Code.NPCCode
             finiteStatemachine = this.GetComponent<FiniteStateMachine>();
             if(target != null)
             {
-                targetAnimState = target.GetComponent<PlayerController>().animState;
+                targetAnimState = target.GetComponent<PlayerController>();
             }
         }
 
