@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Scenes/Start.unity
     guid: 18f29ee350ec45b48878e9ed5ac27f0e
   - enabled: 1
+    path: Assets/Scenes/Main Scenes/ForestLevel.unity
+    guid: 969207eff8e5fea45a256249035cd0da
+  - enabled: 1
     path: Assets/Scenes/Main Scenes/Win.unity
     guid: 16bf0f9cf7efa2f49880b6ea48426bec
   - enabled: 1
     path: Assets/Scenes/Main Scenes/Loss.unity
     guid: d3c0e0e015d8f6441992b6caa7434b1a
-  - enabled: 1
-    path: Assets/Scenes/Levels/MainLevel.unity
-    guid: 51a19c8a3992217489a1dbd1f19f0b15
   m_configObjects: {}
