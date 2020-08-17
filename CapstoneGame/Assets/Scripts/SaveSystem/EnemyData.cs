@@ -13,7 +13,7 @@ public class EnemyData
     public EnemyData(NPCHealth enemy)
     {
         //get player health
-        enemyHealth = enemy.enemyCurrentHealth;
+        enemyHealth = enemy.Health;
         //get player position
         enemyPosition = new float[3];
         enemyPosition[0] = enemy.transform.position.x;

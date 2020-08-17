@@ -412,7 +412,7 @@ public class PlayerController : MonoBehaviour
         foreach (Collider enemy in hitEnemies)
         {
             Debug.Log("tets");
-            enemy.GetComponent<NPCHealth>().HurtEnemy(attackDamage);
+            enemy.GetComponent<NPCHealth>().Health -= attackDamage;
         }
     }
 
@@ -422,7 +422,7 @@ public class PlayerController : MonoBehaviour
         // Damage the Enemy
         foreach (Collider enemy in hitEnemies)
         {
-            enemy.GetComponent<NPCHealth>().HurtEnemy(heavyAttackDamage);
+            enemy.GetComponent<NPCHealth>().Health -= heavyAttackDamage;
         }
     }
 
