@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
     public bool useProIkFeature = false;
     public bool showSolverDebug = true;
-
+    public bool InvisBox = false;
 
     [Header("Attacks")]
     //**ATTACK**//
@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
     public float dashLength = 0.15f;
     public float dashSpeed = 100f;
     public BoxCollider collider;
-
+    
     private Vector3 dashMove;
     private float dashing = 0f;
     private float dashingTime = 0f;
@@ -277,21 +277,21 @@ public class PlayerController : MonoBehaviour
         //attacks
         if (_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking)
         {
-          // if (Input.GetButtonDown("Fire1") && !attackOnCooldown)
-          // {
-          //     _animState = AnimState.isAttacking;
-          //     anim.SetTrigger("isAttacking");
-          //     attackOnCooldown = true;
-          //     Attack();
-          // }
-          //
-          // if (Input.GetButtonDown("Fire2") && !heavyAttackOnCooldown)
-          // {
-          //     _animState = AnimState.isAttacking;
-          //     anim.SetTrigger("isAttacking");
-          //     heavyAttackOnCooldown = true;
-          //     HeavyAttack();
-          // }
+           if (Input.GetButtonDown("Fire1") && !attackOnCooldown)
+           {
+               _animState = AnimState.isAttacking;
+               anim.SetTrigger("isAttacking");
+               attackOnCooldown = true;
+               Attack();
+           }
+          
+           if (Input.GetButtonDown("Fire2") && !heavyAttackOnCooldown)
+           {
+               _animState = AnimState.isAttacking;
+               anim.SetTrigger("isAttacking");
+               heavyAttackOnCooldown = true;
+               HeavyAttack();
+           }
         }
 
         //set cooldown of attack and heavy attack
@@ -444,6 +444,24 @@ public class PlayerController : MonoBehaviour
         foreach (Collider enemy in colliders)
         {
             enemy.GetComponent<Rigidbody>().isKinematic = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("InvisBox"))
+        {
+            InvisBox = true;
+          //  _animState = AnimState.isSneaking;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("InvisBox"))
+        {
+            InvisBox = false;
+           // _animState = AnimState.isIdle;
         }
     }
 }

@@ -18,6 +18,8 @@ TagManager:
   - zapped
   - ThirdPersonCamera
   - CheckPoint
+  - Waypoint
+  - InvisBox
   layers:
   - Default
   - TransparentFX
