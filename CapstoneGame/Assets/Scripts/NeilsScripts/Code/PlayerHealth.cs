@@ -22,6 +22,7 @@ public class PlayerHealth : Killable
     private void Start()
     {
         MaxHealth = 100;
+        Health = 100;
     }
 
     // Update is called once per frame
