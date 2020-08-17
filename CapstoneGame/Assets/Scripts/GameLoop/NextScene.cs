@@ -7,7 +7,8 @@ public class NextScene : MonoBehaviour
 {
     public void ChangeScene()
     {
-        SceneManager.LoadScene("Alex's Level");
+        SceneManager.LoadScene(1);
+        GameManager.Instance.HideMouse();
     }
 
     private void Update()

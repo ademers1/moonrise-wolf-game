@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using Assets.Code.NPCCode;
 using System.Threading.Tasks;
-using System.Runtime.Remoting.Messaging;
 
 namespace Assets.Code.FSM
 {
