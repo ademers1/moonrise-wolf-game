@@ -9,7 +9,7 @@ public class PlayerData
     public float[] playerPosition;
     public float[] playerRotation;
     public float[] playerScale;
-    public int playerHealth;
+    public float playerHealth;
 
     //Constructor to create the default player data class
     public PlayerData(PlayerHealth player)

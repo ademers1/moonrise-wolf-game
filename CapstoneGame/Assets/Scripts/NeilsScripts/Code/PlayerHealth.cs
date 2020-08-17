@@ -6,13 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : Killable
 {
-    
+    float healthBarWidth = 125;
+    float newWidth;
+    public Image healthBar;
 
     public void EndGame()
     {
         //TODO end the game.
     }
-   
+
     public void Flash()
     {
         flashTimeRemaining = flashLength;
@@ -22,24 +24,37 @@ public class PlayerHealth : Killable
     private void Start()
     {
         MaxHealth = 100;
+        Health = 100;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(flashTimeRemaining > 0)
+        if (flashTimeRemaining > 0)
         {
             flashTimeRemaining -= Time.deltaTime;// Subtract Timer to break out of Co routine
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Health -= 20;
+        }
     }
 
-    public void Damage(float amount)
+    public override float Health
     {
-        Health -= (int)amount;
-
-        slider.value = (float)Health / (float)MaxHealth;
+        get
+        {
+            return base.Health;
+        }
+        set
+        {
+            base.Health = value;
+            float ratio = Health / MaxHealth;
+            newWidth = healthBarWidth * ratio;
+            healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(newWidth, healthBar.GetComponent<RectTransform>().sizeDelta.y);
+        }
     }
-
     void Respawn()
     {
         //Respawn when damage hits 0

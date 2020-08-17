@@ -884,9 +884,9 @@ VisualEffectResource:
       ^ systemSeed);\r\n#endif\r\n        \r\n        {\n            SetAttribute_F01429A3(
       /*inout */lifetime,  /*inout */seed, (float)2, (float)5);\n        }\n        {\n
       \           PositionSphere_18C( /*inout */position,  /*inout */seed,  /*inout
-      */direction, ArcSphere_sphere_center_b, (float)0.230000004, (float)6.28318548,
-      (float)0, (float)0);\n        }\n        \n\r\n\r\n#if VFX_USE_ALIVE_CURRENT\r\n
-      \       if (alive)\r\n        {\r\n\t\t\tuint deadIndex = deadListIn.DecrementCounter();\r\n
+      */direction, ArcSphere_sphere_center_b, (float)0.230000004, (float)0, (float)0,
+      (float)0);\n        }\n        \n\r\n\r\n#if VFX_USE_ALIVE_CURRENT\r\n        if
+      (alive)\r\n        {\r\n\t\t\tuint deadIndex = deadListIn.DecrementCounter();\r\n
       \           uint index = deadListIn[deadIndex];\r\n            attributeBuffer.Store((index
       * 0x1 + 0x0) << 2,asuint(lifetime));\n            attributeBuffer.Store3((index
       * 0x8 + 0xF4240) << 2,asuint(position));\n            attributeBuffer.Store3((index
@@ -1279,18 +1279,18 @@ VisualEffectResource:
         data[1]: -1
         data[2]: -1
         data[3]: 1
-      - op: 1
-        valueIndex: 62
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
       - op: 42
-        valueIndex: 63
+        valueIndex: 62
         data[0]: 7
         data[1]: 6
         data[2]: -1
         data[3]: -1
+      - op: 1
+        valueIndex: 65
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
+        data[3]: 1
       - op: 1
         valueIndex: 66
         data[0]: -1
@@ -1314,27 +1314,21 @@ VisualEffectResource:
         data[0]: -1
         data[1]: -1
         data[2]: -1
+        data[3]: 3
+      - op: 1
+        valueIndex: 72
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
+        data[3]: 3
+      - op: 1
+        valueIndex: 75
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
         data[3]: 1
-      - op: 1
-        valueIndex: 70
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 3
-      - op: 1
-        valueIndex: 73
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 3
       - op: 1
         valueIndex: 76
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 77
         data[0]: -1
         data[1]: -1
         data[2]: -1
@@ -1362,18 +1356,16 @@ VisualEffectResource:
         - m_ExpressionIndex: 21
           m_Value: 0.1
         - m_ExpressionIndex: 22
-          m_Value: 6.2831855
-        - m_ExpressionIndex: 23
           m_Value: 0.23
-        - m_ExpressionIndex: 25
+        - m_ExpressionIndex: 24
           m_Value: 5
-        - m_ExpressionIndex: 26
+        - m_ExpressionIndex: 25
           m_Value: 2
-        - m_ExpressionIndex: 27
+        - m_ExpressionIndex: 26
           m_Value: 30
-        - m_ExpressionIndex: 28
+        - m_ExpressionIndex: 27
           m_Value: 42
-        - m_ExpressionIndex: 31
+        - m_ExpressionIndex: 30
           m_Value: 50
       m_Vector2f:
         m_Array: []
@@ -1383,9 +1375,9 @@ VisualEffectResource:
           m_Value: {x: 0, y: 0, z: 0}
         - m_ExpressionIndex: 6
           m_Value: {x: 0, y: 0, z: 0}
-        - m_ExpressionIndex: 29
+        - m_ExpressionIndex: 28
           m_Value: {x: 2, y: 3, z: 2}
-        - m_ExpressionIndex: 30
+        - m_ExpressionIndex: 29
           m_Value: {x: 0, y: 1, z: 0}
       m_Vector4f:
         m_Array: []
@@ -1496,15 +1488,15 @@ VisualEffectResource:
             m_NumAlphaKeys: 5
       m_NamedObject:
         m_Array:
-        - m_ExpressionIndex: 32
+        - m_ExpressionIndex: 31
           m_Value: {fileID: 2800000, guid: 49cb5aa34272b034d8b754c65d9cdbfa, type: 3}
       m_Bool:
         m_Array: []
     m_ExposedExpressions:
     - nameId: Attraction Force
-      index: 28
-    - nameId: Attraction Speed
       index: 27
+    - nameId: Attraction Speed
+      index: 26
     - nameId: Number of Particles
       index: 0
     - nameId: Start
@@ -1681,9 +1673,9 @@ VisualEffectResource:
       index: 1
     values:
     - nameId: bounds_center
-      index: 30
-    - nameId: bounds_size
       index: 29
+    - nameId: bounds_size
+      index: 28
     tasks:
     - type: 536870912
       buffers:
@@ -1698,12 +1690,12 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: ArcSphere_sphere_center_b
-        index: 24
+        index: 23
       params:
       - nameId: bounds_center
-        index: 30
-      - nameId: bounds_size
         index: 29
+      - nameId: bounds_size
+        index: 28
       processor: {fileID: 0}
       shaderSourceIndex: 0
     - type: 805306368
@@ -1717,9 +1709,9 @@ VisualEffectResource:
       - nameId: Sphere_center_a
         index: 19
       - nameId: attractionSpeed_a
-        index: 27
+        index: 26
       - nameId: attractionForce_a
-        index: 28
+        index: 27
       - nameId: deltaTime_a
         index: 18
       params: []
@@ -1736,7 +1728,7 @@ VisualEffectResource:
       - nameId: Scale_e
         index: 16
       - nameId: mainTexture
-        index: 32
+        index: 31
       params:
       - nameId: sortPriority
         index: 0
@@ -2920,7 +2912,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.ArcSphere, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"sphere":{"center":{"x":0.0,"y":0.0,"z":-0.0340421199798584},"radius":0.23000000417232514},"arc":6.2831854820251469}'
+      m_SerializableObject: '{"sphere":{"center":{"x":0.0,"y":0.0,"z":-0.0340421199798584},"radius":0.23000000417232514},"arc":0.0}'
     m_Space: 1
   m_Property:
     name: ArcSphere

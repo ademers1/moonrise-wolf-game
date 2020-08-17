@@ -19,6 +19,9 @@ public class VFXController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //follows the player
+        this.gameObject.transform.position = Player.transform.position;
+        //if wolf sense is on
         if(wolfSenseScript.WolfSenseOn)
         {
             start = Player.transform.position;
