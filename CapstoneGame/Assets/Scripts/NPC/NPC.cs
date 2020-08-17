@@ -30,7 +30,7 @@ namespace Assets.Code.NPCCode
             finiteStatemachine = this.GetComponent<FiniteStateMachine>();
             if(target != null)
             {
-                targetAnimState = target.GetComponent<PlayerController>();
+                player = target.GetComponent<PlayerController>();
             }
         }
 
