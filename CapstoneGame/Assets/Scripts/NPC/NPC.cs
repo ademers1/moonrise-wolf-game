@@ -15,6 +15,8 @@ namespace Assets.Code.NPCCode
     {
         public Transform target;
 
+        public AnimState targetAnimState;
+
         [SerializeField]
         protected NPCPatrolPoints[] patrolPoints;
 
@@ -26,7 +28,10 @@ namespace Assets.Code.NPCCode
         {
             navMeshAgent = this.GetComponent<NavMeshAgent>(); //this. is not neccessary but leaving for now
             finiteStatemachine = this.GetComponent<FiniteStateMachine>();
-            //target = null;
+            if(target != null)
+            {
+                targetAnimState = target.GetComponent<PlayerController>().animState;
+            }
         }
 
         public void Start()
