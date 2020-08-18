@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Threading.Tasks;
 using Assets.Code.FSM;
+using UnityEngine.Experimental.TerrainAPI;
 
 namespace Assets.Code.NPCCode
 {
@@ -14,6 +15,8 @@ namespace Assets.Code.NPCCode
     public class NPC : MonoBehaviour
     {
         public Transform target;
+
+        public PlayerController player;
 
         [SerializeField]
         protected NPCPatrolPoints[] patrolPoints;
@@ -26,7 +29,11 @@ namespace Assets.Code.NPCCode
         {
             navMeshAgent = this.GetComponent<NavMeshAgent>(); //this. is not neccessary but leaving for now
             finiteStatemachine = this.GetComponent<FiniteStateMachine>();
-            //target = null;
+            gameObject.layer = 9;
+            if(target != null)
+            {
+                player = target.GetComponent<PlayerController>();
+            }
         }
 
         public void Start()
@@ -42,7 +49,7 @@ namespace Assets.Code.NPCCode
         public virtual void Attack(Transform attackTarget)
         {
             PlayerHealth health = attackTarget.GetComponent<PlayerHealth>();
-            health.Damage(attackDamage);
+            health.Health -= attackDamage;
 
             //Set animation here
         }

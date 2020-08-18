@@ -84,7 +84,7 @@ namespace Assets.Code.FSM.MyStates
         {
             if (EnteredState)
             {
-                if (npc.target.GetComponent<PlayerController>().InvisBox == false)
+                if (npc.player.InvisBox == false)
                 {
                     if (Scan())
                     {
@@ -128,7 +128,7 @@ namespace Assets.Code.FSM.MyStates
 
         public bool Scan()
         {
-            if (npc.target.GetComponent<PlayerController>().animState == AnimState.isSneaking)
+            if (npc.player.animState == AnimState.isSneaking)
             {
                 RaycastHit hit;
                 //For Loop for Ray Cast
