@@ -22,6 +22,7 @@ namespace Assets.Code.FSM.MyStates
         private float catchDistance;
         [SerializeField]
         private float chaseDistance;
+       
 
         float blendSpeed = 1f;
 

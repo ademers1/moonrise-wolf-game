@@ -24,7 +24,7 @@ public class NPCTakeDamage : MonoBehaviour
         if(other.gameObject.tag == "Enemy")
         {
             //Destroy(other.gameObject);
-            other.gameObject.GetComponent<NPCHealth>().HurtEnemy(damageToGive);
+            //other.gameObject.GetComponent<NPCHealth>().Health
         }
     }
 }

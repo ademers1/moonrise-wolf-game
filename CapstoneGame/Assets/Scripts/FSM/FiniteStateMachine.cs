@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using Assets.Code.NPCCode;
 using System.Threading.Tasks;
-using System.Runtime.Remoting.Messaging;
 
 namespace Assets.Code.FSM
 {
@@ -63,7 +62,7 @@ namespace Assets.Code.FSM
 
         public void Update()
         {
-            if (health.enemyCurrentHealth == 0 && !isDead)
+            if (health.Health == 0 && !isDead)
             {
                 isDead = true;
                 anim.SetBool("isDead", true);

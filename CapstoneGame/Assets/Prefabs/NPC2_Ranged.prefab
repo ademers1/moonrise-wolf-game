@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 39444319185458998}
   - component: {fileID: 39444319185458997}
   - component: {fileID: 39444319185458996}
-  - component: {fileID: 39444319185459003}
+  - component: {fileID: 2851496454644523867}
   - component: {fileID: 39444319185458994}
+  - component: {fileID: 7340550121576043330}
   m_Layer: 0
   m_Name: NPC2_Ranged
   m_TagString: Enemy
@@ -134,13 +135,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 0}
   validStates:
-  - {fileID: 11400000, guid: 7d661100335bdce4d92a157e921bc0f8, type: 2}
+  - {fileID: 11400000, guid: 77c5bb8c1e961a145a6ea98b110fad5b, type: 2}
   - {fileID: 11400000, guid: d419a6dcc8a4dc54ca62ca508c12b739, type: 2}
   - {fileID: 11400000, guid: 2d60faa720d873b47aa4e5783148c376, type: 2}
   - {fileID: 11400000, guid: 4a0d1bc69952db24793c04073d85eaba, type: 2}
   health: {fileID: 0}
   anim: {fileID: 0}
---- !u!114 &39444319185459003
+--- !u!114 &2851496454644523867
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,17 +150,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 39444319185459002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac544115b4995344e82dc4ddb8dde55c, type: 3}
+  m_Script: {fileID: 11500000, guid: a21641b986d58964ea7c5be86e09e4bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  patrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  enemyMaxhealth: 10
+  enemyCurrentHealth: 10
 --- !u!54 &39444319185458994
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -176,6 +171,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7340550121576043330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39444319185459002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 370362ee99e97f84da522955252423a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  patrolPoints: []
+  attackDamage: 0
+  muzzleEnd: {fileID: 0}
 --- !u!1 &2585578986556439672
 GameObject:
   m_ObjectHideFlags: 0
