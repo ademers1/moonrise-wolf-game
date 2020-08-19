@@ -13,11 +13,13 @@ public class PathRenderer : MonoBehaviour
     GameObject Player;
     RaycastHit hit;
     public LayerMask enemyLayer;
+    [SerializeField] NavMeshAgent playerAgent;
     void Awake()
     {
         line = GetComponent<LineRenderer>(); //get the line renderer
         line.startWidth = 0;
         Player = GameObject.FindGameObjectWithTag("Player");
+        playerAgent = Player.GetComponent<NavMeshAgent>();
     }
 
     private void Update()
@@ -36,11 +38,12 @@ public class PathRenderer : MonoBehaviour
         if (wolfSenseScript.ClosestEnemy != null)
         {
             closestEnemyGO = wolfSenseScript.ClosestEnemy;
+            getPath();
         }
-        getPath();
     }
     void getPath()
     {
+        playerAgent.SetDestination(closestEnemyGO.transform.position);
         if (Player != null)
         {
             line.SetPosition(0, Player.transform.position); //set the line's origin
@@ -48,7 +51,8 @@ public class PathRenderer : MonoBehaviour
         if (closestEnemyGO != null && wolfSenseScript.WolfSenseOn)
         {
             line.startWidth = 0.3f;
-            line.SetPosition(1, closestEnemyGO.transform.position);
+            DrawPath(playerAgent.path);
+            playerAgent.isStopped = true;
         }
         else
         {
