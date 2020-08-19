@@ -219,10 +219,10 @@ MonoBehaviour:
     m_Value: 0
   exposure:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   multiplier:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 30
     min: 0
   upperHemisphereLuxValue:
     m_OverrideState: 0
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   skyType:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 1
   skyAmbientMode:
     m_OverrideState: 1
     m_Value: 0
