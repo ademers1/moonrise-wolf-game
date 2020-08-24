@@ -8,6 +8,7 @@ public class EnemyData
 {
     public float[] enemyPosition;
     public float enemyHealth;
+    
 
     //Constructor to create the default player data class
     public EnemyData(NPCHealth enemy)
@@ -20,4 +21,5 @@ public class EnemyData
         enemyPosition[1] = enemy.enemyCurrentPosition.y;
         enemyPosition[2] = enemy.enemyCurrentPosition.z;
     }
+    
 }
