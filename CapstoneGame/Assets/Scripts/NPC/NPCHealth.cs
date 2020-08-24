@@ -7,7 +7,7 @@ public class NPCHealth : MonoBehaviour
 
     public float enemyMaxhealth;
     public float enemyCurrentHealth;
-
+    public Vector3 enemyCurrentPosition;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +17,7 @@ public class NPCHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        enemyCurrentPosition = this.gameObject.transform.position;
         if(enemyCurrentHealth <= 0)
         {
             //Replace with enemy death animation
