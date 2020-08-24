@@ -42,7 +42,7 @@ namespace Assets.Code.FSM.MyStates
             if(EnteredState)
             {
                 PlayerHealth health = npc.target.GetComponent<PlayerHealth>();
-                health.Damage(attackDamage);
+                health.Health -= attackDamage;
                 if(health.isAlive)
                 {
                     fsm.EnterState(FSMStateType.RETREAT);

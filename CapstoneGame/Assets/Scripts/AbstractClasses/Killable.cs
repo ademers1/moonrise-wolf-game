@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public abstract class Killable : MonoBehaviour, IKillable
 {
-    public virtual int Health
+    public virtual float Health
     {
         get
         {
@@ -33,8 +33,8 @@ public abstract class Killable : MonoBehaviour, IKillable
         private set { }
     }
 
-    private int _health;
-    public int MaxHealth { get; set; } = 100;
+    private float _health;
+    public float MaxHealth { get; set; } = 100;
 
     public float flashLength;
     protected float flashTimeRemaining;

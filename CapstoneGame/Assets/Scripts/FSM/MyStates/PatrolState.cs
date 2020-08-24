@@ -18,9 +18,13 @@ namespace Assets.Code.FSM.MyStates
         int patrolPointIndex;
 
         [SerializeField]
-        float scanDegrees;
+        float scanDegrees;   
+        [SerializeField]
+        float sneakScanDegrees;
         [SerializeField]
         float scanDistance;
+        [SerializeField]
+        float sneakScanDistance;
         private Vector3 lastPos;
         private float lastPosTime;
 
@@ -80,11 +84,13 @@ namespace Assets.Code.FSM.MyStates
         {
             if (EnteredState)
             {
-                if (Scan())
+                if (npc.player.InvisBox == false)
                 {
-                    return;
+                    if (Scan())
+                    {
+                        return;
+                    }
                 }
-
                 if (lastPos == navMeshAgent.transform.position)
                 {
                     lastPosTime += Time.deltaTime;
@@ -122,22 +128,42 @@ namespace Assets.Code.FSM.MyStates
 
         public bool Scan()
         {
-            RaycastHit hit;
+            if (npc.player.animState == AnimState.isSneaking)
+            {
+                RaycastHit hit;
+                //For Loop for Ray Cast
+                for (int i = 0; i <= sneakScanDegrees / 5; i++)
+                {
+                    Vector3 rayDir = Quaternion.Euler(0, (i - sneakScanDegrees / 10) * 5, 0) * npc.transform.forward;
+                    Debug.DrawRay(npc.transform.position, rayDir * sneakScanDistance, Color.red);
+                    if (Physics.Raycast(npc.transform.position, rayDir, out hit, sneakScanDistance))
+                    {
+                        if (hit.transform.CompareTag("Player"))
+                        {
+                            npc.target = hit.transform;
+                            fsm.EnterState(FSMStateType.CHASE);
+                            return true;
+                        }
+                    }
+                }
+            }
+            RaycastHit hit2;
             //For Loop for Ray Cast
             for (int i = 0; i <= scanDegrees / 5; i++)
             {
                 Vector3 rayDir = Quaternion.Euler(0, (i - scanDegrees / 10) * 5, 0) * npc.transform.forward;
                 Debug.DrawRay(npc.transform.position, rayDir * scanDistance, Color.red);
-                if (Physics.Raycast(npc.transform.position, rayDir, out hit, scanDistance))
+                if (Physics.Raycast(npc.transform.position, rayDir, out hit2, scanDistance))
                 {
-                    if (hit.transform.CompareTag("Player"))
+                    if (hit2.transform.CompareTag("Player"))
                     {
-                        npc.target = hit.transform;
+                        npc.target = hit2.transform;
                         fsm.EnterState(FSMStateType.CHASE);
                         return true;
                     }
                 }
             }
+
             //if raycast hits
             //if target is a player 
             //set the target

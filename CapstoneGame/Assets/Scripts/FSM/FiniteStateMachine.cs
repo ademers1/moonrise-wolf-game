@@ -62,7 +62,7 @@ namespace Assets.Code.FSM
 
         public void Update()
         {
-            if (health.enemyCurrentHealth == 0 && !isDead)
+            if (health.Health == 0 && !isDead)
             {
                 isDead = true;
                 anim.SetBool("isDead", true);
