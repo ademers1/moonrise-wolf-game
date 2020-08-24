@@ -16,8 +16,8 @@ public class EnemyData
         enemyHealth = enemy.Health;
         //get player position
         enemyPosition = new float[3];
-        enemyPosition[0] = enemy.transform.position.x;
-        enemyPosition[1] = enemy.transform.position.y;
-        enemyPosition[2] = enemy.transform.position.z;
+        enemyPosition[0] = enemy.enemyCurrentPosition.x;
+        enemyPosition[1] = enemy.enemyCurrentPosition.y;
+        enemyPosition[2] = enemy.enemyCurrentPosition.z;
     }
 }
