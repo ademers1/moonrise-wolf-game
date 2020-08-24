@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,18 +8,19 @@ public class PoolTest : MonoBehaviour
 {
     public GameObject prefab;
     public Transform[] spawnLocations;
+    public GameObject[] triggerBoxes = new GameObject[4];
     int rand;
     int locationIndex = 3;
     private void Start()
     {
         PoolManager.instance.CreatePool(prefab, 3);
-        Instantiate(spawnLocations[0], transform.position, Quaternion.identity);
+        /*Instantiate(spawnLocations[0], transform.position, Quaternion.identity);
         Instantiate(spawnLocations[1], transform.position, Quaternion.identity);
         Instantiate(spawnLocations[2], transform.position, Quaternion.identity);
         Instantiate(spawnLocations[3], transform.position, Quaternion.identity);
        
         System.Random rnd = new System.Random();
-        spawnLocations = spawnLocations.OrderBy(x => rnd.Next()).ToArray(); 
+        spawnLocations = spawnLocations.OrderBy(x => rnd.Next()).ToArray();*/
 
 
         //Transform[] newSpawnLocations = spawnLocations.OrderBy(x => rnd.Next()).ToArray();
@@ -36,7 +38,7 @@ public class PoolTest : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.O))
         {
-            RandomizeSpawnPositions();
+            RandomizeSpawnPositions();            
             for (int i = 0; i < spawnLocations.Length; i++)
             {
                 PoolManager.instance.ReuseObject(prefab, spawnLocations[i].position, Quaternion.identity);
@@ -45,31 +47,18 @@ public class PoolTest : MonoBehaviour
         }
        
     }
-
-    private void OnTriggerEnter(Collider other)
+    public void SpawnEnemyFromPool(GameObject triggerBox, Collider player, GameObject boxCollider)
     {
-        if(other.gameObject.CompareTag( "Player"))
+        Transform spawnLocation = spawnLocations[Array.IndexOf(triggerBoxes, triggerBox)];
+        if(Camera.main.WorldToViewportPoint(spawnLocation.position).x < 0 || Camera.main.WorldToViewportPoint(spawnLocation.position).x > 1 || Camera.main.WorldToViewportPoint(spawnLocation.position).y < 0 || Camera.main.WorldToViewportPoint(spawnLocation.position).y > 1)
         {
-
-           // rand = Random.Range(0, spawnLocations.Length);
-            PoolManager.instance.ReuseObject(prefab, spawnLocations[locationIndex].position, Quaternion.identity);
-            locationIndex--;
-            if (locationIndex <= -1)
-            {
-                locationIndex = 3;
-            }
-
-            List<int> numbers = new List<int>();
-            System.Random rnd = new System.Random();
-            Transform[] newSpawnLocations = spawnLocations.OrderBy(x => rnd.Next()).ToArray();
-            print(newSpawnLocations);
-
-
-            // rand = Random.Range(0, spawnLocations.Length);
-            // Instantiate(spawnLocations[rand], transform.position, Quaternion.identity);
-            // PoolManager.instance.ReuseObject(prefab,spawnLocations[rand].position, Quaternion.identity);
+            boxCollider.GetComponent<BoxCollider>().enabled = false;
+            Debug.Log(spawnLocation.position);
+            //spawn object as spawn point should be invisible
+            PoolManager.instance.ReuseObject(prefab, spawnLocation.position, Quaternion.identity);
         }
     }
+  
     void RandomizeSpawnPositions()
     {
         System.Random rnd = new System.Random();
