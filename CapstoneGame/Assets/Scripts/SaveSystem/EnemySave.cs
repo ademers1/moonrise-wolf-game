@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySave : MonoBehaviour
 {
     NPCHealth enemy;
+    public List<EnemyData> enemyDataList = new List<EnemyData>();
     private void Start()
     {
         enemy = this.gameObject.GetComponent<NPCHealth>();
