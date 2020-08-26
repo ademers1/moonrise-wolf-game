@@ -287,8 +287,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ExecuteInEditor: 1
   m_Bindings:
-  - {fileID: 17025300}
   - {fileID: 17025301}
+  - {fileID: 17025300}
   m_VisualEffect: {fileID: 17025298}
 --- !u!114 &17025303
 MonoBehaviour:
@@ -4243,7 +4243,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355524700}
-  m_LocalRotation: {x: 0.11279472, y: -0.64135176, z: 0.065374136, w: 0.7560896}
+  m_LocalRotation: {x: 0.11279472, y: -0.6413517, z: 0.065374136, w: 0.7560896}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6349,12 +6349,12 @@ PrefabInstance:
     - target: {fileID: 713948614782958189, guid: 4db443f2a979c8949baf37b58832d9d9,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.25887144
+      value: 0.2588715
       objectReference: {fileID: 0}
     - target: {fileID: 713948614782958189, guid: 4db443f2a979c8949baf37b58832d9d9,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.032485202
+      value: -0.03248521
       objectReference: {fileID: 0}
     - target: {fileID: 713948614782958189, guid: 4db443f2a979c8949baf37b58832d9d9,
         type: 3}

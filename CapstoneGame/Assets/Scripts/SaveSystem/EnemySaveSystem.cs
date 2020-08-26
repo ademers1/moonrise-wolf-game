@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Collections.Generic;
 
 public static class EnemySaveSystem
 {
+    public static List<EnemyData> enemies;
+
     public static void SaveEnemy(NPCHealth enemy)
     {
         //Create Binary Formatter to write to a file
@@ -23,6 +26,16 @@ public static class EnemySaveSystem
 
         //Closing the stream - VERY IMPORTANT STEP
         stream.Close();
+    }
+
+    public static void SaveEnemies(List<GameObject> enemyList)
+    {
+        enemies = new List<EnemyData>();
+        foreach (GameObject g in enemyList)
+        {
+            enemies.Add(new EnemyData(g.GetComponent<NPCHealth>()));
+        }
+
     }
 
     public static EnemyData LoadEnemy()
