@@ -53,7 +53,7 @@ MonoBehaviour:
     showEyeDropper: 1
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 1000007.4
+    m_Value: 1000000
     min: 1
   baseHeight:
     m_OverrideState: 1
