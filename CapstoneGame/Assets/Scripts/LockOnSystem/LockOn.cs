@@ -63,13 +63,23 @@ public class LockOn : MonoBehaviour
         {
             if (targetLocked)
             {
-                TPCamFreeLook.SetActive(false);
-                lockOnCam.SetActive(true);
+                //TPCamFreeLook.SetActive(false);
+                //lockOnCam.SetActive(true);
+
+                //TPCamFreeLook.GetComponent<CinemachineFreeLook>().enabled = false;
+                //TPCamFreeLook.GetComponent<CinemachineVirtualCamera>().enabled = true;
+
+                TPCamFreeLook.GetComponent<CinemachineFreeLook>().m_Priority = 8;
             }
             else
             {
-                TPCamFreeLook.SetActive(true);
-                lockOnCam.SetActive(false);
+                //TPCamFreeLook.SetActive(true);
+                //lockOnCam.SetActive(false);
+
+                //TPCamFreeLook.GetComponent<CinemachineFreeLook>().enabled = true;
+                //TPCamFreeLook.GetComponent<CinemachineVirtualCamera>().enabled = false;
+
+                TPCamFreeLook.GetComponent<CinemachineFreeLook>().m_Priority = 10;
             }
         }
     }
