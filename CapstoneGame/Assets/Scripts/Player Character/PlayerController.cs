@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using Assets.Code.NPCCode;
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -40,27 +41,10 @@ public class PlayerController : MonoBehaviour
     public float howlCooldownAmount = 5.0f;
     public float howlTimer = 0;
     public float howlRadius = 10f;
+    public float howlStunDuration = 2.0f;
     private bool howlOnCooldown;
     private LayerMask enemies;
 
-    private Vector3 rightFootPosition, leftFootPosition, leftFootIkPosiiton, rightFootIkPosition;
-    private Quaternion leftFootIkRotation, rightFootIkRotation;
-    private float lastPelvisPositionY, lastRightFootPositionY, lastLeftFootPositionY;
-
-    [Header("Feet Grounder")]
-    public bool enableFeetIk = true;
-    [Range(0, 2)] [SerializeField] private float heightFromGroundRaycast = 1.14f;
-    [Range(0, 2)] [SerializeField] private float raycastDownDistance = 1.5f;
-    [SerializeField] private LayerMask environmentLayer;
-    [SerializeField] private float pelvisOffset = 0f;
-    [Range(0, 1)] [SerializeField] private float pelvisUpAndDownSpeed = 0.28f;
-    [Range(0, 1)] [SerializeField] private float feetToIkPositionSpeed = 0.5f;
-
-    public string leftFoodAnimVariableName = "LeftFootCurve";
-    public string rightFoodAnimVariableName = "RightFootCurve";
-
-    public bool useProIkFeature = false;
-    public bool showSolverDebug = true;
     public bool InvisBox = false;
 
     [Header("Attacks")]
@@ -73,9 +57,10 @@ public class PlayerController : MonoBehaviour
     private float fillAmount = 0.4f;
 
     //tail whip variables
-    public float tailWhipCooldownAmount = 10.0f;
+    public float tailWhipCooldownAmount = 1.0f;
     public float tailWhipTimer = 0.0f;
     public float tailWhipRadius = 10.0f;
+    public float tailWhipKnockBackDuration = 1.0f;
     private bool tailWhipOnCooldown;
     public float knockBackStrength = 10f;
     public float knockUpStrength = 5f;
@@ -208,7 +193,7 @@ public class PlayerController : MonoBehaviour
         if (_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking && dashesRemaining > 0)
         {
             //left ctrl or left mouse button
-            if (Input.GetKeyDown(KeyCode.Z) && canDash && dashesRemaining >= 1)
+            if (Input.GetButtonDown("Fire3") && canDash && dashesRemaining >= 1)
             {
                 dashMove = velocity.normalized;
                 canDash = false;
@@ -221,8 +206,6 @@ public class PlayerController : MonoBehaviour
                     col.isTrigger = true;
                 }
             }
-
-
         }
 
         if (!canDash && dashing < dashLength)
@@ -280,7 +263,7 @@ public class PlayerController : MonoBehaviour
            if (Input.GetButtonDown("Fire1") && !attackOnCooldown)
            {
                _animState = AnimState.isAttacking;
-               anim.SetTrigger("isAttacking");
+               anim.SetBool("isAttacking", true);
                attackOnCooldown = true;
                Attack();
            }
@@ -288,7 +271,7 @@ public class PlayerController : MonoBehaviour
            if (Input.GetButtonDown("Fire2") && !heavyAttackOnCooldown)
            {
                _animState = AnimState.isAttacking;
-               anim.SetTrigger("isAttacking");
+               anim.SetBool("isAttacking", true);
                heavyAttackOnCooldown = true;
                HeavyAttack();
            }
@@ -326,7 +309,7 @@ public class PlayerController : MonoBehaviour
         //howl
         if (_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking)
         {
-            if (Input.GetKeyDown(KeyCode.Q) && !howlOnCooldown)
+            if (Input.GetButtonDown("Ability1") && !howlOnCooldown)
             {
                 //grab all the enemies in howl radius and loop through setting them to stunned
                 _animState = AnimState.isIdle;
@@ -335,12 +318,14 @@ public class PlayerController : MonoBehaviour
 
                 foreach (Collider enemy in colliders)
                 {
-                    enemy.GetComponent<EnemyStatus>().Effect(0);
+                    //enemy.GetComponent<EnemyStatus>().Effect(0);
+                    enemy.GetComponent<NPC>().stunDuration = howlStunDuration;
                 }
                 //TODO: start howling cooldown at end of animation
 
             }
         }
+
         //handles howl cooldown recharge
         if (howlOnCooldown)
         {
@@ -355,14 +340,15 @@ public class PlayerController : MonoBehaviour
         //tailwhip
         if (_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking)
         {
-            if (Input.GetKeyDown(KeyCode.R) && !tailWhipOnCooldown)
+            if (Input.GetButtonDown("Ability2") && !tailWhipOnCooldown)
             {
                 _animState = AnimState.isIdle;
                 Collider[] colliders = Physics.OverlapSphere(transform.position, tailWhipRadius, enemies);
                 tailWhipOnCooldown = true;
                 foreach (Collider enemy in colliders)
                 {
-                    enemy.GetComponent<Rigidbody>().isKinematic = false;
+                    enemy.GetComponent<NPC>().stunDuration = tailWhipKnockBackDuration;
+                    enemy.GetComponent<Rigidbody>().isKinematic = false;                   
                 }
                 Knockback(colliders);
             }
@@ -375,6 +361,7 @@ public class PlayerController : MonoBehaviour
             {
                 tailWhipTimer = 0;
                 tailWhipOnCooldown = false;
+                
             }
         }
     }
@@ -433,7 +420,7 @@ public class PlayerController : MonoBehaviour
             Vector3 enemyKnockBackDirection = enemy.transform.position - transform.position;
             enemyKnockBackDirection.y = 0;
             enemyKnockBackDirection.Normalize();
-            enemy.GetComponent<Rigidbody>().AddForce(enemyKnockBackDirection * 10, ForceMode.Impulse);
+            enemy.GetComponent<Rigidbody>().AddForce(enemyKnockBackDirection * 15, ForceMode.Impulse);
         }
         StartCoroutine(ReAddKinematic(colliders));
     }
@@ -463,5 +450,11 @@ public class PlayerController : MonoBehaviour
             InvisBox = false;
            // _animState = AnimState.isIdle;
         }
+    }
+
+    public void AttackEvent()
+    {
+        anim.SetBool("isAttacking", false);
+        _animState = AnimState.isIdle;
     }
 }

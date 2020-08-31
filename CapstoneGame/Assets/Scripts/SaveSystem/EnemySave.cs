@@ -9,12 +9,14 @@ public class EnemySave : MonoBehaviour
 
     int currentEnemiesLength;
     //find all the enemies in the scene, store in an array
-    public GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+    public GameObject[] enemies;
     public int[] enemyInstanceIDs; 
     private void Start()
     {
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         enemy = this.gameObject.GetComponent<NPCHealth>();
         currentEnemiesLength = enemies.Length;
+        enemyInstanceIDs = new int[enemies.Length];
         //initial assigning instance IDs
         for (int i = 0; i < enemies.Length; i++)
         {

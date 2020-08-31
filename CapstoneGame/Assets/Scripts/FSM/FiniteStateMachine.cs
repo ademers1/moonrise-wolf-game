@@ -22,7 +22,10 @@ namespace Assets.Code.FSM
 
         NPCHealth health;
 
+        NPC npc;
         public Animator anim;
+
+        public bool stunned = false;
 
         bool isDead;
                     //Key                  //Value
@@ -35,7 +38,7 @@ namespace Assets.Code.FSM
             fsmStates = new Dictionary<FSMStateType, FSMState>();
 
             NavMeshAgent navMeshAgent = this.GetComponent<NavMeshAgent>();
-            NPC npc = this.GetComponent<NPC>();
+            npc = this.GetComponent<NPC>();
 
             anim = this.GetComponent<Animator>();
             //Iterate through each state in list
@@ -67,6 +70,17 @@ namespace Assets.Code.FSM
                 isDead = true;
                 anim.SetBool("isDead", true);
             }
+            if(npc.stunDuration > 0)
+            {
+                stunned = true;
+                npc.stunDuration -= Time.deltaTime;
+            }
+            else
+            {
+                stunned = false;
+                npc.stunDuration = 0;
+            }
+            
 
             if(currentState != null && !isDead)
             {
