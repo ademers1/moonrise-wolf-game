@@ -54,6 +54,10 @@ namespace Assets.Code.FSM.MyStates
         {
             if (EnteredState)
             {
+                if (fsm.stunned)
+                {
+                    fsm.EnterState(FSMStateType.STUN);
+                }
                 delayTimeRemaining -= Time.deltaTime;
                 if (delayTimeRemaining > 0)
                 {

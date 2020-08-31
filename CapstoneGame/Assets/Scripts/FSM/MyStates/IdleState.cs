@@ -47,6 +47,10 @@ namespace Assets.Code.FSM.MyStates
         }
         public bool Scan()
         {
+            if (fsm.stunned)
+            {
+                fsm.EnterState(FSMStateType.STUN);
+            }
             RaycastHit hit;
             //For Loop for Ray Cast
             for (int i = 0; i <= scanDegrees / 5; i++)

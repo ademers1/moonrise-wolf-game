@@ -9,7 +9,7 @@ public class ChaseMovement : MonoBehaviour
     public NavMeshAgent agent;
     GameObject target;
     Rigidbody rb;
-    public float runTimer = 2f;
+    public float runTimer = 1.2f;
     public Transform[] runLocations;
     private int pointIndex;
     // Start is called before the first frame update
@@ -27,7 +27,15 @@ public class ChaseMovement : MonoBehaviour
         float distance = Vector3.Distance(target.transform.position, transform.position);
         if (distance <= lookRadius)
         {
-            RunAway();
+            agent.speed = 10f;
+            if (!agent.pathPending && agent.remainingDistance < 0.5f)
+            {
+                RunAway();
+            }
+        }
+        if(distance >= lookRadius)
+        {
+            agent.speed = 5f;
         }
     }
 
@@ -39,16 +47,13 @@ public class ChaseMovement : MonoBehaviour
 
     void RunAway()
     {
-            if (runLocations.Length == 0) return;
-            if (Vector3.Distance(this.transform.position, runLocations[pointIndex].position) < 0.3f)
-            {
-                pointIndex++;
-                if (pointIndex >= runLocations.Length)
-                {
-                    pointIndex = 0;
-                }
-            }
-        agent.SetDestination(runLocations[pointIndex].position);
+       if(runLocations.Length == 0)
+        {
+            return;
+        }
+        agent.destination = runLocations[pointIndex].position;
+
+        pointIndex = (pointIndex + 1) % runLocations.Length;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -62,7 +67,6 @@ public class ChaseMovement : MonoBehaviour
     IEnumerator IndexChange()
     {
         yield return new WaitForSeconds(runTimer);
-        pointIndex++;
-        agent.destination = runLocations[pointIndex].position;
+     
     }
 }

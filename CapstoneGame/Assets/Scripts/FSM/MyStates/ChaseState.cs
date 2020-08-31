@@ -51,6 +51,14 @@ namespace Assets.Code.FSM.MyStates
                 return;
             }
 
+            if (fsm.stunned)
+            {
+                fsm.EnterState(FSMStateType.STUN);
+            }
+
+            if (navMeshAgent.isStopped)
+                navMeshAgent.isStopped = false;
+
             float distance = (npc.transform.position - npc.target.position).magnitude;
 
             if(distance < catchDistance && npc.target.GetComponent<PlayerHealth>())
