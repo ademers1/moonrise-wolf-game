@@ -28,15 +28,15 @@ public static class EnemySaveSystem
         stream.Close();
     }
 
-    public static void SaveEnemies(List<GameObject> enemyList)
-    {
-        enemies = new List<EnemyData>();
-        foreach (GameObject g in enemyList)
-        {
-            enemies.Add(new EnemyData());
-        }
+    //public static void SaveEnemies(List<GameObject> enemyList)
+    //{
+    //    enemies = new List<EnemyData>();
+    //    foreach (GameObject g in enemyList)
+    //    {
+    //        enemies.Add(new EnemyData(g.GetComponent<NPCHealth>()));
+    //    }
 
-    }
+    //}
 
     public static EnemyData LoadEnemy()
     {
