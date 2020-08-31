@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Collections.Generic;
 
 public static class EnemySaveSystem
 {
-    public static void SaveEnemy(NPCHealth enemy)
+    public static List<EnemyData> enemies;
+
+    public static void SaveEnemy()
     {
         //Create Binary Formatter to write to a file
         BinaryFormatter formatter = new BinaryFormatter();
@@ -16,13 +19,23 @@ public static class EnemySaveSystem
         FileStream stream = new FileStream(path, FileMode.Create);
 
         //PlayerData is now being created
-        EnemyData data = new EnemyData(enemy);
+        EnemyData data = new EnemyData();
 
         //Serializing the PlayerData
         formatter.Serialize(stream, data);
 
         //Closing the stream - VERY IMPORTANT STEP
         stream.Close();
+    }
+
+    public static void SaveEnemies(List<GameObject> enemyList)
+    {
+        enemies = new List<EnemyData>();
+        foreach (GameObject g in enemyList)
+        {
+            enemies.Add(new EnemyData(g.GetComponent<NPCHealth>()));
+        }
+
     }
 
     public static EnemyData LoadEnemy()

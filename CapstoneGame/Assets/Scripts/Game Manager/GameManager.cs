@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -12,6 +13,7 @@ public class GameManager : Singleton<GameManager>
     private string lossAudioClip = "Gameover";
     private enum MusicState { None, Ambience, Loss, Win }
     MusicState _musicState;
+    public List<GameObject> enemies = new List<GameObject>();
 
     void Awake()
     {
@@ -25,7 +27,8 @@ public class GameManager : Singleton<GameManager>
         {
             Debug.Log("No Audiomanager found in scene");
         }
-       
+        enemies = GameObject.FindGameObjectsWithTag("Enemy").ToList();
+        
     }
 
     private void Update()

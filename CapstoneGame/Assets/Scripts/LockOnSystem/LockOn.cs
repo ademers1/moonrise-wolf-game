@@ -15,7 +15,9 @@ public class LockOn : MonoBehaviour
     GameObject CMObj;
     bool targetLocked;
     GameObject playerObj;
-    [SerializeField] Camera cam;
+
+    [SerializeField] GameObject TPCamFreeLook;
+    [SerializeField] GameObject lockOnCam;
 
     public GameObject ClosestEnemy { get { return closestEnemy; } }
 
@@ -44,15 +46,30 @@ public class LockOn : MonoBehaviour
             WolfLockOn();
             //turn this on and disable RotateToMatch extension from Cinemachine to work
             //playerObj.transform.LookAt(closestEnemy.transform);
+            targetLocked = true;
         }
         else
         {
+            targetLocked = false;
             if (previousClosestEnemy != null)
             {
                 //lock off
                 CMGroup.RemoveMember(previousClosestEnemy.transform);
                 closestEnemy = null;
                 previousClosestEnemy = null;
+            }
+        }
+        if (TPCamFreeLook != null && lockOnCam != null)
+        {
+            if (targetLocked)
+            {
+                TPCamFreeLook.SetActive(false);
+                lockOnCam.SetActive(true);
+            }
+            else
+            {
+                TPCamFreeLook.SetActive(true);
+                lockOnCam.SetActive(false);
             }
         }
     }
@@ -83,20 +100,16 @@ public class LockOn : MonoBehaviour
         // first closest enemy
         if (!previousClosestEnemy)
         {
-            CMGroup.AddMember(closestEnemy.transform, 1, 1);
-            Debug.Log("change 1");
+            CMGroup.AddMember(closestEnemy.transform, 100, 1);
             previousClosestEnemy = closestEnemy;
         }
         //Press a button to switch to different closest enemy
         else if (previousClosestEnemy != closestEnemy)
         {
-            Debug.Log("change 2");
             if (Input.GetKey(KeyCode.B))
             {
-                Debug.Log("change 3");
                 CMGroup.RemoveMember(previousClosestEnemy.transform);
-                CMGroup.AddMember(closestEnemy.transform, 1, 1);
-                Debug.Log("change 4");
+                CMGroup.AddMember(closestEnemy.transform, 100, 1);
                 previousClosestEnemy = closestEnemy;
             }
         }

@@ -5,14 +5,34 @@ using UnityEngine;
 public class EnemySave : MonoBehaviour
 {
     NPCHealth enemy;
-    public List<EnemyData> enemyDataList = new List<EnemyData>();
+    
+
+    int currentEnemiesLength;
+    //find all the enemies in the scene, store in an array
+    public GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+    public int[] enemyInstanceIDs; 
     private void Start()
     {
         enemy = this.gameObject.GetComponent<NPCHealth>();
+        currentEnemiesLength = enemies.Length;
+        //initial assigning instance IDs
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            //match Instance IDs with proper gameObjects
+            enemyInstanceIDs[i] = enemies[i].GetInstanceID();
+        }
     }
     void Update()
     {
-
+        //if amount of enemies changes
+        if (enemies.Length != currentEnemiesLength)
+        {
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                //re-assign Instance IDs with proper gameObjects
+                enemyInstanceIDs[i] = enemies[i].GetInstanceID();
+            }
+        }
         //Call the Save System's Save Player function when you press 1. Pass it the current Player script component.
         if (Input.GetKeyDown(KeyCode.F5))
         {
@@ -33,7 +53,7 @@ public class EnemySave : MonoBehaviour
     }
     public void Save()
     {
-        EnemySaveSystem.SaveEnemy(enemy);
+        EnemySaveSystem.SaveEnemy();
     }
     
     
