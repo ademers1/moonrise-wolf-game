@@ -7,7 +7,7 @@ public static class EnemySaveSystem
 {
     public static List<EnemyData> enemies;
 
-    public static void SaveEnemy(NPCHealth enemy)
+    public static void SaveEnemy()
     {
         //Create Binary Formatter to write to a file
         BinaryFormatter formatter = new BinaryFormatter();
@@ -19,7 +19,7 @@ public static class EnemySaveSystem
         FileStream stream = new FileStream(path, FileMode.Create);
 
         //PlayerData is now being created
-        EnemyData data = new EnemyData(enemy);
+        EnemyData data = new EnemyData();
 
         //Serializing the PlayerData
         formatter.Serialize(stream, data);

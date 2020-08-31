@@ -287,8 +287,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ExecuteInEditor: 1
   m_Bindings:
-  - {fileID: 17025301}
   - {fileID: 17025300}
+  - {fileID: 17025301}
   m_VisualEffect: {fileID: 17025298}
 --- !u!114 &17025303
 MonoBehaviour:

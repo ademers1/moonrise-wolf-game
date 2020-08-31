@@ -8,13 +8,13 @@ public class EnemyData
 {
     public float[] enemyPosition;
     public float enemyHealth;
-    
+    NPCHealth enemy;
 
     //Constructor to create the default player data class
-    public EnemyData(NPCHealth enemy)
+    public EnemyData()
     {
         //get player health
-        enemyHealth = enemy.Health;
+        enemyHealth = enemy.MaxHealth;
         //get player position
         enemyPosition = new float[3];
         enemyPosition[0] = enemy.enemyCurrentPosition.x;
