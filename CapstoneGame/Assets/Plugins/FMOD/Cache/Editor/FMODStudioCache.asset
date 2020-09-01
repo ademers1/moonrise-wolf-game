@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:/Users/neil_/Documents/FMOD Studio/CapstoneBin/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637338713761222039
+  lastModified: 637344924583091280
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 688
+    Value: 736
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -41,7 +41,7 @@ MonoBehaviour:
   - {fileID: 762946685231504245}
   StringsBanks:
   - {fileID: -7668453481623417319}
-  stringsBankWriteTime: 637338713761222039
+  stringsBankWriteTime: 637344924583091280
   cacheVersion: 3
 --- !u!114 &762946685231504245
 MonoBehaviour:
@@ -57,7 +57,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:/Users/neil_/Documents/FMOD Studio/CapstoneBin/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637338713761202197
+  lastModified: 637344924583051568
   LoadResult: 0
   FileSizes:
   - Name: Desktop

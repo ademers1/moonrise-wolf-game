@@ -10,6 +10,16 @@ public class PlayerHealth : Killable
     float newWidth;
     public Image healthBar;
 
+    public MusicControl musicSystem;                 //MusicControl Script on the "MusicSystem" GameObject
+
+    [FMODUnity.EventRef]
+    public string playerHurtSound = ""; //place event path in ""
+    [FMODUnity.EventRef]
+    public string playerDeathSound = ""; //place event path in ""
+
+    FMODUnity.StudioEventEmitter emitter;
+
+
     public void EndGame()
     {
         //TODO end the game.
