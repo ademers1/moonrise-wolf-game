@@ -5,7 +5,6 @@ using UnityEngine.AI;
 public class ChaseMovement : MonoBehaviour
 {
     public float speed = 10f;
-    public float slowSpeed = 5f;
     public float lookRadius = 10f;
     public NavMeshAgent agent;
     GameObject target;
@@ -28,7 +27,7 @@ public class ChaseMovement : MonoBehaviour
         float distance = Vector3.Distance(target.transform.position, transform.position);
         if (distance <= lookRadius)
         {
-            agent.speed = speed;
+            agent.speed = 10f;
             if (!agent.pathPending && agent.remainingDistance < 0.5f)
             {
                 RunAway();
@@ -36,7 +35,7 @@ public class ChaseMovement : MonoBehaviour
         }
         if(distance >= lookRadius)
         {
-            agent.speed = slowSpeed;
+            agent.speed = 5f;
         }
     }
 
