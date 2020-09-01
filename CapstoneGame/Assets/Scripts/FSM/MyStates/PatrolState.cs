@@ -84,6 +84,10 @@ namespace Assets.Code.FSM.MyStates
         {
             if (EnteredState)
             {
+                if (fsm.stunned)
+                {
+                    fsm.EnterState(FSMStateType.STUN);
+                }
                 if (npc.player.InvisBox == false)
                 {
                     if (Scan())
@@ -103,9 +107,12 @@ namespace Assets.Code.FSM.MyStates
                 //Logic
                 if (Vector3.Distance(navMeshAgent.transform.position, patrolPoints[patrolPointIndex].transform.position) <= 1f)
                 {
+                    if (fsm.stunned)
+                    {
+                        fsm.EnterState(FSMStateType.STUN);
+                    }
                     fsm.EnterState(FSMStateType.IDLE);
                 }
-
             }
         }
 

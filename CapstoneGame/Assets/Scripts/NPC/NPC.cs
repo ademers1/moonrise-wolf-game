@@ -25,6 +25,8 @@ namespace Assets.Code.NPCCode
         FiniteStateMachine finiteStatemachine;
         public int attackDamage;
 
+        public float stunDuration = 0f;
+
         public void Awake()
         {
             navMeshAgent = this.GetComponent<NavMeshAgent>(); //this. is not neccessary but leaving for now

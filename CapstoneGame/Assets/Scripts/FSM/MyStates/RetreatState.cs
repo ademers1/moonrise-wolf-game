@@ -32,6 +32,10 @@ namespace Assets.Code.FSM.MyStates
 
         public override void UpdateState()
         {
+            if (fsm.stunned)
+            {
+                fsm.EnterState(FSMStateType.STUN);
+            }
             if((retreatTimeRemaining -= Time.deltaTime) <= 0)
             {
                 fsm.EnterState(FSMStateType.PATROL);

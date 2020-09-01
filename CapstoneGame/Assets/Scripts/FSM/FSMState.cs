@@ -20,6 +20,7 @@ public enum FSMStateType
     CHASE,
     ATTACK,
     RETREAT,
+    STUN,
 };
 
 

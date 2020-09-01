@@ -18,14 +18,6 @@ public class NPCHealth : Killable
     {
         _health = Health;
         enemyCurrentPosition = transform.position;
-        //if (flashTimeRemaining > 0)
-        //{
-        //    flashTimeRemaining -= Time.deltaTime;// Subtract Timer to break out of Co routine
-        //}
-
-        //  if (Input.GetKeyDown(KeyCode.D))
-        //  {
-        //      HurtEnemy(1);
-        //  }
+        
     }
 }
