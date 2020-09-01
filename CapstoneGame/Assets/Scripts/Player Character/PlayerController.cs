@@ -12,12 +12,7 @@ public enum AnimState
 public class PlayerController : MonoBehaviour
 {
 
-    [FMODUnity.EventRefAttribute]
-    public string pawEventString = "event:/Music/Music";
-
-    FMOD.Studio.EventInstance pawEvent;
-
-    FMOD.Studio.PARAMETER_ID groundQualityID;
+    
 
     public Transform cam;
     public CharacterController controller;
@@ -126,6 +121,14 @@ public class PlayerController : MonoBehaviour
     Collider[] dashCollider;
 
     Vector3 velocity;
+
+    //Audio Variables
+    [FMODUnity.EventRefAttribute]
+    public string pawEventString = "event:/Music/Music";
+
+    FMOD.Studio.EventInstance pawEvent;
+
+    FMOD.Studio.PARAMETER_ID groundQualityID;
 
     private void Start()
     {
