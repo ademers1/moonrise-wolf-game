@@ -33,7 +33,7 @@ public static class EnemySaveSystem
         enemies = new List<EnemyData>();
         foreach (GameObject g in enemyList)
         {
-            enemies.Add(new EnemyData(g.GetComponent<NPCHealth>()));
+            enemies.Add(new EnemyData(/*g.GetComponent<NPCHealth>()*/));
         }
 
     }
