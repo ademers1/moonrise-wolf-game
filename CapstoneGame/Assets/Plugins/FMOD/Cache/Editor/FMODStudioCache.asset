@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:/Users/neil_/Documents/FMOD Studio/CapstoneBin/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637346625305621912
+  lastModified: 637346649725604293
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1084
+    Value: 1080
   Exists: 1
 --- !u!114 &-4328613147219032291
 MonoBehaviour:
@@ -34,8 +34,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Breathing
   guid: b92feb61b5cc614693fe20e26600991e
-  Banks:
-  - {fileID: 4249565351292222509}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -57,12 +56,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:/Users/neil_/Documents/FMOD Studio/CapstoneBin/Build/Desktop/Attacks.bank
   SubDir: 
-  lastModified: 637346623905665483
+  lastModified: 637346649726100306
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 55840
+    Value: 55968
   Exists: 1
+--- !u!114 &-3509179756458868204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PawSounds/Health
+  m_EditorClassIdentifier: 
+  Name: Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 0
+--- !u!114 &-1034579373774355660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PawSounds/Health
+  m_EditorClassIdentifier: 
+  Name: Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 0
 --- !u!114 &-568594138483150324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,7 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:/Users/neil_/Documents/FMOD Studio/CapstoneBin/Build/Desktop/Paws.bank
   SubDir: 
-  lastModified: 637346625305825268
+  lastModified: 637346649725837417
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -123,13 +156,13 @@ MonoBehaviour:
   - {fileID: 8530131472980177472}
   - {fileID: 310566183576283441}
   - {fileID: 4652952810491028413}
-  - {fileID: -4328613147219032291}
+  - {fileID: 4819454631793215610}
   EditorParameters: []
   MasterBanks:
   - {fileID: 762946685231504245}
   StringsBanks:
   - {fileID: -7668453481623417319}
-  stringsBankWriteTime: 637346625305621912
+  stringsBankWriteTime: 637346649725604293
   cacheVersion: 3
 --- !u!114 &310566183576283441
 MonoBehaviour:
@@ -151,7 +184,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 7872994682202891606}
+  - {fileID: 6146865362833438683}
   MinDistance: 0
   MaxDistance: 0
   Length: 1000
@@ -169,11 +202,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:/Users/neil_/Documents/FMOD Studio/CapstoneBin/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637346625305572324
+  lastModified: 637346649725559655
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 196352
+    Value: 632160
   Exists: 1
 --- !u!114 &885222237562514477
 MonoBehaviour:
@@ -189,12 +222,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:/Users/neil_/Documents/FMOD Studio/CapstoneBin/Build/Desktop/Growls.bank
   SubDir: 
-  lastModified: 637346623875687285
+  lastModified: 637346649725882053
   LoadResult: 0
   FileSizes:
   - Name: Desktop
     Value: 470
   Exists: 1
+--- !u!114 &1453579070631641688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PawSounds/Health
+  m_EditorClassIdentifier: 
+  Name: Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 0
 --- !u!114 &2913232777346172461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,11 +293,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:/Users/neil_/Documents/FMOD Studio/CapstoneBin/Build/Desktop/Breathing.bank
   SubDir: 
-  lastModified: 637346623938623939
+  lastModified: 637346649726140202
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 35968
+    Value: 470
   Exists: 1
 --- !u!114 &4652952810491028413
 MonoBehaviour:
@@ -271,7 +321,30 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 900
+  Length: 760
+--- !u!114 &4819454631793215610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music
+  m_EditorClassIdentifier: 
+  Path: event:/Music
+  guid: 7093de85d40eb14b9b83bebd2dc23ef8
+  Banks:
+  - {fileID: 762946685231504245}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 37720
 --- !u!114 &4861115799076391428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,6 +413,23 @@ MonoBehaviour:
   Max: 100
   Default: 100
   Exists: 0
+--- !u!114 &6146865362833438683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PawSounds/Health
+  m_EditorClassIdentifier: 
+  Name: Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
 --- !u!114 &6477508266379602171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,7 +463,7 @@ MonoBehaviour:
   Min: 0
   Max: 100
   Default: 100
-  Exists: 1
+  Exists: 0
 --- !u!114 &8530131472980177472
 MonoBehaviour:
   m_ObjectHideFlags: 0
