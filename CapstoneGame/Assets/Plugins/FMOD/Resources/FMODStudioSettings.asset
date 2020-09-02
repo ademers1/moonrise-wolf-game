@@ -81,6 +81,9 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
+  - Attacks
+  - Breathing
+  - Growls
   - Paws
   BanksToLoad:
   - R:/School Folders/CapStonePostBranch/ideal-octo-enigma-master/ideal-octo-enigma/CapstoneGame/Assets/AudioAssets/FMODBanks/Desktop/PawBank.bank

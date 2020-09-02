@@ -369,8 +369,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 713948614782958190}
-  m_LocalRotation: {x: 0.13760181, y: 0.25823775, z: -0.037188563, w: 0.9555083}
-  m_LocalPosition: {x: -9.554763, y: 4.475, z: -14.658581}
+  m_LocalRotation: {x: 0.29792944, y: 0.24816611, z: -0.080519065, w: 0.91824204}
+  m_LocalPosition: {x: -156.16441, y: 32.598, z: 380.58258}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 713948616223452700}
@@ -3857,7 +3857,7 @@ GameObject:
   - component: {fileID: 8847771640574595020}
   - component: {fileID: 8847771640574595023}
   m_Layer: 0
-  m_Name: Player 1
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4006,6 +4006,10 @@ MonoBehaviour:
   primaryMat: {fileID: -3033667219593020291, guid: 2f5b23076fed4dd43b7ca82c21504c52,
     type: 3}
   flashMat: {fileID: 2100000, guid: e84526c05191c6b43bc926be9345466b, type: 2}
+  healthBar: {fileID: 0}
+  musicSystem: {fileID: 0}
+  playerHurtSound: 
+  playerDeathSound: 
 --- !u!114 &8847771640574595023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4019,23 +4023,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 713948614782958189}
-  speed: 6
+  controller: {fileID: 0}
   rotationSpeed: 1
   turnSmoothTime: 0.1
+  gravity: -12
+  jumpHeight: 1
   walkSpeed: 6
   runSpeed: 10
   stalkSpeed: 2.5
   jumpForce: 6
-  dashForce: 10
-  dashChargeTime: 3
-  dashTimer: 0
   howlCooldownAmount: 5
   howlTimer: 0
   howlRadius: 10
+  howlStunDuration: 2
+  InvisBox: 0
   furyBar: {fileID: 0}
   tailWhipCooldownAmount: 10
   tailWhipTimer: 0
   tailWhipRadius: 10
+  tailWhipKnockBackDuration: 1
   knockBackStrength: 10
   knockUpStrength: 5
   attackPoint: {fileID: 713948616030032457}
@@ -4044,6 +4050,12 @@ MonoBehaviour:
   attackRange: 0.5
   attackCooldown: 2
   heavyAttackCooldown: 10
+  dashChargeTime: 3
+  dashTimer: 0
+  dashLength: 0.15
+  dashSpeed: 100
+  collider: {fileID: 0}
+  pawEventString: event:/PawSounds
 --- !u!1 &8890541473602109011
 GameObject:
   m_ObjectHideFlags: 0

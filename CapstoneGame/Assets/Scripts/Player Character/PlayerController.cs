@@ -108,12 +108,15 @@ public class PlayerController : MonoBehaviour
     Vector3 velocity;
 
     //Audio Variables
+    //Paw Sounds
     [FMODUnity.EventRefAttribute]
     public string pawEventString = "event:/Music/Music";
-
     FMOD.Studio.EventInstance pawEvent;
-
     FMOD.Studio.PARAMETER_ID groundQualityID;
+
+
+    
+    
 
     private void Start()
     {
