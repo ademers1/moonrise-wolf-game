@@ -18,7 +18,7 @@ MonoBehaviour:
   sourceProjectPath: C:/Users/neil_/Documents/FMOD Studio/CapstoneBin/CapstoneBin.fspro
   sourceBankPath: C:\Users\neil_\Documents\FMOD Studio\CapstoneBin\Build
   SourceBankPathUnformatted: 
-  AutomaticEventLoading: 1
+  AutomaticEventLoading: 0
   BankLoadType: 0
   AutomaticSampleLoading: 0
   EncryptionKey: 
@@ -27,12 +27,14 @@ MonoBehaviour:
   LoggingLevel: 2
   SpeakerModeSettings:
   - Platform: 2
-    Value: 3
+    Value: 6
   - Platform: 20
+    Value: 3
+  - Platform: 1
     Value: 3
   SampleRateSettings:
   - Platform: 1
-    Value: 48000
+    Value: 44100
   - Platform: 2
     Value: 0
   - Platform: 20
@@ -58,7 +60,9 @@ MonoBehaviour:
     Value: 0
   - Platform: 20
     Value: 0
-  BankDirectorySettings: []
+  BankDirectorySettings:
+  - Platform: 2
+    Value: Desktop
   VirtualChannelSettings:
   - Platform: 1
     Value: 1024
@@ -74,7 +78,12 @@ MonoBehaviour:
   - Platform: 20
     Value: 32
   Plugins: []
-  MasterBanks: []
-  Banks: []
-  BanksToLoad: []
+  MasterBanks:
+  - Master
+  Banks:
+  - Paws
+  BanksToLoad:
+  - R:/School Folders/CapStonePostBranch/ideal-octo-enigma-master/ideal-octo-enigma/CapstoneGame/Assets/AudioAssets/FMODBanks/Desktop/PawBank.bank
+  - R:/School Folders/CapStonePostBranch/ideal-octo-enigma-master/ideal-octo-enigma/CapstoneGame/Assets/AudioAssets/FMODBanks/Desktop/Master.bank
+  - R:/School Folders/CapStonePostBranch/ideal-octo-enigma-master/ideal-octo-enigma/CapstoneGame/Assets/AudioAssets/FMODBanks/Desktop/Master.strings.bank
   LiveUpdatePort: 9264

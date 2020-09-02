@@ -13,6 +13,8 @@ public enum AnimState
 public class PlayerController : MonoBehaviour
 {
 
+    
+
     public Transform cam;
     public CharacterController controller;
 
@@ -105,6 +107,14 @@ public class PlayerController : MonoBehaviour
 
     Vector3 velocity;
 
+    //Audio Variables
+    [FMODUnity.EventRefAttribute]
+    public string pawEventString = "event:/Music/Music";
+
+    FMOD.Studio.EventInstance pawEvent;
+
+    FMOD.Studio.PARAMETER_ID groundQualityID;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -115,6 +125,8 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
 
         //controller = GetComponent<CharacterController>();
+
+        
     }
 
     // Update is called once per frame
@@ -456,5 +468,24 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetBool("isAttacking", false);
         _animState = AnimState.isIdle;
+    }
+
+    public void PawStrikeSound()
+    {
+        //Audio
+        pawEvent = FMODUnity.RuntimeManager.CreateInstance(pawEventString);
+        FMOD.Studio.PARAMETER_DESCRIPTION groundDesc;
+        FMOD.Studio.EventDescription pawDesc;
+
+        pawEvent.getDescription(out pawDesc);
+        pawDesc.getParameterDescriptionByName("Ground Quality", out groundDesc);
+        groundQualityID = groundDesc.id;
+        pawEvent.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
+
+        pawEvent.setParameterByID(groundQualityID, 50);
+
+        pawEvent.start();
+        pawEvent.release();
+
     }
 }

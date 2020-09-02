@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD:CapstoneGame/Assets/Scenes/Main Scenes/ForestLevel_duplicate.unity.meta
 guid: f027b8754442c99478977ba59aa9c246
+=======
+guid: 4a02c1f0e61c4f14ea723479119e9c8c
+>>>>>>> NeilBranch:CapstoneGame/Assets/AudioAssets/FMODBanks/Desktop/Master.bank.meta
+=======
+guid: f027b8754442c99478977ba59aa9c246
+>>>>>>> NeilBranch
 DefaultImporter:
   externalObjects: {}
   userData: 
