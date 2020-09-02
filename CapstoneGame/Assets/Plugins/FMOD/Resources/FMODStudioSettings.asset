@@ -78,15 +78,7 @@ MonoBehaviour:
   - Platform: 20
     Value: 32
   Plugins: []
-  MasterBanks:
-  - Master
-  Banks:
-  - Attacks
-  - Breathing
-  - Growls
-  - Paws
-  BanksToLoad:
-  - R:/School Folders/CapStonePostBranch/ideal-octo-enigma-master/ideal-octo-enigma/CapstoneGame/Assets/AudioAssets/FMODBanks/Desktop/PawBank.bank
-  - R:/School Folders/CapStonePostBranch/ideal-octo-enigma-master/ideal-octo-enigma/CapstoneGame/Assets/AudioAssets/FMODBanks/Desktop/Master.bank
-  - R:/School Folders/CapStonePostBranch/ideal-octo-enigma-master/ideal-octo-enigma/CapstoneGame/Assets/AudioAssets/FMODBanks/Desktop/Master.strings.bank
+  MasterBanks: []
+  Banks: []
+  BanksToLoad: []
   LiveUpdatePort: 9264
