@@ -78,7 +78,12 @@ MonoBehaviour:
   - Platform: 20
     Value: 32
   Plugins: []
-  MasterBanks: []
-  Banks: []
+  MasterBanks:
+  - Master
+  Banks:
+  - Attacks
+  - Breathing
+  - Growls
+  - Paws
   BanksToLoad: []
   LiveUpdatePort: 9264
