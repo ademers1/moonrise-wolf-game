@@ -27,6 +27,12 @@ namespace Assets.Code.NPCCode
 
         public float stunDuration = 0f;
 
+        //Audio
+        [FMODUnity.EventRefAttribute]
+        public string hunterStepEventString = "event:/Music/Music";
+        FMOD.Studio.EventInstance hunterStepEvent;
+        FMOD.Studio.PARAMETER_ID groundQualityID;
+
         public void Awake()
         {
             navMeshAgent = this.GetComponent<NavMeshAgent>(); //this. is not neccessary but leaving for now
@@ -61,6 +67,25 @@ namespace Assets.Code.NPCCode
             {
                 return patrolPoints;
             }
+        }
+
+        public void HunterStepSound()
+        {
+            //Audio
+            hunterStepEvent = FMODUnity.RuntimeManager.CreateInstance(hunterStepEventString);
+            FMOD.Studio.PARAMETER_DESCRIPTION groundDesc;
+            FMOD.Studio.EventDescription stepDesc;
+
+            hunterStepEvent.getDescription(out stepDesc);
+            stepDesc.getParameterDescriptionByName("Ground Quality", out groundDesc);
+            groundQualityID = groundDesc.id;
+            hunterStepEvent.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
+
+            hunterStepEvent.setParameterByID(groundQualityID, 50);
+
+            hunterStepEvent.start();
+            hunterStepEvent.release();
+
         }
     }
 }
