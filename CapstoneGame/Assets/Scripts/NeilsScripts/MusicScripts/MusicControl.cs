@@ -7,14 +7,18 @@ public class MusicControl : MonoBehaviour
 
     [FMODUnity.EventRefAttribute]
     public string music = "event:/Music/Music";
-
     FMOD.Studio.EventInstance musicEv;
+
+    [FMODUnity.EventRefAttribute]
+    public string menuMusic = "event:/Music/Music";
+    FMOD.Studio.EventInstance menuMusicEv;
 
     // Start is called before the first frame update
     void Start()
     {
         musicEv = FMODUnity.RuntimeManager.CreateInstance(music);
-
+        musicEv.start();
+        musicEv = FMODUnity.RuntimeManager.CreateInstance(menuMusic);
         musicEv.start();
     }
 

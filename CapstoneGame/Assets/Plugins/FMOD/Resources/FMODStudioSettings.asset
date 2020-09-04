@@ -85,6 +85,7 @@ MonoBehaviour:
   - Breathing
   - Growls
   - HunterSounds
+  - MenuMusic
   - Paws
   BanksToLoad:
   - Attacks.bank
