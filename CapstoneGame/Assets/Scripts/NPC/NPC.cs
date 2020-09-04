@@ -29,7 +29,7 @@ namespace Assets.Code.NPCCode
 
         //Audio
         [FMODUnity.EventRefAttribute]
-        public string hunterStepEventString = "event:/Music/Music";
+        public string hunterStepEventString = "event:/HunterSteps";
         FMOD.Studio.EventInstance hunterStepEvent;
         FMOD.Studio.PARAMETER_ID groundQualityID;
 
