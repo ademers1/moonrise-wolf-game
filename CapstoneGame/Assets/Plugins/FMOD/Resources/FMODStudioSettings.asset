@@ -93,4 +93,5 @@ MonoBehaviour:
   - Master.bank
   - Master.strings.bank
   - Paws.bank
+  - HunterSounds.bank
   LiveUpdatePort: 9264
