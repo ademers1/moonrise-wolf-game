@@ -19,10 +19,10 @@ MonoBehaviour:
   sourceBankPath: Assets\FMODFiles\CapstoneBin\Build
   SourceBankPathUnformatted: 
   AutomaticEventLoading: 0
-  BankLoadType: 0
+  BankLoadType: 1
   AutomaticSampleLoading: 0
   EncryptionKey: 
-  ImportType: 1
+  ImportType: 0
   TargetAssetPath: FMODBanks
   LoggingLevel: 2
   SpeakerModeSettings:
@@ -84,6 +84,15 @@ MonoBehaviour:
   - Attacks
   - Breathing
   - Growls
+  - HunterSounds
+  - MenuMusic
   - Paws
-  BanksToLoad: []
+  BanksToLoad:
+  - Attacks.bank
+  - Breathing.bank
+  - Growls.bank
+  - Master.bank
+  - Master.strings.bank
+  - Paws.bank
+  - HunterSounds.bank
   LiveUpdatePort: 9264
