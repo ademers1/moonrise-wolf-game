@@ -6,7 +6,7 @@ public class MusicControl : MonoBehaviour
 {
 
     [FMODUnity.EventRefAttribute]
-    public string music = "event:/Music/Music";
+    public string music = "event:/GamePlayStart_Event";
     FMOD.Studio.EventInstance musicEv;
 
     
