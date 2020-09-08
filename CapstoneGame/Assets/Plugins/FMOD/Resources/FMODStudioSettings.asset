@@ -88,11 +88,12 @@ MonoBehaviour:
   - MenuMusic
   - Paws
   BanksToLoad:
+  - Master.bank
+  - Master.strings.bank
+  - MenuMusic.bank
   - Attacks.bank
   - Breathing.bank
   - Growls.bank
-  - Master.bank
-  - Master.strings.bank
   - Paws.bank
   - HunterSounds.bank
   LiveUpdatePort: 9264
