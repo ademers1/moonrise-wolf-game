@@ -78,21 +78,7 @@ MonoBehaviour:
   - Platform: 20
     Value: 32
   Plugins: []
-  MasterBanks:
-  - Master
-  Banks:
-  - Attacks
-  - Breathing
-  - Growls
-  - HunterSounds
-  - MenuMusic
-  - Paws
-  BanksToLoad:
-  - Attacks.bank
-  - Breathing.bank
-  - Growls.bank
-  - Master.bank
-  - Master.strings.bank
-  - Paws.bank
-  - HunterSounds.bank
+  MasterBanks: []
+  Banks: []
+  BanksToLoad: []
   LiveUpdatePort: 9264
