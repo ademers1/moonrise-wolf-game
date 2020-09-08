@@ -302,7 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMODFiles/CapstoneBin/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637351701603087841
+  lastModified: 637351825177204033
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -400,6 +400,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-7581707929229959026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Growls.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMODFiles/CapstoneBin/Build/Desktop/Growls.bank
+  SubDir: 
+  lastModified: 637351825176950842
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-7577735023778156543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,6 +826,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-5543250879066419590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/HunterSounds.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMODFiles/CapstoneBin/Build/Desktop/HunterSounds.bank
+  SubDir: 
+  lastModified: 637351825177030193
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-5450912827048779509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -895,7 +931,7 @@ MonoBehaviour:
   Path: event:/MenuMusic
   guid: 16ed20e8f492884c8617b3bb45a882e0
   Banks:
-  - {fileID: 7338363067217280128}
+  - {fileID: 4629597952052820097}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -1495,7 +1531,7 @@ MonoBehaviour:
   Path: event:/HunterSteps
   guid: aef10915bd309749b9f4ef800db96b44
   Banks:
-  - {fileID: 3035479033435690017}
+  - {fileID: -5543250879066419590}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1559,6 +1595,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-287525687596007260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMODFiles/CapstoneBin/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637351825177129388
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-186266670368799201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1574,7 +1628,7 @@ MonoBehaviour:
   Path: event:/GamePlayStart_Event
   guid: 7cbf02a2cf9f3a4d8042ecec70b0bb00
   Banks:
-  - {fileID: 835822858969332861}
+  - {fileID: -287525687596007260}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1631,13 +1685,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -8043039515869352898}
-  - {fileID: 7945069614985345547}
-  - {fileID: 6673025166079631915}
-  - {fileID: -8614404982619315661}
-  - {fileID: 3035479033435690017}
-  - {fileID: 835822858969332861}
-  - {fileID: 7338363067217280128}
-  - {fileID: -5309324499134615690}
+  - {fileID: 1673881076012659569}
+  - {fileID: 6309712045199104099}
+  - {fileID: -7581707929229959026}
+  - {fileID: -5543250879066419590}
+  - {fileID: -287525687596007260}
+  - {fileID: 4629597952052820097}
+  - {fileID: 4236569384011541585}
   EditorEvents:
   - {fileID: 410504387899363774}
   - {fileID: -869242316597440376}
@@ -1646,10 +1700,10 @@ MonoBehaviour:
   - {fileID: 941618494831294626}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 835822858969332861}
+  - {fileID: -287525687596007260}
   StringsBanks:
   - {fileID: -8043039515869352898}
-  stringsBankWriteTime: 637351701603087841
+  stringsBankWriteTime: 637351825177204033
   cacheVersion: 3
 --- !u!114 &84897828329594829
 MonoBehaviour:
@@ -1725,7 +1779,7 @@ MonoBehaviour:
   Path: event:/Attack
   guid: dec7f8b63ae44745b973215c2997c5c3
   Banks:
-  - {fileID: 7945069614985345547}
+  - {fileID: 1673881076012659569}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1877,12 +1931,12 @@ MonoBehaviour:
   Path: event:/PawSounds
   guid: dd7aa0a90d0dc74b9c0b1e1d7b8a7c12
   Banks:
-  - {fileID: -5309324499134615690}
+  - {fileID: 4236569384011541585}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 8148287312896319093}
+  - {fileID: 4998976563220147900}
   MinDistance: 0
   MaxDistance: 0
   Length: 1000
@@ -2028,6 +2082,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &1673881076012659569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Attacks.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMODFiles/CapstoneBin/Build/Desktop/Attacks.bank
+  SubDir: 
+  lastModified: 637351825176802027
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &1720034490349103506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2528,6 +2600,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &4236569384011541585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Paws.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMODFiles/CapstoneBin/Build/Desktop/Paws.bank
+  SubDir: 
+  lastModified: 637351825177382365
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &4249565351292222509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2637,6 +2727,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &4629597952052820097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/MenuMusic.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMODFiles/CapstoneBin/Build/Desktop/MenuMusic.bank
+  SubDir: 
+  lastModified: 637351825177318125
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &4652952810491028413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2740,6 +2848,23 @@ MonoBehaviour:
   Max: 100
   Default: 100
   Exists: 0
+--- !u!114 &4998976563220147900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PawSounds/Health
+  m_EditorClassIdentifier: 
+  Name: Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
 --- !u!114 &5019826380919536370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3083,6 +3208,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &6309712045199104099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Breathing.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMODFiles/CapstoneBin/Build/Desktop/Breathing.bank
+  SubDir: 
+  lastModified: 637351825176876433
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &6312144043895620982
 MonoBehaviour:
   m_ObjectHideFlags: 0
