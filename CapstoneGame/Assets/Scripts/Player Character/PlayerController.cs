@@ -166,6 +166,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
                 Jump();
 
+            
 
             if (direction.magnitude >= 0.1f)
             {
@@ -191,6 +192,9 @@ public class PlayerController : MonoBehaviour
 
                 velocity = transform.forward * currentSpeed + Vector3.up * velocityY;
 
+                float blendValue = currentSpeed / runSpeed;
+                anim.SetFloat("Speed", blendValue);
+
                 controller.Move(velocity * Time.deltaTime);
 
             
@@ -198,6 +202,11 @@ public class PlayerController : MonoBehaviour
                 {
                     velocityY = 0;
                 }
+            }
+            else
+            {
+                float blendValue = 0;
+                anim.SetFloat("Speed", blendValue);
             }
 
             //anim.SetBool("isIdle", false);
@@ -415,7 +424,6 @@ public class PlayerController : MonoBehaviour
         //TODO: make this only target one enemy
         foreach (Collider enemy in hitEnemies)
         {
-            Debug.Log("tets");
             enemy.GetComponent<NPCHealth>().Health -= attackDamage;
         }
     }
@@ -485,6 +493,12 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetBool("isSpinning", false);
         _animState = AnimState.isIdle;
+    }
+
+    public void BiteEvent()
+    {
+        anim.SetBool("isBiting", false);
+        _animState = AnimState.isAttacking;
     }
 
     public void PawStrikeSound()
