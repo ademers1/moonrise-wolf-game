@@ -7,11 +7,16 @@ public static class EnemySaveSystem
 {
     public static List<EnemyData> enemies;
 
-    public static void SaveEnemy()
+    public static void SaveEnemy(EnemyData data)
     {
         //Create Binary Formatter to write to a file
         BinaryFormatter formatter = new BinaryFormatter();
 
+        //check if path exist
+        if(!Directory.Exists(Application.persistentDataPath + "/enemydata.io"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/enemydata.io");
+        }
         //Path to our file creation - Unity chooses the filepath based on operating system
         string path = Application.persistentDataPath + "/enemydata.io";
 
@@ -19,7 +24,7 @@ public static class EnemySaveSystem
         FileStream stream = new FileStream(path, FileMode.Create);
 
         //PlayerData is now being created
-        EnemyData data = new EnemyData();
+        //EnemyData data = new EnemyData();
 
         //Serializing the PlayerData
         formatter.Serialize(stream, data);

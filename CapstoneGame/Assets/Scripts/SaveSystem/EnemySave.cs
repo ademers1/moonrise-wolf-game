@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySave : MonoBehaviour
 {
     NPCHealth enemy;
-    
+    public EnemyData enemyData;
 
     int currentEnemiesLength;
     //find all the enemies in the scene, store in an array
@@ -23,9 +23,16 @@ public class EnemySave : MonoBehaviour
             //match Instance IDs with proper gameObjects
             enemyInstanceIDs[i] = enemies[i].GetInstanceID();
         }
+        //get instance ID
+        enemyData.id = this.gameObject.GetInstanceID();
+        //Add enemyData to the list
+        SaveData.current.enemyDatas.Add(enemyData);
     }
     void Update()
     {
+        enemyData.enemyPosition[0] = transform.position.x;
+        enemyData.enemyPosition[1] = transform.position.y;
+        enemyData.enemyPosition[2] = transform.position.z;
         //if amount of enemies changes
         if (enemies.Length != currentEnemiesLength)
         {
@@ -45,17 +52,26 @@ public class EnemySave : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.F6))
         {
             //Load player returns type PlayerData
-            EnemyData data = EnemySaveSystem.LoadEnemy();
-            if (data != null)
+            //EnemyData data = EnemySaveSystem.LoadEnemy();
+            for (int i = 0; i < SaveData.current.enemyDatas.Count; i++)
             {
-                enemy.Health = data.enemyHealth;
-                transform.position = new Vector3(data.enemyPosition[0], data.enemyPosition[1], data.enemyPosition[2]);
+                EnemyData currentData = SaveData.current.enemyDatas[i];
+                //enemy gets maxHP
+                enemy.Health = enemy.MaxHealth;
+                transform.position = new Vector3(currentData.enemyPosition[0], currentData.enemyPosition[1], currentData.enemyPosition[2]);
             }
+
+            //if (enemyData != null)
+            //{
+            //    //enemy gets maxHP
+            //    enemy.Health = enemy.MaxHealth;
+            //    transform.position = new Vector3(enemyData.enemyPosition[0], enemyData.enemyPosition[1], enemyData.enemyPosition[2]);
+            //}
         }
     }
     public void Save()
     {
-        EnemySaveSystem.SaveEnemy();
+        EnemySaveSystem.SaveEnemy(enemyData);
     }
     
     

@@ -2,13 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public enum EnemyType
+{
+    Melee,
+    Ranged
+}
 //Data class that will be saved. It needs the System.Serializable attribute to be used by the Binary Formatter
 [System.Serializable]
 public class EnemyData
 {
-    public float[] enemyPosition;
+    //public string id;
+    public int id;
+    public EnemyType enemyType;
+    public Vector3 Position;
+    public Quaternion rotation;
     public float enemyHealth;
     NPCHealth enemy;
+    public float[] enemyPosition;
 
     //Constructor to create the default player data class
     public EnemyData()
@@ -21,5 +32,5 @@ public class EnemyData
         enemyPosition[1] = enemy.enemyCurrentPosition.y;
         enemyPosition[2] = enemy.enemyCurrentPosition.z;
     }
-    
+
 }
