@@ -15,8 +15,8 @@ MonoBehaviour:
   SwitchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: C:/Users/neil_/Documents/FMOD Studio/CapstoneBin/CapstoneBin.fspro
-  sourceBankPath: C:\Users\neil_\Documents\FMOD Studio\CapstoneBin\Build
+  sourceProjectPath: Assets/FMODFiles/CapstoneBin/CapstoneBin.fspro
+  sourceBankPath: Assets\FMODFiles\CapstoneBin\Build
   SourceBankPathUnformatted: 
   AutomaticEventLoading: 0
   BankLoadType: 0
@@ -78,7 +78,14 @@ MonoBehaviour:
   - Platform: 20
     Value: 32
   Plugins: []
-  MasterBanks: []
-  Banks: []
+  MasterBanks:
+  - Master
+  Banks:
+  - Attacks
+  - Breathing
+  - Growls
+  - HunterSounds
+  - MenuMusic
+  - Paws
   BanksToLoad: []
   LiveUpdatePort: 9264

@@ -46,3 +46,12 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+CapstoneGame/Assets/FMODFiles/CapstoneBin/Plugins.meta
+CapstoneGame/Assets/FMODFiles/CapstoneBin/Metadata/VCA.meta
+CapstoneGame/Assets/FMODFiles/CapstoneBin/Metadata/Snapshot.meta
+CapstoneGame/Assets/FMODFiles/CapstoneBin/Metadata/MixerView.meta
+*.meta
+*.meta
+CapstoneGame/Assets/Chris_Wynn/Textures.meta
+!CapstoneGame/Assets/FMODFiles/CapstoneBin/Metadata/
+!CapstoneGame/Assets/FMODFiles/CapstoneBin/Build/

@@ -200,8 +200,8 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            anim.SetBool("isIdle", false);
-            anim.SetBool("isRunning", true);
+            //anim.SetBool("isIdle", false);
+            //anim.SetBool("isRunning", true);
         }
 
         //dash
@@ -278,7 +278,7 @@ public class PlayerController : MonoBehaviour
            if (Input.GetButtonDown("Fire1") && !attackOnCooldown)
            {
                _animState = AnimState.isAttacking;
-               anim.SetBool("isAttacking", true);
+               //anim.SetBool("isAttacking", true);
                attackOnCooldown = true;
                Attack();
            }
@@ -286,7 +286,7 @@ public class PlayerController : MonoBehaviour
            if (Input.GetButtonDown("Fire2") && !heavyAttackOnCooldown)
            {
                _animState = AnimState.isAttacking;
-               anim.SetBool("isAttacking", true);
+               //anim.SetBool("isAttacking", true);
                heavyAttackOnCooldown = true;
                HeavyAttack();
            }
@@ -327,7 +327,8 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown("Ability1") && !howlOnCooldown)
             {
                 //grab all the enemies in howl radius and loop through setting them to stunned
-                _animState = AnimState.isIdle;
+                anim.SetBool("isHowling", true);
+                _animState = AnimState.isHowling;
                 Collider[] colliders = Physics.OverlapSphere(transform.position, howlRadius, enemies);
                 howlOnCooldown = true;
 
@@ -357,9 +358,10 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetButtonDown("Ability2") && !tailWhipOnCooldown)
             {
-                _animState = AnimState.isIdle;
+                _animState = AnimState.isTailwhiping;
                 Collider[] colliders = Physics.OverlapSphere(transform.position, tailWhipRadius, enemies);
                 tailWhipOnCooldown = true;
+                anim.SetBool("isSpinning", true);
                 foreach (Collider enemy in colliders)
                 {
                     enemy.GetComponent<NPC>().stunDuration = tailWhipKnockBackDuration;
@@ -469,7 +471,19 @@ public class PlayerController : MonoBehaviour
 
     public void AttackEvent()
     {
-        anim.SetBool("isAttacking", false);
+        //anim.SetBool("isAttacking", false);
+        _animState = AnimState.isIdle;
+    }
+
+    public void HowlEvent()
+    {
+        anim.SetBool("isHowling", false);
+        _animState = AnimState.isIdle;
+    }
+
+    public void SpinEvent()
+    {
+        anim.SetBool("isSpinning", false);
         _animState = AnimState.isIdle;
     }
 

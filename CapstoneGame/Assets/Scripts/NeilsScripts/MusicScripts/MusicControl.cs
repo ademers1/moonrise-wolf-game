@@ -6,16 +6,17 @@ public class MusicControl : MonoBehaviour
 {
 
     [FMODUnity.EventRefAttribute]
-    public string music = "event:/Music/Music";
-
+    public string music = "event:/GamePlayStart_Event";
     FMOD.Studio.EventInstance musicEv;
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
         musicEv = FMODUnity.RuntimeManager.CreateInstance(music);
-
         musicEv.start();
+        
     }
 
     //Player has selected play Game from menu 
