@@ -328,7 +328,7 @@ public class PlayerController : MonoBehaviour
             {
                 //grab all the enemies in howl radius and loop through setting them to stunned
                 anim.SetBool("isHowling", true);
-                _animState = AnimState.isIdle;
+                _animState = AnimState.isHowling;
                 Collider[] colliders = Physics.OverlapSphere(transform.position, howlRadius, enemies);
                 howlOnCooldown = true;
 
@@ -358,7 +358,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetButtonDown("Ability2") && !tailWhipOnCooldown)
             {
-                _animState = AnimState.isIdle;
+                _animState = AnimState.isTailwhiping;
                 Collider[] colliders = Physics.OverlapSphere(transform.position, tailWhipRadius, enemies);
                 tailWhipOnCooldown = true;
                 anim.SetBool("isSpinning", true);
