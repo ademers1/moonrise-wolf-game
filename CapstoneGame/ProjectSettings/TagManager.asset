@@ -20,6 +20,7 @@ TagManager:
   - CheckPoint
   - Waypoint
   - InvisBox
+  - MeleeWeapon
   layers:
   - Default
   - TransparentFX

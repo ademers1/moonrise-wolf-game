@@ -91,5 +91,14 @@ public class PlayerHealth : Killable
         flashActive = false;
         meshRenderer.material = primaryMat;
     }
-    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "MeleeWeapon")
+        {
+            Health -= 25;
+
+        }
+    }
+
 }
