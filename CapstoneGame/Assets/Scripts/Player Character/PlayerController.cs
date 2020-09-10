@@ -193,6 +193,7 @@ public class PlayerController : MonoBehaviour
                 velocity = transform.forward * currentSpeed + Vector3.up * velocityY;
 
                 float blendValue = currentSpeed / runSpeed;
+                Debug.Log(blendValue);
                 anim.SetFloat("Speed", blendValue);
 
                 controller.Move(velocity * Time.deltaTime);
@@ -207,6 +208,7 @@ public class PlayerController : MonoBehaviour
             {
                 float blendValue = 0;
                 anim.SetFloat("Speed", blendValue);
+                Debug.Log(blendValue);
             }
 
             //anim.SetBool("isIdle", false);
