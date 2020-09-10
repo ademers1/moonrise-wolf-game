@@ -27,6 +27,8 @@ namespace Assets.Code.NPCCode
 
         public float stunDuration = 0f;
 
+        public BoxCollider meleeWeapon;
+
         //Audio
         [FMODUnity.EventRefAttribute]
         public string hunterStepEventString = "event:/HunterSteps";
@@ -42,6 +44,11 @@ namespace Assets.Code.NPCCode
             {
                 player = target.GetComponent<PlayerController>();
             }
+            if(meleeWeapon == null)
+            {
+                meleeWeapon = GetComponentInChildren<BoxCollider>();
+            }
+            meleeWeapon.enabled = false;
         }
 
         public void Start()
@@ -86,6 +93,16 @@ namespace Assets.Code.NPCCode
             hunterStepEvent.start();
             hunterStepEvent.release();
 
+        }
+
+        public void EnableWeaponCollider()
+        {
+            meleeWeapon.enabled = true;
+        }
+
+        public void DisableWeaponCollider()
+        {
+            meleeWeapon.enabled = false;
         }
     }
 }
