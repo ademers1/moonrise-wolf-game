@@ -44,7 +44,6 @@ public abstract class Killable : MonoBehaviour, IKillable
     public SkinnedMeshRenderer meshRenderer;
     Color originalColor;
 
-    public Slider slider;
     public Material primaryMat;
     public Material flashMat;
 
