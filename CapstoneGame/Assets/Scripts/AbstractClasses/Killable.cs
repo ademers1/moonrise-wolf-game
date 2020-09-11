@@ -13,10 +13,12 @@ public abstract class Killable : MonoBehaviour, IKillable
         }
         set
         {
+            
             if (Invulnerable) return;
             if (value > MaxHealth)
                 _health = MaxHealth;
             else _health = value;
+            Debug.Log(Health);
             if (_health <= 0)
                 Die();
         }

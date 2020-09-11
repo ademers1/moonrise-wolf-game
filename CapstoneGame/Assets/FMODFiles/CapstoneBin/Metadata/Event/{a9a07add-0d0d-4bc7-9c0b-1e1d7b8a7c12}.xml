@@ -59,7 +59,11 @@
 			<destination>{bc950ce4-2474-4909-be12-6591d33c52e2}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{ceb5666e-4a76-4737-92d7-34c58e18121a}" />
+	<object class="EventAutomatableProperties" id="{ceb5666e-4a76-4737-92d7-34c58e18121a}">
+		<property name="triggerCooldown">
+			<value>80</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{454445e6-144e-445a-921f-47a8e9759659}" />
 	<object class="GroupTrack" id="{022868e7-d7be-44ac-a563-6d843d12a30d}">
 		<relationship name="modules">
@@ -81,7 +85,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{8160fb3b-b9fc-4373-bbee-d97b2213fa3d}">
 		<property name="volume">
-			<value>-10</value>
+			<value>-35</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{2834691d-e18e-4742-8e7d-c378bd68d11d}</destination>
@@ -134,6 +138,8 @@
 	<object class="MixerBusEffectChain" id="{2834691d-e18e-4742-8e7d-c378bd68d11d}">
 		<relationship name="effects">
 			<destination>{86ea94d2-6e88-410c-b5ae-36946e573fc3}</destination>
+			<destination>{8ace6d08-5e70-46ed-9fee-3a86c349985b}</destination>
+			<destination>{4942a51c-9b76-4d1f-b6bd-a644b6c7c3ea}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{7ccf8162-ec84-46d6-8110-1f6ede522e04}" />
@@ -155,7 +161,7 @@
 	</object>
 	<object class="PlayPercentage" id="{31855479-470e-4201-b128-dddb60e311cb}">
 		<property name="percentage">
-			<value>30</value>
+			<value>50</value>
 		</property>
 		<relationship name="sound">
 			<destination>{baa0ac02-205f-43b7-ade5-9aaa651d0533}</destination>
@@ -171,7 +177,7 @@
 	</object>
 	<object class="PlayPercentage" id="{5b2e689c-0982-47e2-b3d1-d4e2e7011cd2}">
 		<property name="percentage">
-			<value>15</value>
+			<value>20</value>
 		</property>
 		<relationship name="sound">
 			<destination>{388d64ea-9dfd-4fee-b274-b65b98bce644}</destination>
@@ -186,6 +192,37 @@
 	</object>
 	<object class="MixerBusPanner" id="{baf35a14-fd94-4701-aca8-23e2990fe622}" />
 	<object class="MixerBusFader" id="{86ea94d2-6e88-410c-b5ae-36946e573fc3}" />
+	<object class="ChorusEffect" id="{8ace6d08-5e70-46ed-9fee-3a86c349985b}">
+		<property name="rate">
+			<value>0.0440000035</value>
+		</property>
+		<property name="depth">
+			<value>13.5</value>
+		</property>
+		<property name="mix">
+			<value>64</value>
+		</property>
+	</object>
+	<object class="SFXReverbEffect" id="{4942a51c-9b76-4d1f-b6bd-a644b6c7c3ea}">
+		<property name="decayTime">
+			<value>130</value>
+		</property>
+		<property name="HFReference">
+			<value>3600</value>
+		</property>
+		<property name="density">
+			<value>56.5</value>
+		</property>
+		<property name="lowShelfFrequency">
+			<value>48</value>
+		</property>
+		<property name="earlyLateMix">
+			<value>4</value>
+		</property>
+		<property name="wetLevel">
+			<value>-16</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{53558096-5260-4b4c-ab21-bc4257336e33}" />
 	<object class="ChannelMixEffect" id="{50f963d9-ab59-4456-b2f1-b8ede640f44c}" />
 	<object class="PitchShifterEffect" id="{44394002-3471-4634-a4f9-392cedb83643}">

@@ -25,12 +25,12 @@ public class EnemyData
     public EnemyData()
     {
         //get player health
-        enemyHealth = enemy.MaxHealth;
+        //enemyHealth = enemy.MaxHealth;
         //get player position
-        enemyPosition = new float[3];
-        enemyPosition[0] = enemy.enemyCurrentPosition.x;
-        enemyPosition[1] = enemy.enemyCurrentPosition.y;
-        enemyPosition[2] = enemy.enemyCurrentPosition.z;
+        //enemyPosition = new float[3];
+        //enemyPosition[0] = enemy.enemyCurrentPosition.x;
+        //enemyPosition[1] = enemy.enemyCurrentPosition.y;
+        //enemyPosition[2] = enemy.enemyCurrentPosition.z;
     }
 
 }
