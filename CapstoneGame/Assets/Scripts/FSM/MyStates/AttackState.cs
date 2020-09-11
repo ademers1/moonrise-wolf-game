@@ -29,7 +29,7 @@ namespace Assets.Code.FSM.MyStates
         public override bool EnterState()
         {
             EnteredState = true;
-
+            Debug.Log("entered attack state");
             fsm.anim.SetBool("isAttacking", true);
             ikActive = true;
             
@@ -42,7 +42,7 @@ namespace Assets.Code.FSM.MyStates
             if(EnteredState)
             {
                 PlayerHealth health = npc.target.GetComponent<PlayerHealth>();
-                health.Health -= attackDamage;
+                
                 if (fsm.stunned)
                 {
                     fsm.EnterState(FSMStateType.STUN);
@@ -63,8 +63,7 @@ namespace Assets.Code.FSM.MyStates
         public override bool ExitState()
         {
             
-            base.ExitState();
-            fsm.anim.SetBool("isAttacking", false);
+            base.ExitState();            
 
             return true;
         }
