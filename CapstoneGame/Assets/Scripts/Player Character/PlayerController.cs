@@ -208,7 +208,6 @@ public class PlayerController : MonoBehaviour
             {
                 float blendValue = 0;
                 anim.SetFloat("Speed", blendValue);
-                Debug.Log(blendValue);
             }
 
             //anim.SetBool("isIdle", false);

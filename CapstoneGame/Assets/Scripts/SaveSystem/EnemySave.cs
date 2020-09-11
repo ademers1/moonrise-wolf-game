@@ -30,6 +30,7 @@ public class EnemySave : MonoBehaviour
     }
     void Update()
     {
+        /*
         enemyData.enemyPosition[0] = transform.position.x;
         enemyData.enemyPosition[1] = transform.position.y;
         enemyData.enemyPosition[2] = transform.position.z;
@@ -67,7 +68,7 @@ public class EnemySave : MonoBehaviour
             //    enemy.Health = enemy.MaxHealth;
             //    transform.position = new Vector3(enemyData.enemyPosition[0], enemyData.enemyPosition[1], enemyData.enemyPosition[2]);
             //}
-        }
+        }*/
     }
     public void Save()
     {

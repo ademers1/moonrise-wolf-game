@@ -45,10 +45,6 @@ public class PlayerHealth : Killable
             flashTimeRemaining -= Time.deltaTime;// Subtract Timer to break out of Co routine
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Health -= 20;
-        }
     }
 
     public override float Health
@@ -90,15 +86,21 @@ public class PlayerHealth : Killable
         }
         flashActive = false;
         meshRenderer.material = primaryMat;
+        Invulnerable = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "MeleeWeapon")
-        {
-            Health -= 25;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "MeleeWeapon")
+        {
+            other.enabled = false;
+            //TakeDamage();
+            Health -= 25;
+            StartCoroutine("FlashRoutine");
         }
     }
 
+
+    
 }
