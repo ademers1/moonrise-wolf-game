@@ -51,7 +51,7 @@ MonoBehaviour:
   guid: 16ed20e8f492884c8617b3bb45a882e0
   Banks:
   - {fileID: -2109052278417811091}
-  - {fileID: -8827557216256227132}
+  - {fileID: 3043673120472151138}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -166,6 +166,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-8071361194911706170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/HunterSounds.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMODFiles/CapstoneBin/Build/Desktop/HunterSounds.bank
+  SubDir: 
+  lastModified: 637355890115249504
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-7741161626287364229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +238,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-7204606152367561379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMODFiles/CapstoneBin/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637355890115498850
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-7100666763236046321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +292,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-7065396794526908703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Growls.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMODFiles/CapstoneBin/Build/Desktop/Growls.bank
+  SubDir: 
+  lastModified: 637355890115239532
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-6568302906324633132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,6 +400,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-4955079068137955479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Attacks.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMODFiles/CapstoneBin/Build/Desktop/Attacks.bank
+  SubDir: 
+  lastModified: 637355890114920400
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-4673753977556749115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,12 +452,12 @@ MonoBehaviour:
   guid: dd7aa0a90d0dc74b9c0b1e1d7b8a7c12
   Banks:
   - {fileID: 801066340271356306}
-  - {fileID: -8526181018788710357}
+  - {fileID: 4529739244575687466}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 5715896737916852420}
+  - {fileID: -812652781259399520}
   MinDistance: 0
   MaxDistance: 0
   Length: 1000
@@ -421,7 +493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMODFiles/CapstoneBin/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637353857161031816
+  lastModified: 637355890115588597
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -607,6 +679,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-812652781259399520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PawSounds/Health
+  m_EditorClassIdentifier: 
+  Name: Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
 --- !u!114 &-198466220687768602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -639,13 +728,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -4215875254344464487}
-  - {fileID: 3072395854282283220}
-  - {fileID: 5287468505892859437}
-  - {fileID: 7840832361560112726}
-  - {fileID: 9180901866774934264}
-  - {fileID: -8155500810463820476}
-  - {fileID: -8827557216256227132}
-  - {fileID: -8526181018788710357}
+  - {fileID: -4955079068137955479}
+  - {fileID: 6063825091248372071}
+  - {fileID: -7065396794526908703}
+  - {fileID: -8071361194911706170}
+  - {fileID: -7204606152367561379}
+  - {fileID: 3043673120472151138}
+  - {fileID: 4529739244575687466}
   EditorEvents:
   - {fileID: 6218498636264978789}
   - {fileID: 2975732075707873401}
@@ -654,10 +743,10 @@ MonoBehaviour:
   - {fileID: -4529566036137886626}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -8155500810463820476}
+  - {fileID: -7204606152367561379}
   StringsBanks:
   - {fileID: -4215875254344464487}
-  stringsBankWriteTime: 637353857161031816
+  stringsBankWriteTime: 637355890115588597
   cacheVersion: 3
 --- !u!114 &75311768052488650
 MonoBehaviour:
@@ -906,7 +995,7 @@ MonoBehaviour:
   guid: aef10915bd309749b9f4ef800db96b44
   Banks:
   - {fileID: 5366734108902693711}
-  - {fileID: 9180901866774934264}
+  - {fileID: -8071361194911706170}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -914,6 +1003,24 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 809
+--- !u!114 &3043673120472151138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/MenuMusic.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMODFiles/CapstoneBin/Build/Desktop/MenuMusic.bank
+  SubDir: 
+  lastModified: 637355890115638467
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &3072395854282283220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -984,7 +1091,7 @@ MonoBehaviour:
   guid: 7cbf02a2cf9f3a4d8042ecec70b0bb00
   Banks:
   - {fileID: 3870478209375196127}
-  - {fileID: -8155500810463820476}
+  - {fileID: -7204606152367561379}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1117,6 +1224,24 @@ MonoBehaviour:
   Max: 100
   Default: 100
   Exists: 0
+--- !u!114 &4529739244575687466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Paws.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMODFiles/CapstoneBin/Build/Desktop/Paws.bank
+  SubDir: 
+  lastModified: 637355890115648443
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &4723208333784458056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1259,6 +1384,24 @@ MonoBehaviour:
   Max: 100
   Default: 100
   Exists: 1
+--- !u!114 &6063825091248372071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Breathing.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMODFiles/CapstoneBin/Build/Desktop/Breathing.bank
+  SubDir: 
+  lastModified: 637355890114930355
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &6218498636264978789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1275,7 +1418,7 @@ MonoBehaviour:
   guid: dec7f8b63ae44745b973215c2997c5c3
   Banks:
   - {fileID: 5165755715050094744}
-  - {fileID: 3072395854282283220}
+  - {fileID: -4955079068137955479}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1

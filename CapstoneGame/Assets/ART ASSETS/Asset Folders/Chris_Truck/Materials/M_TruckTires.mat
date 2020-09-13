@@ -30,7 +30,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColorMap:
-        m_Texture: {fileID: 2800000, guid: e2a1353a3e1c7eb428b51edb145ca5c4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 445a6a1d03eae444aa9107aeecb3b886, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BentNormalMap:
@@ -58,7 +58,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap:
-        m_Texture: {fileID: 2800000, guid: 596a1f57d6a4549459e85d0933998910, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6d7bfafb0ca20744c8b9d6d3c6a8b9df, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _IridescenceMaskMap:
@@ -70,15 +70,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e2a1353a3e1c7eb428b51edb145ca5c4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 445a6a1d03eae444aa9107aeecb3b886, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
-        m_Texture: {fileID: 2800000, guid: de745c5072250e147be2f967140f23ca, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3937788c9d742984d8c869c8b0b1e503, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: a4fe6b9459dba944391e3fa6b0f45abc, type: 3}
+        m_Texture: {fileID: 2800000, guid: 13a4996d55f8d83419ffaf5bd2f5548b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMapOS:
@@ -110,8 +110,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AORemapMax: 0.5049722
-    - _AORemapMin: 0.3756906
+    - _AORemapMax: 0.24861857
+    - _AORemapMin: 0.11933702
     - _ATDistance: 1
     - _AddPrecomputedVelocity: 0
     - _AlbedoAffectEmissive: 0
@@ -164,14 +164,14 @@ Material:
     - _EnableSpecularOcclusion: 0
     - _EnergyConservingSpecularColor: 1
     - _HdrpVersion: 2
-    - _HeightAmplitude: 0.02
+    - _HeightAmplitude: 0.0033
     - _HeightCenter: 0.5
-    - _HeightMapParametrization: 0
+    - _HeightMapParametrization: 1
     - _HeightMax: 1
     - _HeightMin: -1
     - _HeightOffset: 0
     - _HeightPoMAmplitude: 2
-    - _HeightTessAmplitude: 2
+    - _HeightTessAmplitude: 0.33
     - _HeightTessCenter: 0.5
     - _InvTilingScale: 1
     - _Ior: 1
@@ -181,7 +181,7 @@ Material:
     - _MaterialID: 1
     - _Metallic: 0
     - _NormalMapSpace: 0
-    - _NormalScale: 0.63
+    - _NormalScale: 1.09
     - _PPDLodThreshold: 5
     - _PPDMaxSamples: 15
     - _PPDMinSamples: 5
@@ -191,8 +191,8 @@ Material:
     - _RefractionModel: 0
     - _SSRefractionProjectionModel: 0
     - _Smoothness: 0.5
-    - _SmoothnessRemapMax: 0.6331494
-    - _SmoothnessRemapMin: 0.38895026
+    - _SmoothnessRemapMax: 0.774586
+    - _SmoothnessRemapMin: 0.5303867
     - _SpecularAAScreenSpaceVariance: 0.1
     - _SpecularAAThreshold: 0.2
     - _SrcBlend: 1
