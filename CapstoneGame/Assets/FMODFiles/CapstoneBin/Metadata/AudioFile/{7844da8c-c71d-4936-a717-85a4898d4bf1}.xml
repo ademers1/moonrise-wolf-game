@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{7844da8c-c71d-4936-a717-85a4898d4bf1}">
+		<property name="assetPath">
+			<value>BouncedStems/WolfSounds/Paw4_Heavy.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.18285714285714286</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8491304f-271f-4104-980e-51da3d25c00d}</destination>
+		</relationship>
+	</object>
+</objects>
