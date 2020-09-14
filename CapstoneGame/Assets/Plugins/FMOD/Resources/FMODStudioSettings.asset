@@ -15,8 +15,8 @@ MonoBehaviour:
   SwitchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../../../FMOD_Capstone/CapstoneBin/CapstoneBin.fspro
-  sourceBankPath: ..\..\..\FMOD_Capstone\CapstoneBin\Build
+  sourceProjectPath: Assets/FMODFiles/CapstoneBin/CapstoneBin.fspro
+  sourceBankPath: Assets\FMODFiles\CapstoneBin\Build
   SourceBankPathUnformatted: 
   AutomaticEventLoading: 0
   BankLoadType: 0

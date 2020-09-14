@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="EncodableAsset" id="{56810f5f-dcec-41e5-9c55-8d4c4b9d2d36}">
+		<property name="assetPath">
+			<value>BouncedStems/HunterSounds/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8491304f-271f-4104-980e-51da3d25c00d}</destination>
+		</relationship>
+	</object>
+</objects>

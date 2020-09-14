@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="Bank" id="{8c72bb52-c759-4eb4-a655-7e4ff88c005d}">
+		<property name="name">
+			<value>Attacks</value>
+		</property>
+		<relationship name="folder">
+			<destination>{8b3cfe8b-14e8-488b-b1db-1f7619b0042e}</destination>
+		</relationship>
+	</object>
+</objects>

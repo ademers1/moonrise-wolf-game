@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="EncodableAsset" id="{851ff84c-fd6f-4d0d-bc79-41d9782af03e}">
+		<property name="assetPath">
+			<value>BouncedStems/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8491304f-271f-4104-980e-51da3d25c00d}</destination>
+		</relationship>
+	</object>
+</objects>
