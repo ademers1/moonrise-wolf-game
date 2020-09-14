@@ -6,13 +6,19 @@ public class SpawnTrigger : MonoBehaviour
 {
     public PoolTest poolTest;
 
-    private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        Debug.Log("Entered Trigger");
-        if (other.CompareTag("Player"))
-        {
-            
-            poolTest.SpawnEnemyFromPool(gameObject, other, gameObject);
-        }
+        GameEvents.current.OnSpawnTriggerEnter += OnSpawnTriggerEntered; 
+    }
+
+
+    private void OnSpawnTriggerEntered()
+    {
+        poolTest.SpawnEnemyFromPool();
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.current.OnSpawnTriggerEnter -= OnSpawnTriggerEntered;
     }
 }
