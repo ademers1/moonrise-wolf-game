@@ -54,3 +54,15 @@ CapstoneGame/Assets/Chris_Wynn/Textures.meta
 !CapstoneGame/Assets/FMODFiles/CapstoneBin/Metadata/
 !CapstoneGame/Assets/FMODFiles/CapstoneBin/Build/
 !CapstoneGame/Assets/Chris_Wynn/Textures.meta
+
+# FMOD
+/Assets/FMODStudioCache.asset
+/Assets/FMODStudioCache.asset.meta
+fmod.log
+fmod_editor.log
+
+# FMOD studio (In folder FMOD)
+/FMOD/**.user
+/FMOD/**.unsaved
+/FMOD/**.cache
+/FMOD/**.restore

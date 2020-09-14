@@ -40,15 +40,22 @@ namespace Assets.Code.NPCCode
             navMeshAgent = this.GetComponent<NavMeshAgent>(); //this. is not neccessary but leaving for now
             finiteStatemachine = this.GetComponent<FiniteStateMachine>();
             gameObject.layer = 9;
-            if(target != null)
+            if(target == null)
             {
-                player = target.GetComponent<PlayerController>();
+                target = GameObject.FindGameObjectWithTag("Player").transform;
             }
+
+            player = target.GetComponent<PlayerController>();
+            
             if(meleeWeapon == null)
             {
                 meleeWeapon = GetComponentInChildren<BoxCollider>();
+
             }
-            meleeWeapon.enabled = false;
+            if (meleeWeapon != null)
+            {
+                //meleeWeapon.enabled = false;
+            }
         }
 
         public void Start()
@@ -97,12 +104,18 @@ namespace Assets.Code.NPCCode
 
         public void EnableWeaponCollider()
         {
-            meleeWeapon.enabled = true;
+            //meleeWeapon.enabled = true;
         }
 
         public void DisableWeaponCollider()
         {
-            meleeWeapon.enabled = false;
+            //meleeWeapon.enabled = false;
+        }
+
+        public void EndAttack()
+        {
+            finiteStatemachine.anim.SetBool("isAttacking", false);
+            meleeWeapon.enabled = true;
         }
     }
 }
