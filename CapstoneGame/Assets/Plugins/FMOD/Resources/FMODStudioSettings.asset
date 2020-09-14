@@ -83,6 +83,7 @@ MonoBehaviour:
   Banks:
   - Attacks
   - Breathing
+  - EngineSounds
   - Growls
   - HunterSounds
   - MenuMusic

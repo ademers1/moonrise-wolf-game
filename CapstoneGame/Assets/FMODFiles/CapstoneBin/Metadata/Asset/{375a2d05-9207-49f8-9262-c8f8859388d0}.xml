@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="EncodableAsset" id="{375a2d05-9207-49f8-9262-c8f8859388d0}">
+		<property name="assetPath">
+			<value>BouncedStems/PropSounds/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8491304f-271f-4104-980e-51da3d25c00d}</destination>
+		</relationship>
+	</object>
+</objects>
