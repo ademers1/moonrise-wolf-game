@@ -1,6 +1,7 @@
 fileFormatVersion: 2
-guid: 531d1cf4a50cc6d44a110015f37c346b
-folderAsset: yes
+guid: 3952bc610b7b69a45b1f1e9fcdbf676d
+labels:
+- FMOD
 DefaultImporter:
   externalObjects: {}
   userData: 
