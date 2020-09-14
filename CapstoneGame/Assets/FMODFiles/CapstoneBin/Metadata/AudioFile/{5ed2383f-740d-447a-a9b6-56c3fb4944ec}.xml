@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{5ed2383f-740d-447a-a9b6-56c3fb4944ec}">
+		<property name="assetPath">
+			<value>BouncedStems/HunterSounds/Hunter_Step_1.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.80979591836734699</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8491304f-271f-4104-980e-51da3d25c00d}</destination>
+		</relationship>
+	</object>
+</objects>
