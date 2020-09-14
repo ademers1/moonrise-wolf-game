@@ -8,6 +8,7 @@ public class PoolTest : MonoBehaviour
 {
     public GameObject prefab;
     public Transform[] spawnLocations;
+    public GameObject[] triggerBoxes = new GameObject[4];
     int rand;
     int locationIndex = 3;
     private void Start()
@@ -46,20 +47,15 @@ public class PoolTest : MonoBehaviour
         }
        
     }
-    public void SpawnEnemyFromPool()
+    public void SpawnEnemyFromPool(GameObject triggerBox, Collider player, GameObject boxCollider)
     {
-        //Transform spawnLocation = spawnLocations[Array.IndexOf(triggerBoxes, triggerBox)];
-        RandomizeSpawnPositions();
-        for (int i = 0; i < spawnLocations.Length; i++)
+        Transform spawnLocation = spawnLocations[Array.IndexOf(triggerBoxes, triggerBox)];
+        if(Camera.main.WorldToViewportPoint(spawnLocation.position).x < 0 || Camera.main.WorldToViewportPoint(spawnLocation.position).x > 1 || Camera.main.WorldToViewportPoint(spawnLocation.position).y < 0 || Camera.main.WorldToViewportPoint(spawnLocation.position).y > 1)
         {
-            Vector3 screenPoint = Camera.main.WorldToViewportPoint(spawnLocations[i].position);
-            bool onScreen = screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
-            if (!onScreen)
-            {
-                PoolManager.instance.ReuseObject(prefab, spawnLocations[i].position, Quaternion.identity);
-                Debug.Log(spawnLocations[i].position);
-            }
-
+            boxCollider.GetComponent<BoxCollider>().enabled = false;
+            Debug.Log(spawnLocation.position);
+            //spawn object as spawn point should be invisible
+            PoolManager.instance.ReuseObject(prefab, spawnLocation.position, Quaternion.identity);
         }
     }
   
