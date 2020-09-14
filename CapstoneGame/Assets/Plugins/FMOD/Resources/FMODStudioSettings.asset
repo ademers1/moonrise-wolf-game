@@ -48,7 +48,7 @@ MonoBehaviour:
     Value: 0
   OverlaySettings:
   - Platform: 1
-    Value: 1
+    Value: 0
   - Platform: 2
     Value: 0
   - Platform: 20
@@ -78,7 +78,16 @@ MonoBehaviour:
   - Platform: 20
     Value: 32
   Plugins: []
-  MasterBanks: []
-  Banks: []
+  MasterBanks:
+  - Master
+  Banks:
+  - Attacks
+  - Breathing
+  - Growls
+  - HunterSounds
+  - MenuMusic
+  - Paws
+  - PawWaterSounds
+  - PlayerHurt
   BanksToLoad: []
   LiveUpdatePort: 9264
