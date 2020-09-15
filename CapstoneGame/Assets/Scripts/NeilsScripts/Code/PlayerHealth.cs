@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : Killable
 {
-    float healthBarWidth = 125;
-    float newWidth;
     public Image healthBar;
 
     public MusicControl musicSystem;                 //MusicControl Script on the "MusicSystem" GameObject
@@ -57,8 +55,8 @@ public class PlayerHealth : Killable
         {
             base.Health = value;
             float ratio = Health / MaxHealth;
-            newWidth = healthBarWidth * ratio;
-            healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(newWidth, healthBar.GetComponent<RectTransform>().sizeDelta.y);
+            float newRatio = ratio * 0.78f;
+            healthBar.fillAmount = newRatio;
         }
     }
     void Respawn()
