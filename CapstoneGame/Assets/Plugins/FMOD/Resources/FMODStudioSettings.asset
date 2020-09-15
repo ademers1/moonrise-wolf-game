@@ -15,8 +15,8 @@ MonoBehaviour:
   SwitchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: Assets/FMODFiles/CapstoneBin/CapstoneBin.fspro
-  sourceBankPath: Assets\FMODFiles\CapstoneBin\Build
+  sourceProjectPath: ../../../FMOD_Capstone/CapstoneBin/CapstoneBin.fspro
+  sourceBankPath: ..\..\..\FMOD_Capstone\CapstoneBin\Build
   SourceBankPathUnformatted: 
   AutomaticEventLoading: 0
   BankLoadType: 0
@@ -89,5 +89,15 @@ MonoBehaviour:
   - Paws
   - PawWaterSounds
   - PlayerHurt
-  BanksToLoad: []
+  BanksToLoad:
+  - R:/School Folders/FMOD_Capstone/CapstoneBin/Build/Desktop/Attacks.bank
+  - R:/School Folders/FMOD_Capstone/CapstoneBin/Build/Desktop/Breathing.bank
+  - R:/School Folders/FMOD_Capstone/CapstoneBin/Build/Desktop/Growls.bank
+  - R:/School Folders/FMOD_Capstone/CapstoneBin/Build/Desktop/HunterSounds.bank
+  - R:/School Folders/FMOD_Capstone/CapstoneBin/Build/Desktop/Master.bank
+  - R:/School Folders/FMOD_Capstone/CapstoneBin/Build/Desktop/Master.strings.bank
+  - R:/School Folders/FMOD_Capstone/CapstoneBin/Build/Desktop/MenuMusic.bank
+  - R:/School Folders/FMOD_Capstone/CapstoneBin/Build/Desktop/Paws.bank
+  - R:/School Folders/FMOD_Capstone/CapstoneBin/Build/Desktop/PawWaterSounds.bank
+  - R:/School Folders/FMOD_Capstone/CapstoneBin/Build/Desktop/PlayerHurt.bank
   LiveUpdatePort: 9264
