@@ -104,18 +104,17 @@ namespace Assets.Code.NPCCode
 
         public void EnableWeaponCollider()
         {
-            //meleeWeapon.enabled = true;
+            meleeWeapon.enabled = true;
         }
 
         public void DisableWeaponCollider()
         {
-            //meleeWeapon.enabled = false;
+            meleeWeapon.enabled = false;
         }
 
         public void EndAttack()
         {
             finiteStatemachine.anim.SetBool("isAttacking", false);
-            meleeWeapon.enabled = true;
         }
     }
 }

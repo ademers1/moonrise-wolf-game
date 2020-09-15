@@ -13,10 +13,12 @@ public enum AnimState
 public class PlayerController : MonoBehaviour
 {
 
-    
+
 
     public Transform cam;
     public CharacterController controller;
+    //Dash Particles
+    public ParticleSystem dashParticles;
 
     public float rotationSpeed = 10f;
 
@@ -97,7 +99,7 @@ public class PlayerController : MonoBehaviour
     public float dashLength = 0.15f;
     public float dashSpeed = 100f;
     public BoxCollider collider;
-    
+
     private Vector3 dashMove;
     private float dashing = 0f;
     private float dashingTime = 0f;
@@ -115,8 +117,8 @@ public class PlayerController : MonoBehaviour
     FMOD.Studio.PARAMETER_ID groundQualityID;
 
 
-    
-    
+
+
 
     private void Start()
     {
@@ -126,10 +128,11 @@ public class PlayerController : MonoBehaviour
         //furyBar.fillAmount = 0;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
+        //set dash particles to inactive
+        dashParticles.gameObject.SetActive(false);
         //controller = GetComponent<CharacterController>();
 
-        
+
     }
 
     // Update is called once per frame
@@ -166,7 +169,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
                 Jump();
 
-            
+
 
             if (direction.magnitude >= 0.1f)
             {
@@ -182,7 +185,7 @@ public class PlayerController : MonoBehaviour
                 float currentSpeed = ((running) ? runSpeed : walkSpeed) * direction.magnitude;
                 float sneakSpeed = ((sneaking) ? stalkSpeed : walkSpeed) * direction.magnitude;
 
-                if(sneaking)
+                if (sneaking)
                 {
                     _animState = AnimState.isSneaking;
                     currentSpeed = sneakSpeed;
@@ -198,7 +201,7 @@ public class PlayerController : MonoBehaviour
 
                 controller.Move(velocity * Time.deltaTime);
 
-            
+
                 if (controller.isGrounded)
                 {
                     velocityY = 0;
@@ -230,6 +233,8 @@ public class PlayerController : MonoBehaviour
                 {
                     col.isTrigger = true;
                 }
+                //enable dash particles
+                dashParticles.gameObject.SetActive(true);
             }
         }
 
@@ -249,7 +254,17 @@ public class PlayerController : MonoBehaviour
             {
                 col.isTrigger = false;
             }
+            StartCoroutine(DashParticleTimer());
         }
+
+        IEnumerator DashParticleTimer()
+        {
+            yield return new WaitForSeconds(0.3f);
+            //disable dash particles
+            dashParticles.gameObject.SetActive(false);
+        }
+
+
 
         //recharge dashes if we don't currently have 3
         if (dashesRemaining < 3)
@@ -285,21 +300,21 @@ public class PlayerController : MonoBehaviour
         //attacks
         if (_animState == AnimState.isIdle || _animState == AnimState.isMoving || _animState == AnimState.isSneaking)
         {
-           if (Input.GetButtonDown("Fire1") && !attackOnCooldown)
-           {
-               _animState = AnimState.isAttacking;
-               //anim.SetBool("isAttacking", true);
-               attackOnCooldown = true;
-               Attack();
-           }
-          
-           if (Input.GetButtonDown("Fire2") && !heavyAttackOnCooldown)
-           {
-               _animState = AnimState.isAttacking;
-               //anim.SetBool("isAttacking", true);
-               heavyAttackOnCooldown = true;
-               HeavyAttack();
-           }
+            if (Input.GetButtonDown("Fire1") && !attackOnCooldown)
+            {
+                _animState = AnimState.isAttacking;
+                //anim.SetBool("isAttacking", true);
+                attackOnCooldown = true;
+                Attack();
+            }
+
+            if (Input.GetButtonDown("Fire2") && !heavyAttackOnCooldown)
+            {
+                _animState = AnimState.isAttacking;
+                //anim.SetBool("isAttacking", true);
+                heavyAttackOnCooldown = true;
+                HeavyAttack();
+            }
         }
 
         //set cooldown of attack and heavy attack
@@ -375,7 +390,7 @@ public class PlayerController : MonoBehaviour
                 foreach (Collider enemy in colliders)
                 {
                     enemy.GetComponent<NPC>().stunDuration = tailWhipKnockBackDuration;
-                    enemy.GetComponent<Rigidbody>().isKinematic = false;                   
+                    enemy.GetComponent<Rigidbody>().isKinematic = false;
                 }
                 Knockback(colliders);
             }
@@ -388,7 +403,7 @@ public class PlayerController : MonoBehaviour
             {
                 tailWhipTimer = 0;
                 tailWhipOnCooldown = false;
-                
+
             }
         }
     }
@@ -462,10 +477,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("InvisBox"))
+        if (other.gameObject.CompareTag("InvisBox"))
         {
             InvisBox = true;
-          //  _animState = AnimState.isSneaking;
+            //  _animState = AnimState.isSneaking;
         }
     }
 
@@ -474,7 +489,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("InvisBox"))
         {
             InvisBox = false;
-           // _animState = AnimState.isIdle;
+            // _animState = AnimState.isIdle;
         }
     }
 
