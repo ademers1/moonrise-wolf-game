@@ -62,10 +62,7 @@ fmod.log
 fmod_editor.log
 
 # FMOD studio (In folder FMOD)
-CapstoneGame/Assets/Plugins/FMOD/**.user
-CapstoneGame/Assets/Plugins/FMOD/**.unsaved
-CapstoneGame/Assets/Plugins/FMOD/**.cache
-CapstoneGame/Assets/Plugins/FMOD/**.restore
-CapstoneGame/fmod_editor.log
-CapstoneGame/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
-CapstoneGame/Assets/Plugins/FMOD/Resources/FMODStudioSettings.asset
+/FMOD/**.user
+/FMOD/**.unsaved
+/FMOD/**.cache
+/FMOD/**.restore
