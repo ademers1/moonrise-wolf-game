@@ -17,8 +17,6 @@ public class PlayerController : MonoBehaviour
 
     public Transform cam;
     public CharacterController controller;
-    //Dash Particles
-    public ParticleSystem dashParticles;
 
     public float rotationSpeed = 10f;
 
@@ -128,8 +126,7 @@ public class PlayerController : MonoBehaviour
         //furyBar.fillAmount = 0;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        //set dash particles to inactive
-        dashParticles.gameObject.SetActive(false);
+
         //controller = GetComponent<CharacterController>();
 
         
@@ -233,8 +230,6 @@ public class PlayerController : MonoBehaviour
                 {
                     col.isTrigger = true;
                 }
-                //enable dash particles
-                dashParticles.gameObject.SetActive(true);
             }
         }
 
@@ -254,17 +249,7 @@ public class PlayerController : MonoBehaviour
             {
                 col.isTrigger = false;
             }
-            StartCoroutine(DashParticleTimer());
         }
-
-        IEnumerator DashParticleTimer()
-        {
-            yield return new WaitForSeconds(0.3f);
-            //disable dash particles
-            dashParticles.gameObject.SetActive(false);
-        }
-
-
 
         //recharge dashes if we don't currently have 3
         if (dashesRemaining < 3)
